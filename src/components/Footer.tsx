@@ -22,8 +22,8 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <div>&copy; {new Date().getFullYear()} Isha Systems. {t.footer.rights}</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white">{t.footer.privacy}</a>
-            <a href="#" className="hover:text-white">{t.footer.terms}</a>
+            <a href="#privacy" className="hover:text-white">{t.footer.privacy}</a>
+            <a href="#terms" className="hover:text-white">{t.footer.terms}</a>
           </div>
         </div>
       </div>

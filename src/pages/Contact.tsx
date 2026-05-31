@@ -6,14 +6,38 @@ export const Contact: React.FC = () => {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      businessName: String(fd.get('businessName') || ''),
+      yourName: String(fd.get('yourName') || ''),
+      yourEmail: String(fd.get('yourEmail') || ''),
+      phone: String(fd.get('phone') || ''),
+      businessDo: String(fd.get('businessDo') || ''),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error('Request failed');
       setSubmitted(true);
-    }, 1200);
+      form.reset();
+    } catch {
+      setError(t.contact.errorMsg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -139,7 +163,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <input
                       type="text"
-                      required
+                      name="businessName"
                       placeholder={t.contact.businessNamePh}
                       className="w-full p-3 rounded-[10px] text-[15px] focus:outline-none transition-all"
                       style={{
@@ -165,6 +189,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="yourName"
                       required
                       placeholder={t.contact.yourNamePh}
                       className="w-full p-3 rounded-[10px] text-[15px] focus:outline-none transition-all"
@@ -191,6 +216,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <input
                       type="email"
+                      name="yourEmail"
                       required
                       placeholder={t.contact.yourEmailPh}
                       className="w-full p-3 rounded-[10px] text-[15px] focus:outline-none transition-all"
@@ -217,7 +243,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <input
                       type="tel"
-                      required
+                      name="phone"
                       placeholder={t.contact.phonePh}
                       className="w-full p-3 rounded-[10px] text-[15px] focus:outline-none transition-all"
                       style={{
@@ -243,6 +269,7 @@ export const Contact: React.FC = () => {
                     </label>
                     <textarea
                       rows={4}
+                      name="businessDo"
                       required
                       placeholder={t.contact.businessDoPh}
                       className="w-full p-3 rounded-[10px] text-[15px] focus:outline-none transition-all resize-none"
@@ -287,6 +314,12 @@ export const Contact: React.FC = () => {
                     )}
                   </button>
 
+                  {error && (
+                    <div className="mt-4 text-center text-[14px] text-red-600" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                      {error}
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-center gap-2 mt-4 text-[#94a3b8] text-[13px]" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                     <Lock className="h-4 w-4" />
                     {t.contact.privacy}
@@ -328,8 +361,8 @@ export const Contact: React.FC = () => {
             <p className="text-[#64748b] text-[14px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               {t.contact.emailUsDesc}
             </p>
-            <a href="mailto:hello@ishasystems.com" className="text-[#f97316] font-semibold text-[14px] hover:underline" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.contact.emailUsLink}
+            <a href="mailto:support@ishasystems.com" className="text-[#f97316] font-semibold text-[14px] hover:underline" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              support@ishasystems.com
             </a>
           </div>
 

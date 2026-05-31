@@ -5,6 +5,8 @@ import { Home } from './pages/Home';
 import { Contact } from './pages/Contact';
 import { Portfolio } from './pages/Portfolio';
 import { Pricing } from './pages/Pricing';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
 
 function App() {
   // Local state manager to drive sub-page routing without heavy multi-router bundles
@@ -42,6 +44,10 @@ function App() {
         return <Pricing />;
       case 'contact':
         return <Contact />;
+      case 'privacy':
+        return <PrivacyPolicy />;
+      case 'terms':
+        return <TermsOfService />;
       default:
         return <Home setCurrentTab={handleTabChange} />;
     }

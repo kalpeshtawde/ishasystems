@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ishasystems-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ishasystems-web
+    ports:
+      - "8085:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - ishasystems-backend
+    networks:
+      - ishasystems-network
+
+  ishasystems-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ishasystems-backend
+    expose:
+      - "5000"
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - ishasystems-network
+
+networks:
+  ishasystems-network:
+    driver: bridge

@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+.git
+.gitignore
+.env
+.netlify
+backend
+*.log
+.DS_Store
