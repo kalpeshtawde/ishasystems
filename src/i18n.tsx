@@ -87,6 +87,9 @@ export const translations = {
       bannerTitle: 'Ready to stop overpaying?',
       bannerSub: 'Join businesses that switched from agencies and saved thousands.',
       bannerCta: 'Get My $300 Website →',
+      videoTag: 'SEE IT IN ACTION',
+      videoTitle: 'Watch How We Work',
+      videoSub: 'A quick look at what your $300 gets you.',
     },
     portfolio: {
       tag: 'OUR PORTFOLIO',
@@ -400,6 +403,9 @@ export const translations = {
       bannerTitle: '¿Listo para dejar de pagar de más?',
       bannerSub: 'Únete a los negocios que dejaron las agencias y ahorraron miles.',
       bannerCta: 'Obtener Mi Sitio de $300 →',
+      videoTag: 'VELO EN ACCIÓN',
+      videoTitle: 'Mira Cómo Trabajamos',
+      videoSub: 'Un vistazo rápido a lo que obtienes por tus $300.',
     },
     portfolio: {
       tag: 'NUESTRO PORTAFOLIO',

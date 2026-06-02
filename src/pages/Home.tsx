@@ -167,6 +167,40 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         </div>
       </div>
 
+      {/* ── Video Section ── */}
+      <section className="py-24 bg-[#f8fafc]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[#f97316] text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+              {t.home.videoTag}
+            </span>
+            <h2 className="text-4xl lg:text-[3rem] font-extrabold text-[#0f1f4d] mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+              {t.home.videoTitle}
+            </h2>
+            <p className="text-[#64748b] text-lg" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              {t.home.videoSub}
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div
+              className="relative w-full max-w-[360px] rounded-2xl overflow-hidden bg-black"
+              style={{ aspectRatio: '9 / 16', boxShadow: '0 12px 40px rgba(15,31,77,0.18)' }}
+            >
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/MLvlqVOEbR0"
+                title="Isha Systems"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Why Smart Businesses Choose Us ── */}
       <section className="py-24" style={{ background: 'linear-gradient(135deg, #0f1f4d 0%, #1a3a6b 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
