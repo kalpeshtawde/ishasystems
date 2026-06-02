@@ -227,6 +227,9 @@ export const Pricing: React.FC = () => {
           <button className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold text-[18px] px-10 py-4 rounded-xl transition-all" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             {t.pricing.bottomCta} <ArrowRight className="inline h-5 w-5 ml-2" />
           </button>
+          <p className="text-[#94a3b8] text-[14px] mt-5" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            <a href="#contact" className="text-[#0ea5e9] font-semibold hover:text-white transition-colors underline">{t.pricing.linkGetStarted}</a>
+          </p>
         </div>
       </div>
     </div>

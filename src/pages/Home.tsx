@@ -79,6 +79,13 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   {t.home.ctaTalk}
                 </button>
               </div>
+
+              {/* Internal links for navigation & SEO */}
+              <p className="text-sm text-[#64748b] mt-5" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <a href="#pricing" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.home.linkSeePricing}</a>
+                <span className="mx-2 text-[#cbd5e1]">·</span>
+                <a href="#portfolio" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.home.linkViewPortfolio}</a>
+              </p>
             </div>
 
             {/* ── Right Column: What's Included Cards ── */}
@@ -184,17 +191,26 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
           <div className="flex justify-center">
             <div
-              className="relative w-full max-w-[360px] rounded-2xl overflow-hidden bg-black"
+              className="relative w-full max-w-[460px] rounded-2xl overflow-hidden bg-black"
               style={{ aspectRatio: '9 / 16', boxShadow: '0 12px 40px rgba(15,31,77,0.18)' }}
             >
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/MLvlqVOEbR0"
+                src="https://www.youtube-nocookie.com/embed/MLvlqVOEbR0?rel=0&modestbranding=1"
                 title="Isha Systems"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
+              />
+              {/* Mask YouTube's channel/title header bar */}
+              <div
+                className="absolute top-0 left-0 right-0"
+                style={{
+                  height: '22%',
+                  background: 'linear-gradient(to bottom, #050a16 0%, #050a16 80%, rgba(5,10,22,0) 100%)',
+                  zIndex: 2,
+                }}
               />
             </div>
           </div>
@@ -309,7 +325,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             {/* Card 1: PyPyCode.com */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/ppc/ppc_homepage.jpg" alt="PyPyCode.com Website" className="w-full h-full object-cover" />
+                <img src="/ppc/ppc_homepage.jpg" alt="PyPyCode.com — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.delivered}</span>
               </div>
               <div className="p-5">
@@ -330,7 +346,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             {/* Card 2: Mavi Collision Center */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center Website" className="w-full h-full object-cover" />
+                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.delivered}</span>
               </div>
               <div className="p-5">
@@ -351,7 +367,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             {/* Card 3: KidBuzz Daily */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/kbd/kbd_homepage.jpg" alt="Kid Buzz Daily Website" className="w-full h-full object-cover" />
+                <img src="/kbd/kbd_homepage.jpg" alt="Kid Buzz Daily — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.delivered}</span>
               </div>
               <div className="p-5">

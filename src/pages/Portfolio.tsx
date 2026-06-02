@@ -17,9 +17,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             <span className="inline-block bg-[#0f1f4d] text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
               {t.portfolio.tag}
             </span>
-            <h2 className="text-4xl lg:text-[3rem] font-extrabold text-[#0f1f4d] mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            <h1 className="text-4xl lg:text-[3rem] font-extrabold text-[#0f1f4d] mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
               {t.portfolio.title}
-            </h2>
+            </h1>
             <p className="text-[#64748b] text-lg" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               {t.portfolio.sub}
             </p>
@@ -30,7 +30,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             {/* Card 1: PyPyCode.com */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/ppc/ppc_homepage.jpg" alt="PyPyCode.com Website" className="w-full h-full object-cover" />
+                <img src="/ppc/ppc_homepage.jpg" alt="PyPyCode.com — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.portfolio.delivered}</span>
               </div>
               <div className="p-5">
@@ -51,7 +51,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             {/* Card 2: Mavi Collision Center */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center Website" className="w-full h-full object-cover" />
+                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.portfolio.delivered}</span>
               </div>
               <div className="p-5">
@@ -72,7 +72,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             {/* Card 3: KidBuzz Daily */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/kbd/kbd_homepage.jpg" alt="Kid Buzz Daily Website" className="w-full h-full object-cover" />
+                <img src="/kbd/kbd_homepage.jpg" alt="Kid Buzz Daily — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.portfolio.delivered}</span>
               </div>
               <div className="p-5">
@@ -93,7 +93,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             {/* Card 4: League of Tennis */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/lot/lot_homepage.jpg" alt="League of Tennis Website" className="w-full h-full object-cover" />
+                <img src="/lot/lot_homepage.jpg" alt="League of Tennis — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.portfolio.delivered}</span>
               </div>
               <div className="p-5">
@@ -126,6 +126,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             >
               {t.portfolio.ctaButton}
             </button>
+            <p className="text-[#64748b] text-sm mt-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              <a href="#contact" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.portfolio.linkGetWebsite}</a>
+            </p>
           </div>
         </div>
       </section>

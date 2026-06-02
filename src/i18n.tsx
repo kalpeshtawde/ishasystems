@@ -90,6 +90,8 @@ export const translations = {
       videoTag: 'SEE IT IN ACTION',
       videoTitle: 'Watch How We Work',
       videoSub: 'A quick look at what your $300 gets you.',
+      linkSeePricing: 'See our pricing',
+      linkViewPortfolio: 'View our portfolio',
     },
     portfolio: {
       tag: 'OUR PORTFOLIO',
@@ -109,6 +111,7 @@ export const translations = {
       ctaTitle: 'Have a business in mind?',
       ctaSub: "We've built for 15+ industries. Yours is next.",
       ctaButton: 'Start My Website →',
+      linkGetWebsite: 'Get your own website',
     },
     pricing: {
       tag: 'SIMPLE, HONEST PRICING',
@@ -167,6 +170,7 @@ export const translations = {
       bottomTitle: 'Ready to Go Live in 7 Days?',
       bottomSub: 'Join small businesses who chose the smarter path.',
       bottomCta: 'Get My $300 Website',
+      linkGetStarted: 'Get started today',
     },
     contact: {
       tag: 'NO COMMITMENT REQUIRED',
@@ -215,6 +219,7 @@ export const translations = {
       quickQTitle: 'Quick Question?',
       quickQDesc: 'Message us and get a response from a real person within a few hours.',
       quickQLink: 'Start a Chat →',
+      linkSeeIncluded: "See what's included",
     },
     footer: {
       tagline:
@@ -223,6 +228,8 @@ export const translations = {
       rights: 'All rights reserved.',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
+      seoText:
+        'ISHA Systems LLC offers affordable website design for small businesses across the United States. Our $300 website package includes a 10-page static website, free domain name registration, free professional business email, and free web hosting with SSL — all managed on our own servers. Ongoing maintenance is available for just $30 per month. We deliver every website within 7 days. No hidden fees. No long-term contracts.',
     },
     privacyPage: {
       title: 'Privacy Policy',
@@ -406,6 +413,8 @@ export const translations = {
       videoTag: 'VELO EN ACCIÓN',
       videoTitle: 'Mira Cómo Trabajamos',
       videoSub: 'Un vistazo rápido a lo que obtienes por tus $300.',
+      linkSeePricing: 'Ver nuestros precios',
+      linkViewPortfolio: 'Ver nuestro portafolio',
     },
     portfolio: {
       tag: 'NUESTRO PORTAFOLIO',
@@ -425,6 +434,7 @@ export const translations = {
       ctaTitle: '¿Tienes un negocio en mente?',
       ctaSub: 'Hemos creado para más de 15 industrias. La tuya es la siguiente.',
       ctaButton: 'Crear Mi Sitio Web →',
+      linkGetWebsite: 'Obtén tu propio sitio web',
     },
     pricing: {
       tag: 'PRECIOS SIMPLES Y HONESTOS',
@@ -483,6 +493,7 @@ export const translations = {
       bottomTitle: '¿Listo para Estar en Línea en 7 Días?',
       bottomSub: 'Únete a los pequeños negocios que eligieron el camino más inteligente.',
       bottomCta: 'Obtener Mi Sitio de $300',
+      linkGetStarted: 'Comienza hoy',
     },
     contact: {
       tag: 'SIN COMPROMISO',
@@ -531,6 +542,7 @@ export const translations = {
       quickQTitle: '¿Pregunta Rápida?',
       quickQDesc: 'Envíanos un mensaje y recibe respuesta de una persona real en pocas horas.',
       quickQLink: 'Iniciar un Chat →',
+      linkSeeIncluded: 'Ve qué incluye',
     },
     footer: {
       tagline:
@@ -539,6 +551,8 @@ export const translations = {
       rights: 'Todos los derechos reservados.',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Servicio',
+      seoText:
+        'ISHA Systems LLC ofrece diseño web asequible para pequeños negocios en todo Estados Unidos. Nuestro paquete de sitio web de $300 incluye un sitio estático de 10 páginas, registro de nombre de dominio gratis, correo empresarial profesional gratis y alojamiento web gratis con SSL — todo gestionado en nuestros propios servidores. El mantenimiento continuo está disponible por solo $30 al mes. Entregamos cada sitio web en 7 días. Sin tarifas ocultas. Sin contratos a largo plazo.',
     },
     privacyPage: {
       title: 'Política de Privacidad',

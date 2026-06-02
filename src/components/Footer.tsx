@@ -19,6 +19,9 @@ export const Footer: React.FC = () => {
             {t.footer.managed}
           </div>
         </div>
+        <p className="pt-8 text-center text-[12px] text-slate-500 max-w-[700px] mx-auto leading-relaxed">
+          {t.footer.seoText}
+        </p>
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <div>&copy; {new Date().getFullYear()} Isha Systems. {t.footer.rights}</div>
           <div className="flex gap-6">

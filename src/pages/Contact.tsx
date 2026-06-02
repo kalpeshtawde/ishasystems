@@ -65,6 +65,9 @@ export const Contact: React.FC = () => {
               {t.contact.pill3}
             </span>
           </div>
+          <p className="text-[#64748b] text-sm mt-5" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            <a href="#pricing" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.contact.linkSeeIncluded}</a>
+          </p>
         </div>
       </div>
 
