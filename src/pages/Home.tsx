@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ShieldCheck, ArrowRight, Languages, Clock, CheckCircle2, Lock, Code } from 'lucide-react';
+import { Mail, ShieldCheck, ArrowRight, Clock, CheckCircle2, Lock, Code, Key, PencilRuler } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 interface HomeProps {
@@ -11,135 +11,529 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
   return (
     <div>
       {/* ── Hero Section ── */}
-      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 30%, #dbeeff 60%, #f0fffe 100%)' }}>
-        {/* Top-right teal circle blur */}
+      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 40%, #f5f0ff 100%)', minHeight: '90vh' }}>
+        {/* Decorative blobs */}
         <div 
-          className="absolute top-0 right-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{ 
-            top: '-100px', 
-            right: '-100px',
-            width: '500px', 
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%)',
-            borderRadius: '50%'
+            top: '-200px', 
+            right: '-200px',
+            width: '600px', 
+            height: '600px',
+            background: 'radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%)',
+            borderRadius: '50%',
+            zIndex: 0
           }} 
         />
-        {/* Bottom-left orange blob */}
         <div 
-          className="absolute bottom-0 left-0 pointer-events-none"
+          className="absolute pointer-events-none"
           style={{ 
-            bottom: '-80px', 
-            left: '-80px',
-            width: '350px', 
-            height: '350px',
-            background: 'radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%)',
-            borderRadius: '50%'
+            bottom: '-100px', 
+            left: '-100px',
+            width: '400px', 
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)',
+            borderRadius: '50%',
+            zIndex: 0
+          }} 
+        />
+        <div 
+          className="absolute pointer-events-none"
+          style={{ 
+            top: '50%', 
+            left: '40%',
+            transform: 'translate(-50%, -50%)',
+            width: '300px', 
+            height: '300px',
+            background: 'radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)',
+            borderRadius: '50%',
+            zIndex: 0
           }} 
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-16 py-24" style={{ zIndex: 1 }}>
+          <div className="grid lg:grid-cols-2 gap-12 items-center" style={{ gridTemplateColumns: '55% 45%' }}>
 
             {/* ── Left Column ── */}
             <div>
-              {/* Main Value Headline */}
-              <h1 className="text-4xl lg:text-[3.5rem] font-extrabold text-[#0f1f4d] leading-[1.25] mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                {t.home.heroTitle1}<br />
-                {t.home.heroTitle2}<br />
-                {t.home.heroOnly} <span className="text-[#f97316]">$300.</span>
+              {/* Eyebrow badge */}
+              <div className="inline-flex items-center gap-2 mb-7" style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '100px',
+                padding: '8px 18px',
+                boxShadow: '0 2px 12px rgba(15,31,77,0.06)'
+              }}>
+                <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%' }} />
+                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: '600', color: '#374151' }}>Live websites delivered in 7 days</span>
+              </div>
+
+              {/* Main headline */}
+              <h1 style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, lineHeight: 1.1, marginBottom: '20px' }}>
+                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>Your Professional</div>
+                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>Website.</div>
+                <div style={{ fontSize: '56px', color: '#f97316', textShadow: '0 2px 20px rgba(249,115,22,0.2)' }}>$0 to Start.</div>
               </h1>
 
-              {/* Sub-headline */}
-              <p className="text-base text-[#64748b] mb-8 max-w-xl leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.home.heroSub}
+              {/* Subtext */}
+              <p style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '17px',
+                color: '#64748b',
+                lineHeight: 1.75,
+                maxWidth: '480px',
+                marginBottom: '36px'
+              }}>
+                We design, build, and launch your professional 10-page website at no upfront cost. Free domain, free business email, and free hosting included. After 12 months — your code is yours to keep.
               </p>
 
-              {/* Pricing badge row */}
-              <div className="flex flex-wrap items-center gap-3 mb-8">
-                <div className="bg-white border border-[#cbd5e1] rounded-full px-4 py-2 shadow-sm">
-                  <span className="text-[#0f1f4d] font-semibold text-sm">{t.home.badgeSetup}</span>
+              {/* What's Free highlight box */}
+              <div style={{
+                background: 'linear-gradient(135deg, #0f1f4d, #1a3a6b)',
+                borderRadius: '16px',
+                padding: '20px 24px',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px'
+              }}>
+                <div style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.5)'
+                }}>ALL FREE — INCLUDED IN YOUR PLAN</div>
+                <div className="hidden md:flex items-center gap-4">
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Design & Development</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Domain Name</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Business Email</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Hosting + SSL</span>
+                  </div>
                 </div>
-                <div className="bg-white border border-[#cbd5e1] rounded-full px-4 py-2 shadow-sm">
-                  <span className="text-[#0f1f4d] font-semibold text-sm">{t.home.badgeMaintenance}</span>
+                {/* Mobile: 2x2 grid */}
+                <div className="md:hidden grid grid-cols-2 gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Design & Development</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Domain Name</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Business Email</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Hosting + SSL</span>
+                  </div>
                 </div>
+              </div>
+
+              {/* Unified pricing card */}
+              <div style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '20px',
+                padding: '28px 32px',
+                boxShadow: '0 8px 32px rgba(15,31,77,0.08)',
+                marginBottom: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '24px'
+              }}>
+                {/* Left side */}
+                <div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#94a3b8',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    fontFamily: 'DM Sans, sans-serif'
+                  }}>SETUP FEE</div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 900, fontSize: '52px', color: '#10b981', lineHeight: 1 }}>$0</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#94a3b8' }}>No upfront cost</div>
+                </div>
+
+                {/* Center divider */}
+                <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: '1px', height: '60px', background: '#e2edf7' }} />
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: '#f8fafc',
+                    border: '1px solid #e2edf7',
+                    fontSize: '10px',
+                    color: '#94a3b8',
+                    padding: '2px 8px',
+                    borderRadius: '100px',
+                    fontFamily: 'DM Sans, sans-serif'
+                  }}>then</div>
+                </div>
+
+                {/* Right side */}
+                <div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#94a3b8',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    fontFamily: 'DM Sans, sans-serif'
+                  }}>MONTHLY SUBSCRIPTION</div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 900, fontSize: '52px', color: '#f97316', lineHeight: 1 }}>
+                    $29.99<span style={{ fontSize: '18px', color: '#94a3b8', verticalAlign: 'super', marginLeft: '2px' }}>/mo</span>
+                  </div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#94a3b8' }}>Cancel anytime</div>
+                </div>
+              </div>
+
+              {/* Ownership promise strip */}
+              <div style={{
+                marginTop: '16px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+                background: 'rgba(16,185,129,0.06)',
+                border: '1px solid rgba(16,185,129,0.15)',
+                borderRadius: '12px',
+                padding: '14px 18px'
+              }}>
+                <Key className="h-4.5 w-4.5 flex-shrink-0 mt-0.5" style={{ color: '#10b981' }} />
+                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#374151', lineHeight: 1.6 }}>
+                  Subscribe for <strong style={{ color: '#10b981' }}>12 months</strong> and your website code is transferred to you — <strong style={{ color: '#10b981' }}>fully owned, forever.</strong>
+                </span>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div style={{ marginTop: '32px', display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => setCurrentTab('contact')}
-                  className="px-8 py-4 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold text-sm rounded-lg transition-all shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2"
+                  style={{
+                    background: '#f97316',
+                    color: 'white',
+                    fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '16px',
+                    padding: '16px 36px',
+                    borderRadius: '14px',
+                    boxShadow: '0 6px 24px rgba(249,115,22,0.30)',
+                    transition: 'all 0.2s ease',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#ea6c0a';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(249,115,22,0.40)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#f97316';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 6px 24px rgba(249,115,22,0.30)';
+                  }}
                 >
-                  {t.home.ctaLaunch} <ArrowRight className="h-4 w-4" />
+                  Get My Free Website →
                 </button>
                 <button
                   onClick={() => setCurrentTab('contact')}
-                  className="px-8 py-4 text-[#0f1f4d] font-semibold text-sm rounded-lg border-2 border-[#0f1f4d] hover:bg-[#0f1f4d] hover:text-white transition-all"
+                  style={{
+                    background: 'transparent',
+                    border: '2px solid #0f1f4d',
+                    color: '#0f1f4d',
+                    fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '16px',
+                    padding: '16px 32px',
+                    borderRadius: '14px',
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#0f1f4d';
+                    e.currentTarget.style.color = 'white';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = '#0f1f4d';
+                  }}
                 >
-                  {t.home.ctaTalk}
+                  Talk to an Engineer
                 </button>
               </div>
 
-              {/* Internal links for navigation & SEO */}
-              <p className="text-sm text-[#64748b] mt-5" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                <a href="#pricing" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.home.linkSeePricing}</a>
-                <span className="mx-2 text-[#cbd5e1]">·</span>
-                <a href="#portfolio" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.home.linkViewPortfolio}</a>
-              </p>
+              {/* Micro reassurance line */}
+              <div style={{
+                marginTop: '14px',
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '12px',
+                color: '#94a3b8',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px'
+              }}>
+                <span>🎨 Design & Dev is FREE</span>
+                <span>·</span>
+                <span>🔒 No credit card required</span>
+                <span>·</span>
+                <span>Cancel anytime</span>
+              </div>
             </div>
 
-            {/* ── Right Column: What's Included Cards ── */}
-            <div className="space-y-4">
-              {/* Card 1 */}
-              <div className="bg-white border border-[#e2edf7] rounded-2xl p-6 hover:shadow-lg transition-all" style={{ boxShadow: '0 4px 24px rgba(14,165,233,0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(14,165,233,0.12)' }}>
-                    <Code className="text-[#0ea5e9] h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-[#0f1f4d] font-bold text-lg mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.card1Title}</h3>
-                    <p className="text-[#64748b] text-sm leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>{t.home.card1Desc}</p>
-                  </div>
+            {/* ── Right Column: Feature Cards ── */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', paddingLeft: '40px' }}>
+              {/* Card 0: Free Design & Development (New highlighted card) */}
+              <div style={{
+                background: 'linear-gradient(135deg, #fff7ed, #ffffff)',
+                border: '2px solid rgba(249,115,22,0.3)',
+                borderRadius: '18px',
+                padding: '22px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
+                transition: 'all 0.3s ease',
+                position: 'relative'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
+                e.currentTarget.style.borderColor = 'rgba(249,115,22,0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
+                e.currentTarget.style.borderColor = 'rgba(249,115,22,0.3)';
+              }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  background: '#f97316',
+                  color: 'white',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  padding: '3px 10px',
+                  borderRadius: '100px',
+                  fontFamily: 'DM Sans, sans-serif'
+                }}>★ Most Popular</div>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'rgba(249,115,22,0.12)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <PencilRuler style={{ stroke: '#f97316' }} className="h-5 w-5" />
                 </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>Free Design & Development</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>Full website designed and built by our team — no design fee, no development fee. Ever.</div>
+                </div>
+                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
 
-              {/* Card 2 */}
-              <div className="bg-white border border-[#e2edf7] rounded-2xl p-6 hover:shadow-lg transition-all" style={{ boxShadow: '0 4px 24px rgba(14,165,233,0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(14,165,233,0.12)' }}>
-                    <Mail className="text-[#0ea5e9] h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-[#0f1f4d] font-bold text-lg mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.card2Title}</h3>
-                    <p className="text-[#64748b] text-sm leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>{t.home.card2Desc}</p>
-                  </div>
+              {/* Card 1: 10 Pages */}
+              <div style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '18px',
+                padding: '22px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
+                e.currentTarget.style.borderColor = '#bfdbfe';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
+                e.currentTarget.style.borderColor = '#e2edf7';
+              }}
+              >
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'rgba(99,102,241,0.10)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Code style={{ stroke: '#6366f1' }} className="h-5 w-5" />
                 </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card1Title}</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card1Desc}</div>
+                </div>
+                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
 
-              {/* Card 3 */}
-              <div className="bg-white border border-[#e2edf7] rounded-2xl p-6 hover:shadow-lg transition-all" style={{ boxShadow: '0 4px 24px rgba(14,165,233,0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(14,165,233,0.12)' }}>
-                    <ShieldCheck className="text-[#0ea5e9] h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-[#0f1f4d] font-bold text-lg mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.card3Title}</h3>
-                    <p className="text-[#64748b] text-sm leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>{t.home.card3Desc}</p>
-                  </div>
+              {/* Card 2: Email */}
+              <div style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '18px',
+                padding: '22px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
+                e.currentTarget.style.borderColor = '#bfdbfe';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
+                e.currentTarget.style.borderColor = '#e2edf7';
+              }}
+              >
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'rgba(14,165,233,0.10)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Mail style={{ stroke: '#0ea5e9' }} className="h-5 w-5" />
                 </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card2Title}</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card2Desc}</div>
+                </div>
+                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
 
-              {/* Card 4 */}
-              <div className="bg-white border border-[#e2edf7] rounded-2xl p-6 hover:shadow-lg transition-all" style={{ boxShadow: '0 4px 24px rgba(14,165,233,0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(14,165,233,0.12)' }}>
-                    <Languages className="text-[#0ea5e9] h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-[#0f1f4d] font-bold text-lg mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.card4Title}</h3>
-                    <p className="text-[#64748b] text-sm leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>{t.home.card4Desc}</p>
-                  </div>
+              {/* Card 3: Hosting + Domain */}
+              <div style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '18px',
+                padding: '22px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
+                e.currentTarget.style.borderColor = '#bfdbfe';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
+                e.currentTarget.style.borderColor = '#e2edf7';
+              }}
+              >
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'rgba(16,185,129,0.10)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <ShieldCheck style={{ stroke: '#10b981' }} className="h-5 w-5" />
                 </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card3Title}</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card3Desc}</div>
+                </div>
+                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
+              </div>
+
+              {/* Card 4: Code Ownership */}
+              <div style={{
+                background: 'white',
+                border: '1px solid #e2edf7',
+                borderRadius: '18px',
+                padding: '22px 24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
+                transition: 'all 0.3s ease',
+                position: 'relative'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
+                e.currentTarget.style.borderColor = '#bfdbfe';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
+                e.currentTarget.style.borderColor = '#e2edf7';
+              }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  background: 'rgba(249,115,22,0.08)',
+                  color: '#f97316',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  padding: '2px 8px',
+                  borderRadius: '100px',
+                  fontFamily: 'DM Sans, sans-serif'
+                }}>🔑 Ownership</div>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'rgba(249,115,22,0.10)',
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Key style={{ stroke: '#f97316' }} className="h-5 w-5" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card4Title}</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card4Desc}</div>
+                </div>
+                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
             </div>
 
@@ -174,8 +568,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         </div>
       </div>
 
-      {/* ── Video Section ── */}
-      <section className="py-24 bg-[#f8fafc]">
+      {/* ── Video Section (Hidden temporarily) ── */}
+      {/* <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block bg-[#f97316] text-white text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
@@ -203,7 +597,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
-              {/* Mask YouTube's channel/title header bar */}
               <div
                 className="absolute top-0 left-0 right-0"
                 style={{
@@ -215,7 +608,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Why Smart Businesses Choose Us ── */}
       <section className="py-24" style={{ background: 'linear-gradient(135deg, #0f1f4d 0%, #1a3a6b 100%)' }}>
@@ -337,7 +730,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.home.liveIn5}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://pypycode.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.home.viewSite}</a>
                 </div>
               </div>
@@ -358,7 +750,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.home.liveIn6}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://mavicollisioncenter.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.home.viewSite}</a>
                 </div>
               </div>
@@ -379,7 +770,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.home.liveIn4}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://kidbuzzdaily.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.home.viewSite}</a>
                 </div>
               </div>

@@ -8,7 +8,7 @@ export const Pricing: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate costs
-  const ishaCost = 660 + (30 * 12 * (years - 1));
+  const ishaCost = 29.99 * 12 * years;
   const squarespaceCost = 392 * years;
   const agencyCost = 5400 + (2400 * (years - 1));
   const savings = agencyCost - ishaCost;
@@ -36,11 +36,11 @@ export const Pricing: React.FC = () => {
 
       {/* SECTION 2 — MAIN PRICING CARD */}
       <div className="max-w-[780px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="rounded-[28px] overflow-hidden border-2 border-[#f97316]" style={{ boxShadow: '0 24px 80px rgba(249,115,22,0.12)' }}>
-          {/* Orange Ribbon */}
-          <div className="bg-[#f97316] py-2.5 text-center">
+        <div className="rounded-[28px] overflow-hidden border-2 border-[#10b981]" style={{ boxShadow: '0 24px 80px rgba(16,185,129,0.12)' }}>
+          {/* Green Ribbon */}
+          <div className="bg-[#10b981] py-2.5 text-center">
             <span className="text-white text-[14px] font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.pricing.ribbon}
+              {t.pricing.badge}
             </span>
           </div>
 
@@ -48,22 +48,22 @@ export const Pricing: React.FC = () => {
           <div className="p-12 bg-white flex flex-col md:flex-row gap-8">
             {/* Left Column */}
             <div className="md:w-1/2">
-              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.oneTimeSetup}</div>
+              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.setupLabel}</div>
               <div className="text-[80px] font-black text-[#0f1f4d] leading-none" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                $300
+                {t.pricing.setupAmount}
               </div>
               <div className="text-[#64748b] text-[15px] mt-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.pricing.payOnce}
+                {t.pricing.setupSub}
               </div>
 
               <div className="h-px my-6 bg-[#f1f5f9]" />
 
-              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.monthlyMaintenance}</div>
+              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.monthlyLabel}</div>
               <div className="text-[48px] font-extrabold text-[#f97316]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                $30/mo
+                {t.pricing.monthlyAmount}
               </div>
               <div className="text-[#64748b] text-[15px] mt-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.pricing.monthlyDesc}
+                {t.pricing.monthlySub}
               </div>
 
               <button
@@ -150,6 +150,9 @@ export const Pricing: React.FC = () => {
               </div>
               <div className="inline-block mt-2 bg-[#10b981] text-white text-xs font-bold px-3 py-1 rounded-full">
                 {t.pricing.youSave} ${savings.toLocaleString()}
+              </div>
+              <div className="mt-3 text-[#10b981] text-[11px] font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                🔑 Code after 12mo
               </div>
             </div>
 

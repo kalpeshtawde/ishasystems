@@ -16,6 +16,9 @@ dist-ssr
 .env
 .netlify
 
+# Marketing assets (not deployed with the site)
+marketing/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

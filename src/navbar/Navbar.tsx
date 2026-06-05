@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
               onClick={() => setCurrentTab('contact')}
               className="bg-[#FF6500] hover:bg-orange-600 text-white text-sm font-bold px-4 py-2 rounded transition-all transform hover:-translate-y-0.5"
             >
-              Claim $300 Offer
+              Start for $0
             </button>
           </div>
         </div>

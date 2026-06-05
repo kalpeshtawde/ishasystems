@@ -11,27 +11,27 @@ import { TermsOfService } from './pages/TermsOfService';
 // Per-page SEO metadata, keyed by tab. Drives <title>, description, and canonical.
 const SEO: Record<string, { title: string; description: string; path: string }> = {
   home: {
-    title: 'Affordable Website Design for Small Business | $300 Complete Package | ISHA Systems LLC',
+    title: 'Affordable Website Design for Small Business | $0 to Start, $29.99/mo | ISHA Systems LLC',
     description:
-      'Get a professional 10-page website for just $300 — includes free domain, free business email, free hosting & SSL. Live in 7 days. Only $30/mo after. ISHA Systems LLC.',
+      'Get a professional 10-page website for $0 to start — includes free domain, free business email, free hosting & SSL. Live in 7 days. Just $29.99/month, with code ownership after 12 months. ISHA Systems LLC.',
     path: '/',
   },
   pricing: {
-    title: 'Website Design Pricing — $300 Flat Fee, Everything Included | ISHA Systems LLC',
+    title: 'Website Design Pricing — $0 Setup, $29.99/mo Everything Included | ISHA Systems LLC',
     description:
-      'Simple, honest website design pricing: one $300 flat fee for a 10-page site with free domain, business email, hosting & SSL. Just $30/mo maintenance. No hidden fees.',
+      'Simple, honest website design pricing: $0 setup fee, $29.99/month for a 10-page site with free domain, business email, hosting & SSL. Code ownership after 12 months. No hidden fees.',
     path: '/pricing',
   },
   portfolio: {
     title: 'Our Work — Small Business Websites Built by ISHA Systems LLC',
     description:
-      'See affordable small business websites designed by ISHA Systems LLC. Every site delivered in under 7 days for a $300 flat fee with free domain, email, and hosting.',
+      'See affordable small business websites designed by ISHA Systems LLC. Every site delivered in under 7 days with free domain, email, and hosting included.',
     path: '/portfolio',
   },
   contact: {
-    title: 'Get Your Small Business Website — Start for $300 | ISHA Systems LLC',
+    title: 'Get Your Small Business Website — $0 to Start | ISHA Systems LLC',
     description:
-      "Start your small business website for $300. Free domain, business email, and hosting included. Tell us about your business and we'll reply within 24 hours.",
+      "Start your small business website for $0. Free domain, business email, and hosting included. Just $29.99/month. Tell us about your business and we'll reply within 24 hours.",
     path: '/contact',
   },
   privacy: {

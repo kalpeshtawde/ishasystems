@@ -42,7 +42,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.portfolio.liveIn5}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://pypycode.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.portfolio.viewSite}</a>
                 </div>
               </div>
@@ -63,7 +62,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.portfolio.liveIn6}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://mavicollisioncenter.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.portfolio.viewSite}</a>
                 </div>
               </div>
@@ -84,7 +82,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.portfolio.liveIn4}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="https://kidbuzzdaily.com" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.portfolio.viewSite}</a>
                 </div>
               </div>
@@ -105,7 +102,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
                   <span className="bg-[#f1f5f9] text-[#64748b] text-xs px-2 py-1 rounded-full">{t.portfolio.liveIn5}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[#f97316] font-bold text-lg">$300</span>
                   <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#0f1f4d] font-semibold text-sm hover:text-[#f97316] transition-colors cursor-pointer">{t.portfolio.viewSite}</a>
                 </div>
               </div>
