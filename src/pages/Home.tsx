@@ -65,14 +65,14 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 boxShadow: '0 2px 12px rgba(15,31,77,0.06)'
               }}>
                 <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%' }} />
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: '600', color: '#374151' }}>Live websites delivered in 7 days</span>
+                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: '600', color: '#374151' }}>{t.home.heroEyebrow}</span>
               </div>
 
               {/* Main headline */}
               <h1 style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, lineHeight: 1.1, marginBottom: '20px' }}>
-                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>Your Professional</div>
-                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>Website.</div>
-                <div style={{ fontSize: '56px', color: '#f97316', textShadow: '0 2px 20px rgba(249,115,22,0.2)' }}>$0 to Start.</div>
+                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>{t.home.heroHeadline1}</div>
+                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>{t.home.heroHeadline2}</div>
+                <div style={{ fontSize: '56px', color: '#f97316', textShadow: '0 2px 20px rgba(249,115,22,0.2)' }}>{t.home.heroHeadline3}</div>
               </h1>
 
               {/* Subtext */}
@@ -84,7 +84,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 maxWidth: '480px',
                 marginBottom: '36px'
               }}>
-                We design, build, and launch your professional 10-page website at no upfront cost. Free domain, free business email, and free hosting included. After 12 months — your code is yours to keep.
+                {t.home.heroSubNew}
               </p>
 
               {/* What's Free highlight box */}
@@ -105,42 +105,42 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
                   color: 'rgba(255,255,255,0.5)'
-                }}>ALL FREE — INCLUDED IN YOUR PLAN</div>
+                }}>{t.home.heroFreeLabel}</div>
                 <div className="hidden md:flex items-center gap-4">
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Design & Development</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem1}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Domain Name</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem2}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Business Email</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem3}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Hosting + SSL</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem4}</span>
                   </div>
                 </div>
                 {/* Mobile: 2x2 grid */}
                 <div className="md:hidden grid grid-cols-2 gap-2">
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Design & Development</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem1}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Domain Name</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem2}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Business Email</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem3}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>Hosting + SSL</span>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem4}</span>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                     e.currentTarget.style.boxShadow = '0 6px 24px rgba(249,115,22,0.30)';
                   }}
                 >
-                  Get My Free Website →
+                  {t.home.heroCtaNew}
                 </button>
                 <button
                   onClick={() => setCurrentTab('contact')}
@@ -290,11 +290,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 alignItems: 'center',
                 gap: '16px'
               }}>
-                <span>🎨 Design & Dev is FREE</span>
-                <span>·</span>
-                <span>🔒 No credit card required</span>
-                <span>·</span>
-                <span>Cancel anytime</span>
+                <span>{t.home.heroMicroText}</span>
               </div>
             </div>
 
@@ -335,7 +331,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   padding: '3px 10px',
                   borderRadius: '100px',
                   fontFamily: 'DM Sans, sans-serif'
-                }}>★ Most Popular</div>
+                }}>{t.home.heroCard0Badge}</div>
                 <div style={{
                   width: '48px',
                   height: '48px',
@@ -349,8 +345,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <PencilRuler style={{ stroke: '#f97316' }} className="h-5 w-5" />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>Free Design & Development</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>Full website designed and built by our team — no design fee, no development fee. Ever.</div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.heroCard0Title}</div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.heroCard0Desc}</div>
                 </div>
                 <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
