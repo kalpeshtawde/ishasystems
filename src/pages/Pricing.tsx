@@ -8,7 +8,7 @@ export const Pricing: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate costs
-  const ishaCost = 29.99 * 12 * years;
+  const ishaCost = Math.ceil(29.99 * 12 * years);
   const squarespaceCost = 392 * years;
   const agencyCost = 5400 + (2400 * (years - 1));
   const savings = agencyCost - ishaCost;
@@ -117,7 +117,7 @@ export const Pricing: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-[24px] border border-[#e2edf7] p-10" style={{ boxShadow: '0 8px 32px rgba(15,31,77,0.08)' }}>
+        <div className="bg-white rounded-[24px] border border-[#e2edf7] p-5 sm:p-10" style={{ boxShadow: '0 8px 32px rgba(15,31,77,0.08)' }}>
           <label className="block text-[#374151] text-[15px] font-semibold mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
             {t.pricing.calcLabel}
           </label>
@@ -138,11 +138,11 @@ export const Pricing: React.FC = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mt-8">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
             {/* ISHA SYSTEMS */}
-            <div className="bg-[#fff7ed] border-2 border-[#f97316] rounded-[16px] p-6 text-center">
-              <div className="text-[#f97316] text-xs font-bold tracking-widest mb-2">ISHA SYSTEMS</div>
-              <div className="text-[40px] font-bold text-[#0f1f4d]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            <div className="bg-[#fff7ed] border-2 border-[#f97316] rounded-[16px] p-3 sm:p-6 text-center">
+              <div className="text-[#f97316] text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest mb-2">ISHA SYSTEMS</div>
+              <div className="font-bold text-[#0f1f4d]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: 'clamp(18px, 5.2vw, 40px)' }}>
                 ${ishaCost.toLocaleString()}
               </div>
               <div className="text-[#64748b] text-[13px] mt-1" style={{ fontFamily: 'DM Sans, sans-serif' }}>
@@ -157,9 +157,9 @@ export const Pricing: React.FC = () => {
             </div>
 
             {/* Squarespace */}
-            <div className="bg-[#f8fafc] border border-[#e2edf7] rounded-[16px] p-6 text-center">
-              <div className="text-[#94a3b8] text-xs tracking-widest mb-2">SQUARESPACE</div>
-              <div className="text-[40px] font-bold text-[#64748b]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            <div className="bg-[#f8fafc] border border-[#e2edf7] rounded-[16px] p-3 sm:p-6 text-center">
+              <div className="text-[#94a3b8] text-[10px] sm:text-xs tracking-wider sm:tracking-widest mb-2">SQUARESPACE</div>
+              <div className="font-bold text-[#64748b]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: 'clamp(18px, 5.2vw, 40px)' }}>
                 ${squarespaceCost.toLocaleString()}
               </div>
               <div className="text-[#94a3b8] text-[13px] mt-1" style={{ fontFamily: 'DM Sans, sans-serif' }}>
@@ -171,9 +171,9 @@ export const Pricing: React.FC = () => {
             </div>
 
             {/* Local Agency */}
-            <div className="bg-[#f8fafc] border border-[#e2edf7] rounded-[16px] p-6 text-center">
-              <div className="text-[#94a3b8] text-xs tracking-widest mb-2">{t.pricing.agencyName}</div>
-              <div className="text-[40px] font-bold text-[#64748b]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            <div className="bg-[#f8fafc] border border-[#e2edf7] rounded-[16px] p-3 sm:p-6 text-center">
+              <div className="text-[#94a3b8] text-[10px] sm:text-xs tracking-wider sm:tracking-widest mb-2">{t.pricing.agencyName}</div>
+              <div className="font-bold text-[#64748b]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: 'clamp(18px, 5.2vw, 40px)' }}>
                 ${agencyCost.toLocaleString()}
               </div>
               <div className="text-[#94a3b8] text-[13px] mt-1" style={{ fontFamily: 'DM Sans, sans-serif' }}>
