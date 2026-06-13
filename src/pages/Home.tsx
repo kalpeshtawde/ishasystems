@@ -51,8 +51,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           }} 
         />
 
-        <div className="relative max-w-7xl mx-auto px-16 py-24" style={{ zIndex: 1 }}>
-          <div className="grid lg:grid-cols-2 gap-12 items-center" style={{ gridTemplateColumns: '55% 45%' }}>
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-14 lg:py-24" style={{ zIndex: 1 }}>
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 items-center">
 
             {/* ── Left Column ── */}
             <div>
@@ -70,9 +70,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
               {/* Main headline */}
               <h1 style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, lineHeight: 1.1, marginBottom: '20px' }}>
-                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>{t.home.heroHeadline1}</div>
-                <div style={{ fontSize: '52px', color: '#0f1f4d' }}>{t.home.heroHeadline2}</div>
-                <div style={{ fontSize: '56px', color: '#f97316', textShadow: '0 2px 20px rgba(249,115,22,0.2)' }}>{t.home.heroHeadline3}</div>
+                <div style={{ fontSize: 'clamp(34px, 9vw, 52px)', color: '#0f1f4d' }}>{t.home.heroHeadline1}</div>
+                <div style={{ fontSize: 'clamp(34px, 9vw, 52px)', color: '#0f1f4d' }}>{t.home.heroHeadline2}</div>
+                <div style={{ fontSize: 'clamp(38px, 10vw, 56px)', color: '#f97316', textShadow: '0 2px 20px rgba(249,115,22,0.2)' }}>{t.home.heroHeadline3}</div>
               </h1>
 
               {/* Subtext */}
@@ -244,7 +244,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             </div>
 
             {/* ── Right Column: Feature Checklist (sits directly on the hero mesh) ── */}
-            <div style={{ paddingLeft: '40px' }}>
+            <div className="lg:pl-10">
               <div style={{
                 fontFamily: 'DM Sans, sans-serif',
                 fontSize: '13px',
@@ -378,14 +378,16 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
           {/* Comparison Grid */}
           <div className="max-w-5xl mx-auto overflow-x-auto" style={{ paddingTop: '16px' }}>
-            <div style={{ minWidth: '640px', display: 'grid', gridTemplateColumns: '1.5fr 1.2fr 1fr 1fr', rowGap: '0', columnGap: '0', position: 'relative' }}>
+            <div style={{ minWidth: 'min(640px, 100%)', display: 'grid', gridTemplateColumns: '1.5fr 1.2fr 1fr 1fr', rowGap: '0', columnGap: '0', position: 'relative' }}>
 
               {/* ── Header Row ── */}
-              <div style={{ padding: '20px 24px' }} />
+              <div style={{ padding: '20px clamp(8px, 2.2vw, 24px)' }} />
               <div style={{
                 padding: '20px 24px',
                 textAlign: 'center',
                 background: 'linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(14,165,233,0.12) 100%)',
+                paddingLeft: 'clamp(8px, 2.2vw, 24px)',
+                paddingRight: 'clamp(8px, 2.2vw, 24px)',
                 borderTop: '1.5px solid rgba(16,185,129,0.6)',
                 borderLeft: '1.5px solid rgba(16,185,129,0.6)',
                 borderRight: '1.5px solid rgba(16,185,129,0.6)',
@@ -403,11 +405,11 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 }}>★ Best Value</span>
                 <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, fontSize: '18px', color: 'white', marginTop: '4px' }}>Isha Systems</div>
               </div>
-              <div style={{ padding: '20px 24px', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#94a3b8' }}>Squarespace</div>
+              <div style={{ padding: '20px clamp(8px, 2.2vw, 24px)', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(13px, 3.6vw, 16px)', color: '#94a3b8' }}>Squarespace</div>
               </div>
-              <div style={{ padding: '20px 24px', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#94a3b8' }}>Wix / Agencies</div>
+              <div style={{ padding: '20px clamp(8px, 2.2vw, 24px)', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(13px, 3.6vw, 16px)', color: '#94a3b8' }}>Wix / Agencies</div>
               </div>
 
               {/* ── Data Rows ── */}
@@ -421,19 +423,19 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <React.Fragment key={row.feature}>
                     {/* Feature name */}
                     <div style={{
-                      padding: '22px 24px',
+                      padding: '22px clamp(8px, 2.2vw, 24px)',
                       display: 'flex',
                       alignItems: 'center',
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'Plus Jakarta Sans, sans-serif',
                       fontWeight: 700,
-                      fontSize: '16px',
+                      fontSize: 'clamp(13px, 3.6vw, 16px)',
                       color: 'white'
                     }}>{row.feature}</div>
 
                     {/* Isha Systems (highlighted) */}
                     <div style={{
-                      padding: '22px 24px',
+                      padding: '22px clamp(8px, 2.2vw, 24px)',
                       textAlign: 'center',
                       background: 'linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(14,165,233,0.07) 100%)',
                       borderLeft: '1.5px solid rgba(16,185,129,0.6)',
@@ -453,22 +455,22 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
                     {/* Squarespace */}
                     <div style={{
-                      padding: '22px 24px',
+                      padding: '22px clamp(8px, 2.2vw, 24px)',
                       textAlign: 'center',
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '15px',
+                      fontSize: 'clamp(12px, 3.4vw, 15px)',
                       fontWeight: 600,
                       color: '#7c8db5'
                     }}>{row.square}</div>
 
                     {/* Wix / Agencies */}
                     <div style={{
-                      padding: '22px 24px',
+                      padding: '22px clamp(8px, 2.2vw, 24px)',
                       textAlign: 'center',
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '15px',
+                      fontSize: 'clamp(12px, 3.4vw, 15px)',
                       fontWeight: 600,
                       color: '#7c8db5'
                     }}>{row.wix}</div>
