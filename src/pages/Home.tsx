@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ShieldCheck, ArrowRight, Clock, CheckCircle2, Lock, Code, Key, PencilRuler } from 'lucide-react';
+import { Mail, ArrowRight, Clock, CheckCircle2, Lock, Key, FileText, Cloud, Globe, RefreshCw, Smartphone, Search, MessageSquare, Languages } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 interface HomeProps {
@@ -11,7 +11,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
   return (
     <div>
       {/* ── Hero Section ── */}
-      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 40%, #f5f0ff 100%)', minHeight: '90vh' }}>
+      <section className="relative overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 20%, rgba(255, 224, 178, 0.35) 0%, transparent 45%), radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(224, 242, 254, 0.5) 45%, transparent 80%), linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 60%, #f8fafc 100%)', minHeight: '90vh' }}>
         {/* Decorative blobs */}
         <div 
           className="absolute pointer-events-none"
@@ -86,64 +86,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               }}>
                 {t.home.heroSubNew}
               </p>
-
-              {/* What's Free highlight box */}
-              <div style={{
-                background: 'linear-gradient(135deg, #0f1f4d, #1a3a6b)',
-                borderRadius: '16px',
-                padding: '20px 24px',
-                marginBottom: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '12px'
-              }}>
-                <div style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.5)'
-                }}>{t.home.heroFreeLabel}</div>
-                <div className="hidden md:flex items-center gap-4">
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem1}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem2}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem3}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem4}</span>
-                  </div>
-                </div>
-                {/* Mobile: 2x2 grid */}
-                <div className="md:hidden grid grid-cols-2 gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem1}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem2}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem3}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span style={{ color: '#10b981', fontWeight: 800 }}>✓</span>
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 600, color: 'white' }}>{t.home.heroFreeItem4}</span>
-                  </div>
-                </div>
-              </div>
 
               {/* Unified pricing card */}
               <div style={{
@@ -294,242 +236,82 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </div>
             </div>
 
-            {/* ── Right Column: Feature Cards ── */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', paddingLeft: '40px' }}>
-              {/* Card 0: Free Design & Development (New highlighted card) */}
+            {/* ── Right Column: Feature Checklist ── */}
+            <div style={{ paddingLeft: '40px' }}>
               <div style={{
-                background: 'linear-gradient(135deg, #fff7ed, #ffffff)',
-                border: '2px solid rgba(249,115,22,0.3)',
-                borderRadius: '18px',
-                padding: '22px 24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
-                transition: 'all 0.3s ease',
-                position: 'relative'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
-                e.currentTarget.style.borderColor = 'rgba(249,115,22,0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(249,115,22,0.3)';
-              }}
-              >
+                background: 'rgba(255,255,255,0.45)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255,255,255,0.6)',
+                borderRadius: '24px',
+                padding: '36px 32px',
+                boxShadow: '0 20px 50px rgba(15,31,77,0.08)'
+              }}>
                 <div style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  background: '#f97316',
-                  color: 'white',
-                  fontSize: '10px',
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '11px',
                   fontWeight: 700,
-                  padding: '3px 10px',
-                  borderRadius: '100px',
-                  fontFamily: 'DM Sans, sans-serif'
-                }}>{t.home.heroCard0Badge}</div>
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(249,115,22,0.12)',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <PencilRuler style={{ stroke: '#f97316' }} className="h-5 w-5" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.heroCard0Title}</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.heroCard0Desc}</div>
-                </div>
-                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
-              </div>
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: '#0ea5e9',
+                  marginBottom: '8px'
+                }}>What's Included</div>
 
-              {/* Card 1: 10 Pages */}
-              <div style={{
-                background: 'white',
-                border: '1px solid #e2edf7',
-                borderRadius: '18px',
-                padding: '22px 24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
-                e.currentTarget.style.borderColor = '#bfdbfe';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
-                e.currentTarget.style.borderColor = '#e2edf7';
-              }}
-              >
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(99,102,241,0.10)',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Code style={{ stroke: '#6366f1' }} className="h-5 w-5" />
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  {[
+                    { title: '10 Handcrafted Pages', sub: 'Custom-designed for your brand', Icon: FileText },
+                    { title: 'Fast, Secure Cloud Hosting', sub: 'With SSL & CDN', Icon: Cloud },
+                    { title: 'Professional Business Email', sub: 'e.g., you@yourbusiness.com', Icon: Mail },
+                    { title: 'Custom Domain Name Selection', sub: '', Icon: Globe },
+                    { title: 'Full Code Ownership & Transfer', sub: 'After 12 months', Icon: Key },
+                    { title: 'Premium Daily Backups & Maintenance', sub: '', Icon: RefreshCw },
+                    { title: 'Mobile-Optimized Design', sub: '', Icon: Smartphone },
+                    { title: 'Basic SEO Setup', sub: '', Icon: Search },
+                    { title: 'Contact Form Integration', sub: '', Icon: MessageSquare },
+                    { title: 'Multi-Language Support', sub: '', Icon: Languages },
+                  ].map(({ title, sub, Icon }) => (
+                    <div
+                      key={title}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '16px',
+                        padding: '16px 12px',
+                        borderRadius: '14px',
+                        cursor: 'default',
+                        transition: 'transform 0.25s ease, background 0.25s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateX(6px)';
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.7)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateX(0)';
+                        e.currentTarget.style.background = 'transparent';
+                      }}
+                    >
+                      <div style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '12px',
+                        flexShrink: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'linear-gradient(135deg, #14b8a6 0%, #10b981 100%)',
+                        boxShadow: '0 6px 16px rgba(16,185,129,0.30)'
+                      }}>
+                        <Icon className="h-5 w-5" style={{ color: 'white' }} strokeWidth={2.25} />
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d', lineHeight: 1.25 }}>{title}</div>
+                        {sub && (
+                          <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', lineHeight: 1.3 }}>{sub}</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card1Title}</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card1Desc}</div>
-                </div>
-                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
-              </div>
-
-              {/* Card 2: Email */}
-              <div style={{
-                background: 'white',
-                border: '1px solid #e2edf7',
-                borderRadius: '18px',
-                padding: '22px 24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
-                e.currentTarget.style.borderColor = '#bfdbfe';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
-                e.currentTarget.style.borderColor = '#e2edf7';
-              }}
-              >
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(14,165,233,0.10)',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Mail style={{ stroke: '#0ea5e9' }} className="h-5 w-5" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card2Title}</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card2Desc}</div>
-                </div>
-                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
-              </div>
-
-              {/* Card 3: Hosting + Domain */}
-              <div style={{
-                background: 'white',
-                border: '1px solid #e2edf7',
-                borderRadius: '18px',
-                padding: '22px 24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
-                e.currentTarget.style.borderColor = '#bfdbfe';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
-                e.currentTarget.style.borderColor = '#e2edf7';
-              }}
-              >
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(16,185,129,0.10)',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <ShieldCheck style={{ stroke: '#10b981' }} className="h-5 w-5" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card3Title}</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card3Desc}</div>
-                </div>
-                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
-              </div>
-
-              {/* Card 4: Code Ownership */}
-              <div style={{
-                background: 'white',
-                border: '1px solid #e2edf7',
-                borderRadius: '18px',
-                padding: '22px 24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '18px',
-                boxShadow: '0 4px 20px rgba(15,31,77,0.06)',
-                transition: 'all 0.3s ease',
-                position: 'relative'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(15,31,77,0.10)';
-                e.currentTarget.style.borderColor = '#bfdbfe';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(15,31,77,0.06)';
-                e.currentTarget.style.borderColor = '#e2edf7';
-              }}
-              >
-                <div style={{
-                  position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  background: 'rgba(249,115,22,0.08)',
-                  color: '#f97316',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  padding: '2px 8px',
-                  borderRadius: '100px',
-                  fontFamily: 'DM Sans, sans-serif'
-                }}>🔑 Ownership</div>
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(249,115,22,0.10)',
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Key style={{ stroke: '#f97316' }} className="h-5 w-5" />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d' }}>{t.home.card4Title}</div>
-                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', marginTop: '4px', lineHeight: 1.5 }}>{t.home.card4Desc}</div>
-                </div>
-                <span style={{ color: '#cbd5e1', fontSize: '16px', marginLeft: 'auto', flexShrink: 0 }}>→</span>
               </div>
             </div>
 
