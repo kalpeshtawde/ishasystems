@@ -255,21 +255,13 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   textTransform: 'uppercase',
                   color: '#0ea5e9',
                   marginBottom: '8px'
-                }}>What's Included</div>
+                }}>{t.home.heroChecklistLabel}</div>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  {[
-                    { title: '10 Handcrafted Pages', sub: 'Custom-designed for your brand', Icon: FileText },
-                    { title: 'Fast, Secure Cloud Hosting', sub: 'With SSL & CDN', Icon: Cloud },
-                    { title: 'Professional Business Email', sub: 'e.g., you@yourbusiness.com', Icon: Mail },
-                    { title: 'Custom Domain Name Selection', sub: '', Icon: Globe },
-                    { title: 'Full Code Ownership & Transfer', sub: 'After 12 months', Icon: Key },
-                    { title: 'Premium Daily Backups & Maintenance', sub: '', Icon: RefreshCw },
-                    { title: 'Mobile-Optimized Design', sub: '', Icon: Smartphone },
-                    { title: 'Basic SEO Setup', sub: '', Icon: Search },
-                    { title: 'Contact Form Integration', sub: '', Icon: MessageSquare },
-                    { title: 'Multi-Language Support', sub: '', Icon: Languages },
-                  ].map(({ title, sub, Icon }) => (
+                  {t.home.heroChecklist.map((item, idx) => {
+                    const Icon = [FileText, Cloud, Mail, Globe, Key, RefreshCw, Smartphone, Search, MessageSquare, Languages][idx];
+                    const { title, sub } = item;
+                    return (
                     <div
                       key={title}
                       style={{
@@ -310,7 +302,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                         )}
                       </div>
                     </div>
-                  ))}
+                  );
+                  })}
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ArrowRight, Loader2, Calendar, Mail, MessageSquare, Lock } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Loader2, Mail, Lock } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 export const Contact: React.FC = () => {
@@ -336,25 +336,9 @@ export const Contact: React.FC = () => {
 
       {/* Contact Alternative Tiles */}
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Tile 1 */}
-          <div className="bg-white border border-[#e2edf7] rounded-[16px] p-6 text-center" style={{ boxShadow: '0 2px 12px rgba(15,31,77,0.05)' }}>
-            <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(14,165,233,0.1)' }}>
-              <Calendar className="text-[#0ea5e9] h-6 w-6" />
-            </div>
-            <h3 className="text-[#0f1f4d] font-bold text-[16px] mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              {t.contact.prefCallTitle}
-            </h3>
-            <p className="text-[#64748b] text-[14px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.contact.prefCallDesc}
-            </p>
-            <a href="#" className="text-[#f97316] font-semibold text-[14px] hover:underline" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.contact.prefCallLink}
-            </a>
-          </div>
-
-          {/* Tile 2 */}
-          <div className="bg-white border border-[#e2edf7] rounded-[16px] p-6 text-center" style={{ boxShadow: '0 2px 12px rgba(15,31,77,0.05)' }}>
+        <div className="flex justify-center">
+          {/* Tile: Email Us */}
+          <div className="bg-white border border-[#e2edf7] rounded-[16px] p-6 text-center w-full max-w-[360px]" style={{ boxShadow: '0 2px 12px rgba(15,31,77,0.05)' }}>
             <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(14,165,233,0.1)' }}>
               <Mail className="text-[#0ea5e9] h-6 w-6" />
             </div>
@@ -366,22 +350,6 @@ export const Contact: React.FC = () => {
             </p>
             <a href="mailto:support@ishasystems.com" className="text-[#f97316] font-semibold text-[14px] hover:underline" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               support@ishasystems.com
-            </a>
-          </div>
-
-          {/* Tile 3 */}
-          <div className="bg-white border border-[#e2edf7] rounded-[16px] p-6 text-center" style={{ boxShadow: '0 2px 12px rgba(15,31,77,0.05)' }}>
-            <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: 'rgba(14,165,233,0.1)' }}>
-              <MessageSquare className="text-[#0ea5e9] h-6 w-6" />
-            </div>
-            <h3 className="text-[#0f1f4d] font-bold text-[16px] mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              {t.contact.quickQTitle}
-            </h3>
-            <p className="text-[#64748b] text-[14px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.contact.quickQDesc}
-            </p>
-            <a href="#" className="text-[#f97316] font-semibold text-[14px] hover:underline" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.contact.quickQLink}
             </a>
           </div>
         </div>
