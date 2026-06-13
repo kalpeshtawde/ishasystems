@@ -404,72 +404,105 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             </p>
           </div>
 
-          {/* ROW 1: What's Always Free Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-6">
-            {/* Card 1: Domain */}
-            <div 
-              className="p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative"
-              style={{ 
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(10px)'
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-[#0ea5e9] text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.free}</span>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: 'rgba(14, 165, 233, 0.15)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#0ea5e9" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-              </div>
-              <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.domainTitle}</h3>
-              <p className="text-[#94a3b8] text-sm mb-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.home.domainDesc}
-              </p>
-              <div className="h-0.5 w-12 bg-[#f97316] rounded-full" />
-            </div>
+          {/* Comparison Grid */}
+          <div className="max-w-5xl mx-auto overflow-x-auto" style={{ paddingTop: '16px' }}>
+            <div style={{ minWidth: '640px', display: 'grid', gridTemplateColumns: '1.5fr 1.2fr 1fr 1fr', rowGap: '0', columnGap: '0', position: 'relative' }}>
 
-            {/* Card 2: Business Email */}
-            <div 
-              className="p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative"
-              style={{ 
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(10px)'
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-[#0ea5e9] text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.free}</span>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: 'rgba(14, 165, 233, 0.15)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#0ea5e9" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
+              {/* ── Header Row ── */}
+              <div style={{ padding: '20px 24px' }} />
+              <div style={{
+                padding: '20px 24px',
+                textAlign: 'center',
+                background: 'linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(14,165,233,0.12) 100%)',
+                borderTop: '1.5px solid rgba(16,185,129,0.6)',
+                borderLeft: '1.5px solid rgba(16,185,129,0.6)',
+                borderRight: '1.5px solid rgba(16,185,129,0.6)',
+                borderTopLeftRadius: '18px',
+                borderTopRightRadius: '18px',
+                position: 'relative',
+                boxShadow: '0 -8px 30px rgba(16,185,129,0.10)'
+              }}>
+                <span style={{
+                  position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
+                  background: '#10b981', color: 'white', fontSize: '10px', fontWeight: 800,
+                  letterSpacing: '0.08em', textTransform: 'uppercase', padding: '4px 12px',
+                  borderRadius: '100px', fontFamily: 'DM Sans, sans-serif', whiteSpace: 'nowrap',
+                  boxShadow: '0 4px 12px rgba(16,185,129,0.4)'
+                }}>★ Best Value</span>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, fontSize: '18px', color: 'white', marginTop: '4px' }}>Isha Systems</div>
               </div>
-              <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.emailTitle}</h3>
-              <p className="text-[#94a3b8] text-sm mb-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.home.emailDesc}
-              </p>
-              <div className="h-0.5 w-12 bg-[#f97316] rounded-full" />
-            </div>
+              <div style={{ padding: '20px 24px', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#94a3b8' }}>Squarespace</div>
+              </div>
+              <div style={{ padding: '20px 24px', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#94a3b8' }}>Wix / Agencies</div>
+              </div>
 
-            {/* Card 3: Web Hosting + SSL */}
-            <div 
-              className="p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative"
-              style={{ 
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(10px)'
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-[#0ea5e9] text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.free}</span>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: 'rgba(14, 165, 233, 0.15)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#0ea5e9" strokeWidth="1.5" viewBox="0 0 24 24">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
-                </svg>
-              </div>
-              <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.hostingTitle}</h3>
-              <p className="text-[#94a3b8] text-sm mb-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.home.hostingDesc}
-              </p>
-              <div className="h-0.5 w-12 bg-[#f97316] rounded-full" />
+              {/* ── Data Rows ── */}
+              {[
+                { feature: t.home.domainTitle, square: '$20/yr', wix: '$15/yr' },
+                { feature: t.home.emailTitle, square: '$96/yr', wix: '$60/yr' },
+                { feature: t.home.hostingTitle, square: '$200+/yr', wix: '$200+/yr' },
+              ].map((row, i, arr) => {
+                const isLast = i === arr.length - 1;
+                return (
+                  <React.Fragment key={row.feature}>
+                    {/* Feature name */}
+                    <div style={{
+                      padding: '22px 24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontFamily: 'Plus Jakarta Sans, sans-serif',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: 'white'
+                    }}>{row.feature}</div>
+
+                    {/* Isha Systems (highlighted) */}
+                    <div style={{
+                      padding: '22px 24px',
+                      textAlign: 'center',
+                      background: 'linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(14,165,233,0.07) 100%)',
+                      borderLeft: '1.5px solid rgba(16,185,129,0.6)',
+                      borderRight: '1.5px solid rgba(16,185,129,0.6)',
+                      borderTop: '1px solid rgba(16,185,129,0.25)',
+                      borderBottom: isLast ? '1.5px solid rgba(16,185,129,0.6)' : 'none',
+                      borderBottomLeftRadius: isLast ? '18px' : '0',
+                      borderBottomRightRadius: isLast ? '18px' : '0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px'
+                    }}>
+                      <CheckCircle2 className="h-5 w-5" style={{ color: '#34d399' }} strokeWidth={2.5} />
+                      <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 900, fontSize: '17px', color: '#34d399', letterSpacing: '0.02em' }}>{t.home.free}</span>
+                    </div>
+
+                    {/* Squarespace */}
+                    <div style={{
+                      padding: '22px 24px',
+                      textAlign: 'center',
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontFamily: 'DM Sans, sans-serif',
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      color: '#7c8db5'
+                    }}>{row.square}</div>
+
+                    {/* Wix / Agencies */}
+                    <div style={{
+                      padding: '22px 24px',
+                      textAlign: 'center',
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontFamily: 'DM Sans, sans-serif',
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      color: '#7c8db5'
+                    }}>{row.wix}</div>
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </div>
