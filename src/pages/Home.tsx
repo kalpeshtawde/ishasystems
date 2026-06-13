@@ -84,7 +84,14 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 maxWidth: '480px',
                 marginBottom: '36px'
               }}>
-                {t.home.heroSubNew}
+                {t.home.heroSubNew}{' '}
+                <span style={{
+                  fontSize: '20px',
+                  fontWeight: 700,
+                  color: '#10b981'
+                }}>
+                  {t.home.heroSubEmphasis}
+                </span>
               </p>
 
               {/* Unified pricing card */}
@@ -240,12 +247,13 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <div style={{ paddingLeft: '40px' }}>
               <div style={{
                 fontFamily: 'DM Sans, sans-serif',
-                fontSize: '11px',
+                fontSize: '13px',
                 fontWeight: 700,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: '#0ea5e9',
-                marginBottom: '24px'
+                marginBottom: '24px',
+                marginLeft: '8px'
               }}>{t.home.heroChecklistLabel}</div>
 
               <div className="space-y-3">
