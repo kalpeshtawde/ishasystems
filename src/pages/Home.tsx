@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowRight, Clock, CheckCircle2, Lock, Key, FileText, Cloud, Globe, RefreshCw, Smartphone, Search, MessageSquare, Languages } from 'lucide-react';
+import { Mail, ArrowRight, Clock, CheckCircle2, Lock, Key, FileText, Cloud, Globe, RefreshCw, Smartphone, Search, MessageSquare, Languages, PenTool } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 interface HomeProps {
@@ -236,56 +236,28 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </div>
             </div>
 
-            {/* ── Right Column: Feature Checklist ── */}
+            {/* ── Right Column: Feature Checklist (sits directly on the hero mesh) ── */}
             <div style={{ paddingLeft: '40px' }}>
               <div style={{
-                background: 'rgba(255,255,255,0.45)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.6)',
-                borderRadius: '24px',
-                padding: '36px 32px',
-                boxShadow: '0 20px 50px rgba(15,31,77,0.08)'
-              }}>
-                <div style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 700,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: '#0ea5e9',
-                  marginBottom: '8px'
-                }}>{t.home.heroChecklistLabel}</div>
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#0ea5e9',
+                marginBottom: '24px'
+              }}>{t.home.heroChecklistLabel}</div>
 
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  {t.home.heroChecklist.map((item, idx) => {
-                    const Icon = [FileText, Cloud, Mail, Globe, Key, RefreshCw, Smartphone, Search, MessageSquare, Languages][idx];
-                    const { title, sub } = item;
-                    return (
-                    <div
-                      key={title}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '16px',
-                        padding: '16px 12px',
-                        borderRadius: '14px',
-                        cursor: 'default',
-                        transition: 'transform 0.25s ease, background 0.25s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateX(6px)';
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.7)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateX(0)';
-                        e.currentTarget.style.background = 'transparent';
-                      }}
-                    >
+              <div className="space-y-3">
+                {t.home.heroChecklist.map((item, idx) => {
+                  const Icon = [FileText, PenTool, Mail, Globe, Cloud, Smartphone, Search, MessageSquare, Languages, RefreshCw, Key][idx];
+                  const { title, sub } = item;
+                  return (
+                    <div key={title} className="flex items-center gap-4 rounded-xl py-1 px-2 transition-all duration-300 ease-in-out hover:translate-x-1.5 hover:-translate-y-0.5 hover:bg-white/40 hover:shadow-sm">
                       <div style={{
                         width: '40px',
                         height: '40px',
-                        borderRadius: '12px',
+                        borderRadius: '50%',
                         flexShrink: 0,
                         display: 'flex',
                         alignItems: 'center',
@@ -303,8 +275,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                       </div>
                     </div>
                   );
-                  })}
-                </div>
+                })}
               </div>
             </div>
 
