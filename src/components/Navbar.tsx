@@ -41,7 +41,8 @@ const LanguageToggle: React.FC = () => {
 export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => {
   const { t } = useLanguage();
   return (
-    <nav className="bg-white sticky top-0 z-50 border-b border-[#e2edf7]">
+    <header>
+    <nav className="bg-white sticky top-0 z-50 border-b border-[#e2edf7]" aria-label="Primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div
@@ -78,5 +79,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
         </div>
       </div>
     </nav>
+    </header>
   );
 };

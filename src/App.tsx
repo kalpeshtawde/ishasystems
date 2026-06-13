@@ -7,78 +7,13 @@ import { Portfolio } from './pages/Portfolio';
 import { Pricing } from './pages/Pricing';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
-
-// Per-page SEO metadata, keyed by tab. Drives <title>, description, and canonical.
-const SEO: Record<string, { title: string; description: string; path: string }> = {
-  home: {
-    title: 'Affordable Website Design for Small Business | $0 to Start, $29.99/mo | ISHA Systems LLC',
-    description:
-      'Get a professional 10-page website for $0 to start — includes free domain, free business email, free hosting & SSL. Live in 7 days. Just $29.99/month, with code ownership after 12 months. ISHA Systems LLC.',
-    path: '/',
-  },
-  pricing: {
-    title: 'Website Design Pricing — $0 Setup, $29.99/mo Everything Included | ISHA Systems LLC',
-    description:
-      'Simple, honest website design pricing: $0 setup fee, $29.99/month for a 10-page site with free domain, business email, hosting & SSL. Code ownership after 12 months. No hidden fees.',
-    path: '/pricing',
-  },
-  portfolio: {
-    title: 'Our Work — Small Business Websites Built by ISHA Systems LLC',
-    description:
-      'See affordable small business websites designed by ISHA Systems LLC. Every site delivered in under 7 days with free domain, email, and hosting included.',
-    path: '/portfolio',
-  },
-  contact: {
-    title: 'Get Your Small Business Website — $0 to Start | ISHA Systems LLC',
-    description:
-      "Start your small business website for $0. Free domain, business email, and hosting included. Just $29.99/month. Tell us about your business and we'll reply within 24 hours.",
-    path: '/contact',
-  },
-  privacy: {
-    title: 'Privacy Policy | ISHA Systems LLC',
-    description: 'How ISHA Systems LLC collects, uses, and protects your information.',
-    path: '/privacy-policy',
-  },
-  terms: {
-    title: 'Terms of Service | ISHA Systems LLC',
-    description: 'The terms governing use of ISHA Systems LLC web development, hosting, and email services.',
-    path: '/terms-of-service',
-  },
-};
-
-const SITE_ORIGIN = 'https://www.ishasystems.com';
-
-// Update or create a <meta> / <link> head element by selector.
-function setMeta(selector: string, attr: 'content' | 'href', value: string) {
-  let el = document.head.querySelector(selector) as HTMLElement | null;
-  if (!el) {
-    el = document.createElement(selector.startsWith('link') ? 'link' : 'meta');
-    if (selector.startsWith('meta[name=')) {
-      el.setAttribute('name', selector.slice(11, -2));
-    } else if (selector.startsWith('meta[property=')) {
-      el.setAttribute('property', selector.slice(15, -2));
-    } else if (selector.startsWith('link[rel=')) {
-      el.setAttribute('rel', selector.slice(10, -2));
-    }
-    document.head.appendChild(el);
-  }
-  el.setAttribute(attr, value);
-}
-
-function applySeo(tab: string) {
-  const seo = SEO[tab] || SEO.home;
-  const url = `${SITE_ORIGIN}${seo.path}`;
-  document.title = seo.title;
-  setMeta('meta[name="description"]', 'content', seo.description);
-  setMeta('link[rel="canonical"]', 'href', url);
-  setMeta('meta[property="og:title"]', 'content', seo.title);
-  setMeta('meta[property="og:description"]', 'content', seo.description);
-  setMeta('meta[property="og:url"]', 'content', url);
-  setMeta('meta[name="twitter:title"]', 'content', seo.title);
-  setMeta('meta[name="twitter:description"]', 'content', seo.description);
-}
+import { useLanguage } from './i18n';
+import { applySeo } from './seo';
 
 function App() {
+  // Active UI language (en / es) drives localized <head> metadata.
+  const { lang } = useLanguage();
+
   // Local state manager to drive sub-page routing without heavy multi-router bundles
   const [currentTab, setCurrentTab] = useState<string>('home');
 
@@ -88,10 +23,10 @@ function App() {
     setCurrentTab(hash);
   }, []);
 
-  // Keep document head metadata in sync with the active tab
+  // Keep document head metadata in sync with the active tab and language
   useEffect(() => {
-    applySeo(currentTab);
-  }, [currentTab]);
+    applySeo(currentTab, lang);
+  }, [currentTab, lang]);
 
   // Update URL hash when tab changes
   const handleTabChange = (tab: string) => {

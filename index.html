@@ -11,7 +11,13 @@
     <meta name="keywords" content="affordable website design small business, cheap website design, $0 setup fee website, small business website subscription, website with free hosting, professional web design USA" />
     <meta name="author" content="ISHA Systems LLC" />
     <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="US-CA" />
     <link rel="canonical" href="https://www.ishasystems.com/" />
+
+    <!-- hreflang alternates (multi-language; same path served in EN/ES) -->
+    <link rel="alternate" hreflang="en" href="https://www.ishasystems.com/" />
+    <link rel="alternate" hreflang="es" href="https://www.ishasystems.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ishasystems.com/" />
 
     <!-- Open Graph (Facebook & LinkedIn sharing) -->
     <meta property="og:type" content="website" />
@@ -19,13 +25,17 @@
     <meta property="og:title" content="$0 to Start, $29.99/mo Website | Free Domain + Email + Hosting | ISHA Systems LLC" />
     <meta property="og:description" content="Professional 10-page website for small businesses. Free domain, free email, free hosting included. Live in 7 days. Just $29.99/month with code ownership after 12 months." />
     <meta property="og:image" content="https://www.ishasystems.com/og-image.jpg" />
+    <meta property="og:image:alt" content="ISHA Systems LLC — affordable managed website subscription for small businesses, $0 setup and $29.99/mo." />
     <meta property="og:site_name" content="ISHA Systems LLC" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="$0 to Start, $29.99/mo Website | ISHA Systems LLC" />
     <meta name="twitter:description" content="10-page website, free domain, free email, free hosting. $0 setup, $29.99/month. Live in 7 days." />
     <meta name="twitter:image" content="https://www.ishasystems.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="ISHA Systems LLC — affordable managed website subscription for small businesses." />
 
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,38 +69,57 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Structured Data — LocalBusiness -->
+    <!-- Structured Data — ProfessionalService (crawler-visible fallback; the React
+         app injects a localized copy at runtime for the active language). -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "ISHA Systems LLC",
+      "@type": "ProfessionalService",
+      "@id": "https://www.ishasystems.com/#organization",
+      "name": "Isha Systems LLC",
+      "legalName": "Isha Systems LLC",
       "url": "https://www.ishasystems.com",
-      "description": "Affordable website design for small businesses. $0 setup fee, $29.99/month includes 10 pages, free domain, free business email, free hosting, and SSL. Live in 7 days. Code ownership after 12 months.",
-      "priceRange": "$29.99/mo",
+      "image": "https://www.ishasystems.com/og-image.jpg",
+      "logo": "https://www.ishasystems.com/favicon.svg",
+      "description": "Fully-managed website subscription for small businesses with $0 setup fee and code ownership after 12 months.",
+      "priceRange": "$$",
       "email": "hello@ishasystems.com",
+      "inLanguage": ["en", "es"],
+      "knowsLanguage": ["en", "es"],
+      "serviceType": "Website design, hosting, and managed subscription",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "US"
       },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Website Design Packages",
-        "itemListElement": [
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "Canada" }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "Managed Website Subscription",
+        "description": "10-page website with free domain, business email, hosting, and SSL. $0 setup fee. Code ownership after 12 months.",
+        "price": "29.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": [
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "Canada" }
+        ],
+        "priceSpecification": [
           {
-            "@type": "Offer",
-            "name": "Website Subscription",
-            "description": "10-page static website with free domain, free business email, free web hosting, SSL certificate, and mobile-optimized design. Code ownership after 12 months.",
+            "@type": "UnitPriceSpecification",
+            "name": "Setup fee",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "Monthly subscription",
             "price": "29.99",
             "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "29.99",
-              "priceCurrency": "USD",
-              "billingDuration": "P1M",
-              "billingIncrement": "1"
-            }
+            "billingDuration": "P1M",
+            "billingIncrement": "1"
           }
         ]
       },

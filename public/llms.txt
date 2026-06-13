@@ -1,0 +1,52 @@
+# Isha Systems LLC
+
+> Fully-managed website subscription for small businesses in the United States and Canada. We design, build, host, and maintain your website for $0 upfront and $29.99/month. After 12 months, the website code is transferred to you — fully owned, forever.
+
+Isha Systems LLC is a subscription-based web design and hosting service. We handle everything — design, development, domain, business email, hosting, SSL, SEO, and ongoing maintenance — so small business owners don't have to. Sites typically go live within 7 days.
+
+## Core Offering
+
+- **Setup fee:** $0 — no upfront cost web development.
+- **Monthly subscription:** $29.99/month, cancel anytime.
+- **Code ownership:** subscribe for 12 months and the full website code is transferred to you to own forever.
+- **Turnaround:** live website delivered in about 7 days.
+- **Markets served:** United States and Canada.
+
+## What's Included
+
+- Up to 10 custom-designed, handcrafted pages.
+- Free domain name.
+- Free business email.
+- Free managed web hosting.
+- Free SSL certificate.
+- Mobile-optimized, responsive design.
+- Basic SEO setup.
+- Contact form integration.
+- Multi-language support (English and Spanish).
+- Ongoing maintenance, updates, and support.
+
+## Why Choose Isha Systems
+
+- Engineer-built websites — an affordable alternative to Squarespace, Wix, and traditional agencies.
+- Transparent pricing with no hidden fees and no surprise bills.
+- Domain, email, and hosting bundled free (typically $200+/year elsewhere).
+- You ultimately own your website code.
+
+## Portfolio
+
+- **PyPyCode.com** — technology / coding education website.
+- **Mavi Collision Center** — automotive collision repair website.
+- **Kid Buzz Daily** — kids news and content website.
+- **League of Tennis** — sports league website.
+
+## Tech Stack
+
+- React 19, TypeScript, Vite, TailwindCSS v4, with built-in i18n for English/Spanish.
+
+## Contact
+
+- Website: https://www.ishasystems.com
+- Email: hello@ishasystems.com
+- Pricing: https://www.ishasystems.com/pricing
+- Portfolio: https://www.ishasystems.com/portfolio
+- Get started: https://www.ishasystems.com/contact

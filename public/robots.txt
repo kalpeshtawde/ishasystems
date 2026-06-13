@@ -1,4 +1,56 @@
+# robots.txt — Isha Systems LLC
+# Allow all standard search crawlers and modern AI / answer-engine crawlers.
+
+# Default policy for all bots
 User-agent: *
 Allow: /
 Disallow: /admin/
+
+# Major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI / LLM answer-engine crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# AI digest file for LLM crawlers
+# https://www.ishasystems.com/llms.txt
+
 Sitemap: https://www.ishasystems.com/sitemap.xml
