@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
 import requests
+import threading
 
 # Load environment variables
 load_dotenv()
@@ -60,13 +61,17 @@ def unsubscribe():
 
         print(f'[unsubscribe] Forwarding to {UNSUBSCRIBE_API_URL} payload={payload}', flush=True)
 
-        # Fire-and-forget - don't wait for response
-        try:
-            resp = requests.post(UNSUBSCRIBE_API_URL, json=payload, headers=headers, timeout=5)
-            print(f'[unsubscribe] External API status={resp.status_code} body={resp.text}', flush=True)
-        except Exception as e:
-            # Log error but don't fail the request - fire-and-forget
-            print(f'[unsubscribe] External API call failed (fire-and-forget): {str(e)}', flush=True)
+        # Fire-and-forget: run the external call in a background thread so the
+        # endpoint returns immediately and is not dependent on how slow the
+        # external API is to respond.
+        def _forward():
+            try:
+                resp = requests.post(UNSUBSCRIBE_API_URL, json=payload, headers=headers, timeout=30)
+                print(f'[unsubscribe] External API status={resp.status_code} body={resp.text}', flush=True)
+            except Exception as e:
+                print(f'[unsubscribe] External API call failed (background): {str(e)}', flush=True)
+
+        threading.Thread(target=_forward, daemon=True).start()
 
         return jsonify({
             'success': True,
