@@ -29,6 +29,7 @@ const TAB_PATHS: Record<string, string> = {
   contact: '/contact',
   privacy: '/privacy-policy',
   terms: '/terms-of-service',
+  unsubscribe: '/unsubscribe',
 };
 
 interface PageSeo {
@@ -84,6 +85,11 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
         'The terms governing use of ISHA Systems LLC web development, hosting, and email services.',
       imageAlt: 'ISHA Systems LLC terms of service.',
     },
+    unsubscribe: {
+      title: 'Unsubscribe | ISHA Systems LLC',
+      description: 'Unsubscribe from marketing emails from ISHA Systems LLC.',
+      imageAlt: 'ISHA Systems LLC unsubscribe page.',
+    },
   },
   es: {
     home: {
@@ -123,6 +129,11 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
       description:
         'Los términos que rigen el uso de los servicios de desarrollo web, hosting y correo de ISHA Systems LLC.',
       imageAlt: 'Términos del servicio de ISHA Systems LLC.',
+    },
+    unsubscribe: {
+      title: 'Cancelar Suscripción | ISHA Systems LLC',
+      description: 'Cancelar la suscripción a correos de marketing de ISHA Systems LLC.',
+      imageAlt: 'Página de cancelación de suscripción de ISHA Systems LLC.',
     },
   },
 };

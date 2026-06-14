@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
+import requests
 
 # Load environment variables
 load_dotenv()
@@ -20,10 +21,61 @@ SMTP_PASS = os.getenv('SMTP_PASS')
 EMAIL_FROM = os.getenv('EMAIL_FROM', SMTP_USER)
 EMAIL_TO = os.getenv('EMAIL_TO', SMTP_USER)
 
+# Unsubscribe API configuration
+UNSUBSCRIBE_API_URL = os.getenv('UNSUBSCRIBE_API_URL', 'http://100.122.15.22:8000/unsubscribe')
+UNSUBSCRIBE_API_KEY = os.getenv('UNSUBSCRIBE_API_KEY', '6e2356ea367d2f17739b09744309f579a130382f1acb859512ddf56695310b85')
+
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'ok', 'message': 'Server is running'}), 200
+
+
+@app.route('/api/unsubscribe', methods=['POST'])
+def unsubscribe():
+    """Proxy unsubscribe request to external API with API key."""
+    try:
+        data = request.get_json(silent=True) or {}
+        email = data.get('email', '').strip()
+        reason = data.get('reason', 'too many emails').strip()
+
+        if not email:
+            return jsonify({
+                'success': False,
+                'error': 'Email is required'
+            }), 400
+
+        # Forward request to external unsubscribe API with API key
+        payload = {
+            'email': email,
+            'source_site': 'ishasystems.com',
+            'reason': reason
+        }
+
+        headers = {
+            'accept': 'application/json',
+            'x-api-key': UNSUBSCRIBE_API_KEY,
+            'Content-Type': 'application/json'
+        }
+
+        # Fire-and-forget - don't wait for response
+        try:
+            requests.post(UNSUBSCRIBE_API_URL, json=payload, headers=headers, timeout=5)
+        except Exception as e:
+            # Log error but don't fail the request - fire-and-forget
+            print(f'Unsubscribe API call failed (fire-and-forget): {str(e)}')
+
+        return jsonify({
+            'success': True,
+            'message': 'Unsubscribe request processed'
+        }), 200
+
+    except Exception as e:
+        print(f'Error processing unsubscribe: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': 'Failed to process unsubscribe request'
+        }), 500
 
 
 @app.route('/api/contact', methods=['POST'])

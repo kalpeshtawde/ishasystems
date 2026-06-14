@@ -7,6 +7,7 @@ import { Portfolio } from './pages/Portfolio';
 import { Pricing } from './pages/Pricing';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
+import { Unsubscribe } from './pages/Unsubscribe';
 import { useLanguage } from './i18n';
 import { applySeo } from './seo';
 
@@ -58,6 +59,8 @@ function App() {
         return <PrivacyPolicy />;
       case 'terms':
         return <TermsOfService />;
+      case 'unsubscribe':
+        return <Unsubscribe />;
       default:
         return <Home setCurrentTab={handleTabChange} />;
     }
