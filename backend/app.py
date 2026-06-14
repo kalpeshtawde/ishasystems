@@ -58,12 +58,15 @@ def unsubscribe():
             'Content-Type': 'application/json'
         }
 
+        print(f'[unsubscribe] Forwarding to {UNSUBSCRIBE_API_URL} payload={payload}', flush=True)
+
         # Fire-and-forget - don't wait for response
         try:
-            requests.post(UNSUBSCRIBE_API_URL, json=payload, headers=headers, timeout=5)
+            resp = requests.post(UNSUBSCRIBE_API_URL, json=payload, headers=headers, timeout=5)
+            print(f'[unsubscribe] External API status={resp.status_code} body={resp.text}', flush=True)
         except Exception as e:
             # Log error but don't fail the request - fire-and-forget
-            print(f'Unsubscribe API call failed (fire-and-forget): {str(e)}')
+            print(f'[unsubscribe] External API call failed (fire-and-forget): {str(e)}', flush=True)
 
         return jsonify({
             'success': True,
@@ -71,7 +74,7 @@ def unsubscribe():
         }), 200
 
     except Exception as e:
-        print(f'Error processing unsubscribe: {str(e)}')
+        print(f'[unsubscribe] Error processing unsubscribe: {str(e)}', flush=True)
         return jsonify({
             'success': False,
             'error': 'Failed to process unsubscribe request'
