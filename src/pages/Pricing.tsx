@@ -18,9 +18,19 @@ export const Pricing: React.FC = () => {
   };
 
   return (
-    <div style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 50%, #f0fffe 100%)' }}>
-      {/* SECTION 1 — PAGE HEADER */}
-      <div className="py-20">
+    <div>
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-[#e2edf7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#64748b' }}>
+            <a href="#home" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#f97316'} onMouseLeave={(e) => e.currentTarget.style.color = '#64748b'}>Home</a> <span style={{ margin: '0 8px' }}>›</span> <span style={{ color: '#0f1f4d', fontWeight: 600 }}>Pricing</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: 'linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 50%, #f0fffe 100%)' }}>
+        {/* SECTION 1 — PAGE HEADER */}
+        <div className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6" style={{ background: 'rgba(249,115,22,0.1)', color: '#f97316', border: '1px solid rgba(249,115,22,0.2)' }}>
             {t.pricing.tag}
@@ -234,6 +244,7 @@ export const Pricing: React.FC = () => {
             <a href="#contact" className="text-[#0ea5e9] font-semibold hover:text-white transition-colors underline">{t.pricing.linkGetStarted}</a>
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

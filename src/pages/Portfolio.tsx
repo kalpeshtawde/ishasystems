@@ -9,6 +9,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
   const { t } = useLanguage();
   return (
     <div>
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-[#e2edf7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#64748b' }}>
+            <a href="#home" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#f97316'} onMouseLeave={(e) => e.currentTarget.style.color = '#64748b'}>Home</a> <span style={{ margin: '0 8px' }}>›</span> <span style={{ color: '#0f1f4d', fontWeight: 600 }}>Portfolio</span>
+          </div>
+        </div>
+      </div>
+
       {/* ── Portfolio Section ── */}
       <section className="py-24 bg-[#f8fafc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
             <Terminal className="text-[#FF6500] h-6 w-6" />
             <span className="font-bold text-xl tracking-tight">Isha<span className="text-[#FF6500]">Systems</span></span>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.id}

@@ -69,6 +69,49 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#F1F6F9]">
       <div>
+        {/* Top info bar */}
+        <div className="hidden md:flex" style={{
+          background: '#1a2e44',
+          height: '36px'
+        }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: '100%',
+            width: '100%'
+          }}>
+            <a 
+              href="tel:+14047020806"
+              style={{
+                color: 'rgba(255,255,255,0.95)',
+                fontSize: '14px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              📞 +1 404-702-0806
+            </a>
+            <a 
+              href="mailto:support@ishasystems.com"
+              style={{
+                color: 'rgba(255,255,255,0.95)',
+                fontSize: '14px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              ✉ support@ishasystems.com
+            </a>
+          </div>
+        </div>
+        
         {/* Pass state dispatch handlers into navigation layout context */}
         <Navbar currentTab={currentTab} setCurrentTab={handleTabChange} />
         <main className="transition-all duration-300">
