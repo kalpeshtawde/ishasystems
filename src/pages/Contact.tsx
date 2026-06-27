@@ -51,66 +51,37 @@ export const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Contact Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Column - Contact Info */}
-            <div>
-              <div className="text-[#64748b] text-xs font-semibold tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.contact.getInTouch}
-              </div>
-              <h1 className="text-[40px] font-bold text-[#0f1f4d] mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                {t.contact.title}
-              </h1>
-              <p className="text-[#64748b] text-[16px] mb-10" style={{ fontFamily: 'DM Sans, sans-serif', lineHeight: 1.6 }}>
-                {t.contact.sub}
-              </p>
-
-              {/* Contact Details */}
-              <div className="space-y-6">
-                {/* Phone */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: '#f0f7ff' }}>
-                      <Phone className="h-5 w-5 text-[#0f1f4d]" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-[#0f1f4d] font-bold text-[17px] mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.contact.phoneLabel}</div>
-                    <a href="tel:+14047020806" className="text-[#64748b] text-[16px] hover:text-[#f97316] transition-colors" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                      +1 404-702-0806
-                    </a>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: '#f0f7ff' }}>
-                      <Mail className="h-5 w-5 text-[#0f1f4d]" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-[#0f1f4d] font-bold text-[17px] mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.contact.emailLabel}</div>
-                    <a href="mailto:support@ishasystems.com" className="text-[#64748b] text-[16px] hover:text-[#f97316] transition-colors" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                      support@ishasystems.com
-                    </a>
-                  </div>
-                </div>
-              </div>
+      {/* Main Contact Section with Background Image */}
+      <section 
+        className="relative min-h-[600px]"
+        style={{
+          backgroundImage: 'url(/contact-bg.png)',
+          backgroundSize: '85% auto',
+          backgroundPosition: 'right center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#ffffff'
+        }}
+      >
+        {/* Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="max-w-xl">
+            {/* Header */}
+            <div className="text-[#64748b] text-xs font-semibold tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              {t.contact.getInTouch}
             </div>
+            <h1 className="text-[36px] font-bold text-[#0f1f4d] mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+              {t.contact.title}
+            </h1>
+            <p className="text-[#64748b] text-[15px] mb-8" style={{ fontFamily: 'DM Sans, sans-serif', lineHeight: 1.6 }}>
+              {t.contact.sub}
+            </p>
 
-            {/* Right Column - Form */}
-            <div className="rounded-2xl p-8" style={{ background: '#f0f7ff' }}>
-              <h2 className="text-[#0f1f4d] font-bold text-[24px] mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                {t.contact.getInTouchTitle}
-              </h2>
-
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl p-6 shadow-lg" style={{ border: '1px solid #e5e7eb' }}>
               {submitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle2 className="text-emerald-500 h-16 w-16 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-[#0f1f4d] mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                <div className="text-center py-8">
+                  <CheckCircle2 className="text-emerald-500 h-14 w-14 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-[#0f1f4d] mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
                     {t.contact.successTitle}
                   </h3>
                   <p className="text-[#64748b] text-sm" style={{ fontFamily: 'DM Sans, sans-serif' }}>
@@ -119,100 +90,82 @@ export const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                      <input
-                        type="text"
-                        name="yourName"
-                        required
-                        placeholder={t.contact.yourNamePlaceholder}
-                        className="w-full p-3 rounded-lg text-[14px] focus:outline-none transition-all"
-                        style={{
-                          border: '1px solid #d1e3f8',
-                          background: 'white',
-                          color: '#0f1f4d',
-                          fontFamily: 'DM Sans, sans-serif'
-                        }}
-                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-                        onBlur={(e) => e.target.style.borderColor = '#d1e3f8'}
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="email"
-                        name="yourEmail"
-                        required
-                        placeholder={t.contact.emailPlaceholder}
-                        className="w-full p-3 rounded-lg text-[14px] focus:outline-none transition-all"
-                        style={{
-                          border: '1px solid #d1e3f8',
-                          background: 'white',
-                          color: '#0f1f4d',
-                          fontFamily: 'DM Sans, sans-serif'
-                        }}
-                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-                        onBlur={(e) => e.target.style.borderColor = '#d1e3f8'}
-                      />
-                    </div>
+                  <div className="grid grid-cols-2 gap-3 mb-3">
+                    <input
+                      type="text"
+                      name="yourName"
+                      required
+                      placeholder={t.contact.yourNamePlaceholder}
+                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                      style={{
+                        border: '1px solid #e5e7eb',
+                        background: '#f9fafb',
+                        color: '#0f1f4d',
+                        fontFamily: 'DM Sans, sans-serif'
+                      }}
+                    />
+                    <input
+                      type="email"
+                      name="yourEmail"
+                      required
+                      placeholder={t.contact.emailPlaceholder}
+                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                      style={{
+                        border: '1px solid #e5e7eb',
+                        background: '#f9fafb',
+                        color: '#0f1f4d',
+                        fontFamily: 'DM Sans, sans-serif'
+                      }}
+                    />
                   </div>
 
-                  <div className="mb-4">
+                  <div className="grid grid-cols-2 gap-3 mb-3">
                     <input
                       type="text"
                       name="businessName"
                       placeholder={t.contact.businessNamePlaceholder}
-                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       style={{
-                        border: '1px solid #d1e3f8',
-                        background: 'white',
+                        border: '1px solid #e5e7eb',
+                        background: '#f9fafb',
                         color: '#0f1f4d',
                         fontFamily: 'DM Sans, sans-serif'
                       }}
-                      onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-                      onBlur={(e) => e.target.style.borderColor = '#d1e3f8'}
                     />
-                  </div>
-
-                  <div className="mb-4">
                     <input
                       type="tel"
                       name="phone"
                       placeholder={t.contact.phoneNumberPlaceholder}
-                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none transition-all"
+                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       style={{
-                        border: '1px solid #d1e3f8',
-                        background: 'white',
+                        border: '1px solid #e5e7eb',
+                        background: '#f9fafb',
                         color: '#0f1f4d',
                         fontFamily: 'DM Sans, sans-serif'
                       }}
-                      onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-                      onBlur={(e) => e.target.style.borderColor = '#d1e3f8'}
                     />
                   </div>
 
-                  <div className="mb-6">
+                  <div className="mb-4">
                     <textarea
-                      rows={5}
+                      rows={4}
                       name="businessDo"
                       required
                       placeholder={t.contact.writeMessagePlaceholder}
-                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none transition-all resize-none"
+                      className="w-full p-3 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
                       style={{
-                        border: '1px solid #d1e3f8',
-                        background: 'white',
+                        border: '1px solid #e5e7eb',
+                        background: '#f9fafb',
                         color: '#0f1f4d',
-                        fontFamily: 'DM Sans, sans-serif',
-                        height: '140px'
+                        fontFamily: 'DM Sans, sans-serif'
                       }}
-                      onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
-                      onBlur={(e) => e.target.style.borderColor = '#d1e3f8'}
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="py-3 px-6 bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold text-[15px] rounded-lg transition-all flex items-center justify-center gap-2 disabled:bg-blue-400"
+                    className="w-full py-3 bg-[#C84B2D] hover:bg-[#b54328] text-white font-semibold text-[15px] rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70"
                     style={{ fontFamily: 'DM Sans, sans-serif' }}
                   >
                     {loading ? (
@@ -223,16 +176,42 @@ export const Contact: React.FC = () => {
                   </button>
 
                   {error && (
-                    <div className="mt-4 text-center text-[14px] text-red-600" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    <div className="mt-3 text-center text-[13px] text-red-600" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                       {error}
                     </div>
                   )}
                 </form>
               )}
             </div>
+
+            {/* Contact Details */}
+            <div className="flex flex-wrap gap-8 mt-6">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center bg-white shadow-sm">
+                  <Phone className="h-5 w-5 text-[#C84B2D]" />
+                </div>
+                <div>
+                  <div className="text-[#0f1f4d] font-semibold text-[16px]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.contact.phoneLabel}</div>
+                  <a href="tel:+14047020806" className="text-[#64748b] text-[15px] hover:text-[#C84B2D] transition-colors" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    +1 404-702-0806
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center bg-white shadow-sm">
+                  <Mail className="h-5 w-5 text-[#C84B2D]" />
+                </div>
+                <div>
+                  <div className="text-[#0f1f4d] font-semibold text-[16px]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.contact.emailLabel}</div>
+                  <a href="mailto:support@ishasystems.com" className="text-[#64748b] text-[15px] hover:text-[#C84B2D] transition-colors" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    support@ishasystems.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
