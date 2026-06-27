@@ -222,7 +222,15 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       </section> */}
 
       {/* ── Why Smart Businesses Choose Us ── */}
-      <section className="py-24" style={{ background: 'linear-gradient(135deg, #0f1f4d 0%, #1a3a6b 100%)' }}>
+      <section 
+        className="py-24"
+        style={{ 
+          backgroundImage: 'url(/why-pay-more-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -267,15 +275,17 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                 <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 800, fontSize: '18px', color: 'white', marginTop: '4px' }}>Isha Systems</div>
               </div>
               <div style={{ padding: '20px clamp(8px, 2.2vw, 24px)', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(13px, 3.6vw, 16px)', color: '#94a3b8' }}>Squarespace</div>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(15px, 4vw, 18px)', color: '#c8d4e6' }}>Squarespace</div>
               </div>
               <div style={{ padding: '20px clamp(8px, 2.2vw, 24px)', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(13px, 3.6vw, 16px)', color: '#94a3b8' }}>Wix / Agencies</div>
+                <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: 'clamp(15px, 4vw, 18px)', color: '#c8d4e6' }}>Wix / Agencies</div>
               </div>
 
               {/* ── Data Rows ── */}
               {[
                 { feature: t.home.domainTitle, square: '$20/yr', wix: '$15/yr' },
+                { feature: t.home.seoTitle, square: '$500+/yr', wix: '$500+/yr' },
+                { feature: t.home.sslTitle, square: '$100/yr', wix: '$100/yr' },
                 { feature: t.home.emailTitle, square: '$96/yr', wix: '$60/yr' },
                 { feature: t.home.hostingTitle, square: '$200+/yr', wix: '$200+/yr' },
               ].map((row, i, arr) => {
@@ -290,8 +300,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'Plus Jakarta Sans, sans-serif',
                       fontWeight: 700,
-                      fontSize: 'clamp(13px, 3.6vw, 16px)',
-                      color: 'white'
+                      fontSize: 'clamp(15px, 4vw, 18px)',
+                      color: '#ffffff'
                     }}>{row.feature}</div>
 
                     {/* Isha Systems (highlighted) */}
@@ -320,9 +330,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                       textAlign: 'center',
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: 'clamp(12px, 3.4vw, 15px)',
+                      fontSize: 'clamp(14px, 3.8vw, 17px)',
                       fontWeight: 600,
-                      color: '#7c8db5'
+                      color: '#d0dae8'
                     }}>{row.square}</div>
 
                     {/* Wix / Agencies */}
@@ -331,9 +341,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                       textAlign: 'center',
                       borderTop: '1px solid rgba(255,255,255,0.08)',
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: 'clamp(12px, 3.4vw, 15px)',
+                      fontSize: 'clamp(14px, 3.8vw, 17px)',
                       fontWeight: 600,
-                      color: '#7c8db5'
+                      color: '#d0dae8'
                     }}>{row.wix}</div>
                   </React.Fragment>
                 );
