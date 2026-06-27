@@ -131,6 +131,9 @@ export const translations = {
       tile1Title: '7-Day Delivery Guarantee',
       tile1Desc:
         "Your business can't wait weeks. We scope, design, and launch your complete website in 7 days — or we keep working until it's done.",
+      tileSeoTitle: 'Built-in SEO Optimization',
+      tileSeoDesc:
+        'Every website comes with Google-ready SEO setup — meta tags, sitemaps, schema markup, and fast load times. Get found without paying extra.',
       tile2Title: 'We Own the Hardware',
       tile2Desc:
         'Your site runs on our enterprise-grade servers — not a shared builder platform. Faster load times, zero third-party downtime risk.',
@@ -540,6 +543,9 @@ export const translations = {
       tile1Title: 'Garantía de Entrega en 7 Días',
       tile1Desc:
         'Tu negocio no puede esperar semanas. Planificamos, diseñamos y lanzamos tu sitio web completo en 7 días — o seguimos trabajando hasta terminarlo.',
+      tileSeoTitle: 'Optimización SEO Integrada',
+      tileSeoDesc:
+        'Cada sitio web viene con configuración SEO lista para Google — meta tags, sitemaps, schema markup y tiempos de carga rápidos. Sé encontrado sin pagar extra.',
       tile2Title: 'Somos Dueños del Hardware',
       tile2Desc:
         'Tu sitio funciona en nuestros servidores empresariales — no en una plataforma compartida. Tiempos de carga más rápidos y cero riesgo de caídas de terceros.',

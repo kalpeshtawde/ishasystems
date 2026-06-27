@@ -469,7 +469,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
           {/* 8-Tile Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-            {/* Tile 1: Turnaround */}
+            {/* Row 1, Tile 1: Turnaround */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
               <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#f97316]" />
               <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(249,115,22,0.10)' }}>
@@ -483,7 +483,21 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 2: Infrastructure */}
+            {/* Row 1, Tile 2: SEO */}
+            <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
+              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#10b981]" />
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.10)' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#10b981" strokeWidth="2" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+              </div>
+              <h3 className="text-[#0f1f4d] font-bold text-[17px] mt-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.tileSeoTitle}</h3>
+              <p className="text-[#64748b] text-[14px] mt-2 leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                {t.home.tileSeoDesc}
+              </p>
+            </div>
+
+            {/* Row 1, Tile 3: Infrastructure */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
               <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#0ea5e9]" />
               <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(14,165,233,0.10)' }}>
@@ -497,7 +511,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 3: Software */}
+            {/* Row 1, Tile 4: Software */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
               <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#6366f1]" />
               <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(99,102,241,0.10)' }}>
@@ -511,11 +525,11 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 4: Pricing */}
+            {/* Row 2, Tile 1: Pricing */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
-              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#10b981]" />
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.10)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#10b981" strokeWidth="2" viewBox="0 0 24 24">
+              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#f97316]" />
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(249,115,22,0.10)' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#f97316" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
                 </svg>
               </div>
@@ -525,11 +539,11 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 5: Email */}
+            {/* Row 2, Tile 2: Email */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
-              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#f97316]" />
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(249,115,22,0.10)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#f97316" strokeWidth="2" viewBox="0 0 24 24">
+              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#0ea5e9]" />
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(14,165,233,0.10)' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#0ea5e9" strokeWidth="2" viewBox="0 0 24 24">
                   <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                 </svg>
               </div>
@@ -539,21 +553,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 6: Updates */}
-            <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
-              <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#0ea5e9]" />
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(14,165,233,0.10)' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#0ea5e9" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                </svg>
-              </div>
-              <h3 className="text-[#0f1f4d] font-bold text-[17px] mt-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{t.home.tile6Title}</h3>
-              <p className="text-[#64748b] text-[14px] mt-2 leading-relaxed" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.home.tile6Desc}
-              </p>
-            </div>
-
-            {/* Tile 7: Design */}
+            {/* Row 2, Tile 3: Design */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
               <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#6366f1]" />
               <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(99,102,241,0.10)' }}>
@@ -567,7 +567,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </p>
             </div>
 
-            {/* Tile 8: Ownership */}
+            {/* Row 2, Tile 4: Ownership */}
             <div className="bg-white border border-[#e2edf7] rounded-[20px] p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style={{ boxShadow: '0 12px 40px rgba(15,31,77,0.10)' }}>
               <div className="absolute top-0 left-0 w-[3px] h-[40px] bg-[#10b981]" />
               <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.10)' }}>
