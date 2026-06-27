@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowRight, Clock, CheckCircle2, Lock, Key, FileText, Cloud, Globe, RefreshCw, Smartphone, Search, MessageSquare, Languages, PenTool } from 'lucide-react';
+import { ArrowRight, Clock, CheckCircle2, Lock, Gift, Check } from 'lucide-react';
 import { useLanguage } from '../i18n';
 
 interface HomeProps {
@@ -11,275 +11,169 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
   return (
     <div>
       {/* ── Hero Section ── */}
-      <section className="relative overflow-hidden" style={{ background: 'radial-gradient(circle at 85% 20%, rgba(255, 224, 178, 0.35) 0%, transparent 45%), radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(224, 242, 254, 0.5) 45%, transparent 80%), linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 60%, #f8fafc 100%)', paddingTop: '40px', paddingBottom: '40px' }}>
-        {/* Decorative blobs */}
+      <section className="relative overflow-hidden" style={{ minHeight: '550px' }}>
+        {/* Background Image */}
         <div 
-          className="absolute pointer-events-none"
-          style={{ 
-            top: '-200px', 
-            right: '-200px',
-            width: '600px', 
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%)',
-            borderRadius: '50%',
-            zIndex: 0
-          }} 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/hero-bg.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center right',
+            backgroundRepeat: 'no-repeat'
+          }}
         />
+        {/* Gradient Overlay for text readability */}
         <div 
-          className="absolute pointer-events-none"
-          style={{ 
-            bottom: '-100px', 
-            left: '-100px',
-            width: '400px', 
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)',
-            borderRadius: '50%',
-            zIndex: 0
-          }} 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.3) 70%, transparent 85%)'
+          }}
         />
-        <div 
-          className="absolute pointer-events-none"
-          style={{ 
-            top: '50%', 
-            left: '40%',
-            transform: 'translate(-50%, -50%)',
-            width: '300px', 
-            height: '300px',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)',
-            borderRadius: '50%',
-            zIndex: 0
-          }} 
-        />
+        
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ minHeight: '550px' }}>
+          <div style={{ 
+            maxWidth: '550px',
+            padding: '3rem 0',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            minHeight: '550px'
+          }}>
+            {/* Eyebrow badge */}
+            <div className="inline-flex items-center gap-2" style={{
+              background: '#e8f5f0',
+              borderRadius: '20px',
+              padding: '5px 12px',
+              marginBottom: '24px',
+              width: 'fit-content'
+            }}>
+              <div style={{ width: '6px', height: '6px', background: '#1D9E75', borderRadius: '50%' }} />
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500, color: '#0F6E56' }}>{t.home.heroBadgeNew}</span>
+            </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ zIndex: 1 }}>
-          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 items-start">
+            {/* Main headline */}
+            <h1 style={{ 
+              fontFamily: 'Plus Jakarta Sans, sans-serif', 
+              fontWeight: 700, 
+              fontSize: '36px',
+              lineHeight: 1.2, 
+              color: '#1a1f2e',
+              marginBottom: '16px'
+            }}>
+              {t.home.heroHeadlineNew}
+            </h1>
 
-            {/* ── Left Column ── */}
-            <div>
-              {/* Eyebrow badge */}
-              <div className="inline-flex items-center gap-2" style={{
-                background: 'white',
-                border: '1px solid #e2edf7',
-                borderRadius: '100px',
-                padding: '8px 18px',
-                boxShadow: '0 2px 12px rgba(15,31,77,0.06)',
-                marginBottom: '24px'
-              }}>
-                <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%' }} />
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: '600', color: '#374151' }}>{t.home.heroEyebrow}</span>
+            {/* Subheadline */}
+            <p style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '17px',
+              color: '#555555',
+              lineHeight: 1.6,
+              marginBottom: '24px'
+            }}>
+              {t.home.heroSubheadlineNew}
+            </p>
+
+            {/* Pricing */}
+            <div style={{ marginBottom: '24px' }}>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', color: '#777777', marginBottom: '6px' }}>
+                {t.home.heroPricingLabel}
               </div>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
+                <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '42px', fontWeight: 700, color: '#C84B2D' }}>$29.99</span>
+                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888' }}>{t.home.heroPricePerMo}</span>
+              </div>
+            </div>
 
-              {/* Main headline - tight two lines */}
-              <h1 style={{ 
-                fontFamily: 'Plus Jakarta Sans, sans-serif', 
-                fontWeight: 800, 
-                fontSize: '48px',
-                lineHeight: 1.1, 
-                marginBottom: '20px'
-              }}>
-                <div style={{ color: '#0f1f4d' }}>{t.home.heroTitle1}</div>
-                <div style={{ color: '#D85A30' }}>{t.home.heroTitle2}</div>
-              </h1>
+            {/* Bullet points - 2 column grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '10px 24px',
+              marginBottom: '24px'
+            }}>
+              {[t.home.heroBullet1, t.home.heroBullet2, t.home.heroBullet3, t.home.heroBullet4].map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{
+                    width: '20px',
+                    height: '20px',
+                    borderRadius: '50%',
+                    background: '#e8f5f0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Check style={{ width: '12px', height: '12px', color: '#1D9E75', strokeWidth: 3 }} />
+                  </div>
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13.5px', color: '#444444' }}>{item}</span>
+                </div>
+              ))}
+            </div>
 
-              {/* Bundle equation - prominent */}
-              <div style={{
+            {/* Ownership callout box */}
+            <div style={{
+              background: '#ffffff',
+              border: '0.5px solid #dddddd',
+              borderRadius: '8px',
+              padding: '10px 14px',
+              marginBottom: '24px'
+            }}>
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12.5px', color: '#666666' }}>
+                <strong style={{ color: '#1a1f2e' }}>{t.home.heroOwnershipTitle}</strong> {t.home.heroOwnershipText}
+              </span>
+            </div>
+
+            {/* CTA Button */}
+            <button
+              onClick={() => setCurrentTab('contact')}
+              style={{
+                background: '#C84B2D',
+                color: '#ffffff',
                 fontFamily: 'Plus Jakarta Sans, sans-serif',
-                fontSize: '22px',
-                fontWeight: 700,
-                lineHeight: 1.4,
-                marginBottom: '20px'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '8px',
-                  marginBottom: '8px'
-                }}>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleWebDesign}</span>
-                  <span style={{ color: '#D85A30', fontWeight: 400, fontSize: '20px', margin: '0 2px' }}>+</span>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleLogo}</span>
-                  <span style={{ color: '#D85A30', fontWeight: 400, fontSize: '20px', margin: '0 2px' }}>+</span>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleDomain}</span>
-                  <span style={{ color: '#D85A30', fontWeight: 400, fontSize: '20px', margin: '0 2px' }}>+</span>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleHosting}</span>
-                  <span style={{ color: '#D85A30', fontWeight: 400, fontSize: '20px', margin: '0 2px' }}>+</span>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleEmail}</span>
-                  <span style={{ color: '#D85A30', fontWeight: 400, fontSize: '20px', margin: '0 2px' }}>+</span>
-                  <span style={{ color: '#1a2e44', fontWeight: 700 }}>{t.home.bundleSEO}</span>
-                </div>
-                <div style={{ color: '#D85A30', fontWeight: 800, fontSize: '28px', marginLeft: 0 }}>
-                  {t.home.bundlePrice}
-                </div>
-              </div>
-
-              {/* Tagline */}
-              <p style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '24px',
-                color: '#1D9E75',
-                fontWeight: 700,
-                marginBottom: '24px'
-              }}>
-                {t.home.heroSubEmphasis}
-              </p>
-
-              {/* Trust grid - 2 columns */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '8px 16px',
-                marginBottom: '28px',
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '18px',
-                color: '#555',
-                fontWeight: 700
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 className="h-4 w-4" style={{ color: '#1D9E75', flexShrink: 0 }} />
-                  <span>{t.home.trustNoUpfront}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 className="h-4 w-4" style={{ color: '#1D9E75', flexShrink: 0 }} />
-                  <span>{t.home.trustCancelAnytime}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 className="h-4 w-4" style={{ color: '#1D9E75', flexShrink: 0 }} />
-                  <span>{t.home.trustNoCard}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 className="h-4 w-4" style={{ color: '#1D9E75', flexShrink: 0 }} />
-                  <span>{t.home.trustLive7Days}</span>
-                </div>
-              </div>
-
-              {/* Ownership promise strip */}
-              <div style={{
-                marginTop: '20px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '10px',
-                background: 'rgba(16,185,129,0.06)',
-                border: '1px solid rgba(16,185,129,0.15)',
-                borderRadius: '12px',
-                padding: '12px 16px'
-              }}>
-                <Key className="h-4.5 w-4.5 flex-shrink-0 mt-0.5" style={{ color: '#10b981' }} />
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#374151', lineHeight: 1.6 }}>
-                  Subscribe for <strong style={{ color: '#10b981' }}>12 months</strong> and your website code is transferred to you — <strong style={{ color: '#10b981' }}>fully owned, forever.</strong>
-                </span>
-              </div>
-
-              {/* CTA Button */}
-              <div style={{ marginTop: '24px' }}>
-                <button
-                  onClick={() => setCurrentTab('contact')}
-                  style={{
-                    background: '#D85A30',
-                    color: 'white',
-                    fontFamily: 'Plus Jakarta Sans, sans-serif',
-                    fontWeight: 700,
-                    fontSize: '16px',
-                    padding: '14px 32px',
-                    borderRadius: '14px',
-                    boxShadow: '0 6px 24px rgba(216,90,48,0.30)',
-                    transition: 'all 0.2s ease',
-                    border: 'none',
-                    cursor: 'pointer'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#c24d24';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(216,90,48,0.40)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#D85A30';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 6px 24px rgba(216,90,48,0.30)';
-                  }}
-                >
-                  {t.home.heroCtaNew}
-                </button>
-              </div>
-            </div>
-
-            {/* ── Right Column: Feature Checklist ── */}
-            <div className="lg:pl-10" style={{ alignSelf: 'start' }}>
-              <div style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '28px 32px',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.07)',
-                marginTop: 0
-              }}>
-                <div style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  letterSpacing: '1.5px',
-                  textTransform: 'uppercase',
-                  color: '#1D9E75',
-                  marginBottom: '16px'
-                }}>EVERYTHING INCLUDED IN YOUR PLAN</div>
-
-                <div className="space-y-3">
-                  {t.home.heroChecklist.map((item, idx) => {
-                    const Icon = [FileText, PenTool, Mail, Globe, Cloud, Smartphone, Search, MessageSquare, Languages, RefreshCw, Key][idx];
-                    const { title, sub } = item;
-                    return (
-                      <div key={title} className="flex items-center gap-4 rounded-xl py-1 px-2 transition-all duration-300 ease-in-out hover:translate-x-1.5 hover:-translate-y-0.5 hover:bg-white/40 hover:shadow-sm">
-                        <div style={{
-                          width: '40px',
-                          height: '40px',
-                          borderRadius: '50%',
-                          flexShrink: 0,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          background: 'linear-gradient(135deg, #14b8a6 0%, #10b981 100%)',
-                          boxShadow: '0 6px 16px rgba(16,185,129,0.30)'
-                        }}>
-                          <Icon className="h-5 w-5" style={{ color: 'white' }} strokeWidth={2.25} />
-                        </div>
-                        <div>
-                          <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 700, fontSize: '16px', color: '#0f1f4d', lineHeight: 1.25 }}>{title}</div>
-                          {sub && (
-                            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#64748b', lineHeight: 1.3 }}>{sub}</div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
+                fontWeight: 600,
+                fontSize: '14px',
+                letterSpacing: '0.5px',
+                padding: '13px 28px',
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                width: 'fit-content',
+                transition: 'background 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#b54328';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#C84B2D';
+              }}
+            >
+              {t.home.heroCtaButton}
+            </button>
           </div>
         </div>
       </section>
 
       {/* ── Trust Strip ── */}
-      <div className="bg-white border-t border-b border-[#e2edf7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-base text-[#0f1f4d]" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-            <span className="flex items-center gap-2">
-              <Clock className="text-[#0ea5e9] h-5 w-5" />
-              {t.home.trust1}
+      <div style={{ background: '#ffffff', borderTop: '0.5px solid #eeeeee' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-14" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            <span className="flex items-center gap-2" style={{ fontSize: '16px', color: '#444444' }}>
+              <Clock style={{ width: '16px', height: '16px', color: '#1D9E75' }} />
+              {t.home.trustBarDelivered}
             </span>
-            <span className="text-[#cbd5e1]">·</span>
-            <span className="flex items-center gap-2">
-              <CheckCircle2 className="text-[#0ea5e9] h-5 w-5" />
-              {t.home.trust2}
+            <span className="flex items-center gap-2" style={{ fontSize: '16px', color: '#444444' }}>
+              <Gift style={{ width: '16px', height: '16px', color: '#1D9E75' }} />
+              {t.home.trustBarSetupFee}
             </span>
-            <span className="text-[#cbd5e1]">·</span>
-            <span className="flex items-center gap-2">
-              <Lock className="text-[#0ea5e9] h-5 w-5" />
-              {t.home.trust3}
+            <span className="flex items-center gap-2" style={{ fontSize: '16px', color: '#444444' }}>
+              <Lock style={{ width: '16px', height: '16px', color: '#1D9E75' }} />
+              {t.home.trustBarCancel}
             </span>
-            <span className="text-[#cbd5e1]">·</span>
-            <span className="flex items-center gap-2">
-              <Mail className="text-[#0ea5e9] h-5 w-5" />
-              {t.home.trust4}
+            <span className="flex items-center gap-2" style={{ fontSize: '16px', color: '#444444' }}>
+              <CheckCircle2 style={{ width: '16px', height: '16px', color: '#1D9E75' }} />
+              {t.home.trustBarFree}
             </span>
           </div>
         </div>
