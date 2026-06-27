@@ -53,13 +53,10 @@ export const Contact: React.FC = () => {
 
       {/* Main Contact Section with Background Image */}
       <section 
-        className="relative min-h-[600px]"
+        className="relative min-h-[600px] bg-white lg:bg-[url('/contact-bg.png')] bg-no-repeat"
         style={{
-          backgroundImage: 'url(/contact-bg.png)',
           backgroundSize: '85% auto',
-          backgroundPosition: 'right center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#ffffff'
+          backgroundPosition: 'right center'
         }}
       >
         {/* Content Container */}
