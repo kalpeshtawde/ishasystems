@@ -68,7 +68,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <p style={{
               fontFamily: 'DM Sans, sans-serif',
               fontSize: '17px',
-              color: '#555555',
+              color: '#1a1a1a',
               lineHeight: 1.6,
               marginBottom: '24px'
             }}>
