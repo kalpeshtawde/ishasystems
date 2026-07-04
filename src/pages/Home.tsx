@@ -18,7 +18,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           style={{
             backgroundImage: 'url(/hero-bg.png)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center right',
+            backgroundPosition: 'right 35%',
             backgroundRepeat: 'no-repeat'
           }}
         />
@@ -45,7 +45,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               background: '#e8f5f0',
               borderRadius: '20px',
               padding: '5px 12px',
-              marginBottom: '24px',
+              marginBottom: '28px',
               width: 'fit-content'
             }}>
               <div style={{ width: '6px', height: '6px', background: '#1D9E75', borderRadius: '50%' }} />
@@ -59,7 +59,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               fontSize: '36px',
               lineHeight: 1.2, 
               color: '#1a1f2e',
-              marginBottom: '16px'
+              marginBottom: '20px'
             }}>
               {t.home.heroHeadlineNew}
             </h1>
@@ -70,20 +70,108 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               fontSize: '17px',
               color: '#1a1a1a',
               lineHeight: 1.6,
-              marginBottom: '24px'
+              marginBottom: '28px'
             }}>
               {t.home.heroSubheadlineNew}
             </p>
 
             {/* Pricing */}
-            <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', color: '#777777', marginBottom: '6px' }}>
-                {t.home.heroPricingLabel}
+            <div style={{ marginBottom: '32px' }}>
+              {/* Two Mini Pricing Cards */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
+                {/* Card 1 — Website + Logo */}
+                <div style={{
+                  flex: '1 1 160px',
+                  maxWidth: '210px',
+                  minHeight: '130px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '14px',
+                  padding: '20px',
+                  paddingTop: '28px',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start'
+                }}>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#64748b', marginBottom: '10px' }}>
+                    Website + Logo
+                  </div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#C84B2D', lineHeight: 1 }}>
+                    $49.99
+                  </div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888', marginTop: '6px' }}>
+                    one-time
+                  </div>
+                </div>
+
+                {/* Card 2 — Complete Solution */}
+                <div style={{
+                  flex: '1 1 160px',
+                  maxWidth: '210px',
+                  minHeight: '130px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '14px',
+                  padding: '20px',
+                  paddingTop: '28px',
+                  textAlign: 'center',
+                  position: 'relative',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start'
+                }}>
+                  {/* Most Popular Badge */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '-10px',
+                    right: '14px',
+                    background: '#e8f5f0',
+                    color: '#0F6E56',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    fontFamily: 'DM Sans, sans-serif',
+                    padding: '4px 10px',
+                    borderRadius: '12px'
+                  }}>
+                    Most Popular
+                  </div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#64748b', marginBottom: '10px' }}>
+                    Complete Solution
+                  </div>
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#0ea5e9', lineHeight: 1 }}>
+                    $29.99
+                  </div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888', marginTop: '6px' }}>
+                    {t.home.heroPricePerMo}
+                  </div>
+                </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
-                <span style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '42px', fontWeight: 700, color: '#C84B2D' }}>$29.99</span>
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888' }}>{t.home.heroPricePerMo}</span>
-              </div>
+
+              <button
+                onClick={() => setCurrentTab('pricing')}
+                style={{
+                  background: 'transparent',
+                  color: '#1e293b',
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  letterSpacing: '0.5px',
+                  padding: '13px 28px',
+                  borderRadius: '8px',
+                  border: '1px solid #1e293b',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f1f5f9';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                }}
+              >
+                See Detailed Plans
+              </button>
             </div>
 
             {/* Bullet points - 2 column grid */}
@@ -110,19 +198,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13.5px', color: '#444444' }}>{item}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Ownership callout box */}
-            <div style={{
-              background: '#ffffff',
-              border: '0.5px solid #dddddd',
-              borderRadius: '8px',
-              padding: '10px 14px',
-              marginBottom: '24px'
-            }}>
-              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12.5px', color: '#666666' }}>
-                <strong style={{ color: '#1a1f2e' }}>{t.home.heroOwnershipTitle}</strong> {t.home.heroOwnershipText}
-              </span>
             </div>
 
             {/* CTA Button */}
