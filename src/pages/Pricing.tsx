@@ -44,61 +44,98 @@ export const Pricing: React.FC = () => {
         </div>
       </div>
 
-      {/* SECTION 2 — MAIN PRICING CARD */}
-      <div className="max-w-[780px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="rounded-[28px] overflow-hidden border-2 border-[#10b981]" style={{ boxShadow: '0 24px 80px rgba(16,185,129,0.12)' }}>
-          {/* Green Ribbon */}
-          <div className="bg-[#10b981] py-2.5 text-center">
-            <span className="text-white text-[14px] font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.pricing.badge}
-            </span>
-          </div>
+      {/* SECTION 2 — PRICING CARDS */}
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* STARTER PLAN — Website + Logo */}
+          <div className="rounded-[28px] overflow-hidden border border-[#e2edf7] bg-white flex flex-col" style={{ boxShadow: '0 8px 32px rgba(15,31,77,0.08)' }}>
+            {/* Blue Ribbon */}
+            <div className="bg-[#0ea5e9] py-2.5 text-center">
+              <span className="text-white text-[14px] font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                {t.pricing.starterBadge}
+              </span>
+            </div>
 
-          {/* Card Body */}
-          <div className="p-12 bg-white flex flex-col md:flex-row gap-8">
-            {/* Left Column */}
-            <div className="md:w-1/2">
-              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.setupLabel}</div>
-              <div className="text-[80px] font-black text-[#0f1f4d] leading-none" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                {t.pricing.setupAmount}
+            {/* Card Body */}
+            <div className="p-8 flex flex-col flex-grow">
+              <h3 className="text-[28px] font-extrabold text-[#0f1f4d] mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                {t.pricing.starterTitle}
+              </h3>
+              
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-[56px] font-black text-[#0ea5e9]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                  {t.pricing.starterPrice}
+                </span>
               </div>
-              <div className="text-[#64748b] text-[15px] mt-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                {t.pricing.setupSub}
+              <div className="text-[#64748b] text-[15px] mb-6" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                {t.pricing.starterPriceSub}
               </div>
 
               <div className="h-px my-6 bg-[#f1f5f9]" />
 
-              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-2">{t.pricing.monthlyLabel}</div>
-              <div className="text-[48px] font-extrabold text-[#f97316]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-                {t.pricing.monthlyAmount}
+              <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-4">{t.pricing.includedTitle}</div>
+              
+              {t.pricing.starterFeatures.map((item, index) => (
+                <div key={index} className="flex items-start gap-3 mb-3">
+                  <div className="w-5 h-5 rounded-full bg-[#0ea5e9] flex items-center justify-center flex-shrink-0">
+                    <Check className="text-white h-3 w-3" />
+                  </div>
+                  <span className="text-[#0f1f4d] text-[15px]" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    {item}
+                  </span>
+                </div>
+              ))}
+
+              <div className="mt-auto pt-6">
+                <a
+                  href="#contact"
+                  className="block w-full py-4 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-bold text-[17px] rounded-[14px] transition-all text-center"
+                  style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(14,165,233,0.35)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  {t.pricing.starterCta} <ArrowRight className="inline h-4 w-4 ml-1" />
+                </a>
+
+                <div className="text-center text-[#94a3b8] text-[13px] mt-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  {t.pricing.starterNote}
+                </div>
               </div>
-              <div className="text-[#64748b] text-[15px] mt-2" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            </div>
+          </div>
+
+          {/* MAIN PLAN — Everything Included */}
+          <div className="rounded-[28px] overflow-hidden border border-[#e2edf7] bg-white" style={{ boxShadow: '0 8px 32px rgba(15,31,77,0.08)' }}>
+            {/* Green Ribbon */}
+            <div className="bg-[#10b981] py-2.5 text-center">
+              <span className="text-white text-[14px] font-semibold" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                {t.pricing.badge}
+              </span>
+            </div>
+
+            {/* Card Body */}
+            <div className="p-8">
+              <h3 className="text-[28px] font-extrabold text-[#0f1f4d] mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                {t.pricing.monthlyLabel}
+              </h3>
+              
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-[56px] font-black text-[#f97316]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                  {t.pricing.monthlyAmount}
+                </span>
+              </div>
+              <div className="text-[#64748b] text-[15px] mb-6" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                 {t.pricing.monthlySub}
               </div>
 
-              <button
-                className="w-full py-4.5 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold text-[17px] rounded-[14px] transition-all mt-8"
-                style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(249,115,22,0.35)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {t.pricing.claimButton} <ArrowRight className="inline h-4 w-4 ml-1" />
-              </button>
+              <div className="h-px my-6 bg-[#f1f5f9]" />
 
-              <div className="flex items-center justify-center gap-2 text-[#94a3b8] text-[13px] mt-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                <Lock className="h-4 w-4" />
-                {t.pricing.noPayment}
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="md:w-1/2 bg-[#f8fafc] rounded-[16px] p-8 border border-[#e2edf7]">
               <div className="text-xs font-bold tracking-widest text-[#94a3b8] mb-4">{t.pricing.includedTitle}</div>
               
               {t.pricing.features.map((item, index) => (
@@ -111,6 +148,27 @@ export const Pricing: React.FC = () => {
                   </span>
                 </div>
               ))}
+
+              <a
+                href="#contact"
+                className="block w-full py-4 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold text-[17px] rounded-[14px] transition-all mt-6 text-center"
+                style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(249,115,22,0.35)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                {t.pricing.claimButton} <ArrowRight className="inline h-4 w-4 ml-1" />
+              </a>
+
+              <div className="flex items-center justify-center gap-2 text-[#94a3b8] text-[13px] mt-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                <Lock className="h-4 w-4" />
+                {t.pricing.noPayment}
+              </div>
             </div>
           </div>
         </div>
