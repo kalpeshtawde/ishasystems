@@ -469,7 +469,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             {/* Card 2: Mavi Collision Center */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
+                <img src="/mcc/mcc_homepage_new.webp" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.home.delivered}</span>
               </div>
               <div className="p-5">
@@ -510,17 +510,11 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
           {/* Portfolio CTA */}
           <div className="text-center">
-            <h3 className="text-[#0f1f4d] font-bold text-xl mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              {t.home.portfolioCtaTitle}
-            </h3>
-            <p className="text-[#64748b] mb-6" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              {t.home.portfolioCtaSub}
-            </p>
             <button
-              onClick={() => setCurrentTab('contact')}
-              className="px-8 py-4 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-bold text-sm rounded-lg transition-all shadow-lg flex items-center gap-2 mx-auto"
+              onClick={() => setCurrentTab('portfolio')}
+              className="px-8 py-4 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-bold text-sm rounded-lg transition-all shadow-lg flex items-center gap-2 mx-auto"
             >
-              {t.home.startMySite} <ArrowRight className="h-4 w-4" />
+              View Portfolio <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>

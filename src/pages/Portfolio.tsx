@@ -59,7 +59,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             {/* Card 2: Mavi Collision Center */}
             <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" style={{ boxShadow: '0 4px 24px rgba(15,31,77,0.08)', border: '1px solid #e2edf7' }}>
               <div className="h-60 relative overflow-hidden">
-                <img src="/mcc/mcc_homepage.jpg" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
+                <img src="/mcc/mcc_homepage_new.webp" alt="Mavi Collision Center — affordable small business website designed by ISHA Systems LLC" loading="lazy" className="w-full h-full object-cover" />
                 <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">{t.portfolio.delivered}</span>
               </div>
               <div className="p-5">
@@ -131,9 +131,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ setCurrentTab }) => {
             >
               {t.portfolio.ctaButton}
             </button>
-            <p className="text-[#64748b] text-sm mt-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-              <a href="#contact" className="text-[#0ea5e9] font-semibold hover:text-[#f97316] transition-colors underline">{t.portfolio.linkGetWebsite}</a>
-            </p>
           </div>
         </div>
       </section>
