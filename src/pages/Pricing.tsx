@@ -63,7 +63,7 @@ export const Pricing: React.FC = () => {
               </h3>
               
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-[56px] font-black text-[#0ea5e9]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                <span className="text-[56px] font-black text-[#16A34A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
                   {t.pricing.starterPrice}
                 </span>
               </div>

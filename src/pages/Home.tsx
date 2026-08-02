@@ -95,13 +95,13 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   justifyContent: 'flex-start'
                 }}>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#64748b', marginBottom: '10px' }}>
-                    Website + Logo
+                    {t.home.heroCard1Title}
                   </div>
-                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#C84B2D', lineHeight: 1 }}>
-                    $49.99
+                  <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#16A34A', lineHeight: 1 }}>
+                    {t.home.heroCard1Price}
                   </div>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888', marginTop: '6px' }}>
-                    one-time
+                    {t.home.heroCard1Sub}
                   </div>
                 </div>
 
@@ -134,16 +134,19 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                     padding: '4px 10px',
                     borderRadius: '12px'
                   }}>
-                    Most Popular
+                    {t.home.heroCard2Badge}
                   </div>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', fontWeight: 600, color: '#64748b', marginBottom: '10px' }}>
-                    Complete Solution
+                    {t.home.heroCard2Title}
                   </div>
                   <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#0ea5e9', lineHeight: 1 }}>
                     $29.99
                   </div>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888', marginTop: '6px' }}>
                     {t.home.heroPricePerMo}
+                  </div>
+                  <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#888888', marginTop: '6px', lineHeight: 1.4 }}>
+                    {t.home.heroCard2Sub}
                   </div>
                 </div>
               </div>
@@ -170,7 +173,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                   e.currentTarget.style.background = 'transparent';
                 }}
               >
-                See Detailed Plans
+                {t.home.heroSeeDetailedPlans}
               </button>
             </div>
 
@@ -300,10 +303,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       <section 
         className="py-24"
         style={{ 
-          backgroundImage: 'url(/why-pay-more-bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          background: 'linear-gradient(135deg, #0f1f4d, #1a3a6b)'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
