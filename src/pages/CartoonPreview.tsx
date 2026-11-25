@@ -151,7 +151,7 @@ function Header({ route }: { route: string }) {
           <button type="button" onClick={() => goToSection('ni-personalize')}>
             Live Preview
           </button>
-          <button type="button" onClick={() => goToSection('ni-compare')}>
+          <button type="button" onClick={() => goToSection('ni-offers')}>
             Packs
           </button>
           <button

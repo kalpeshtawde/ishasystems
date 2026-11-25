@@ -648,37 +648,7 @@ export const NI_CSS = `
   text-underline-offset: 4px;
 }
 
-/* ---------------- Featured offer (homepage) ---------------- */
-
-.ni-pack-showcase {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  background: var(--ni-paper-light);
-  border: 2px solid var(--ni-ink);
-  border-radius: 12px;
-  padding: clamp(28px, 5vw, 48px);
-  box-shadow: var(--ni-shadow);
-}
-
-@media (min-width: 860px) {
-  .ni-pack-showcase {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-  }
-}
-
-/* Fanned mini-collage of sample cartoons from the pack. */
-.ni-pack-showcase__art {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-}
+/* ---------------- Fanned collage (shared) ---------------- */
 
 .ni-mini {
   position: absolute;
@@ -728,62 +698,36 @@ export const NI_CSS = `
   z-index: 3;
 }
 
-/* Offer info column. */
-.ni-pack-showcase__title {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  margin: 0 0 18px;
-}
-
-.ni-check {
-  list-style: none;
-  margin: 0 0 22px;
-  padding: 0;
+/* Fanned 3-card collage cycling the uploaded assets. */
+.ni-collage {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.ni-check li {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font-size: 1.02rem;
-  font-weight: 600;
-}
-
-.ni-check li::before {
-  content: '✓';
-  flex-shrink: 0;
-  font-weight: 800;
-  color: var(--ni-red);
-}
-
-.ni-pack-showcase__price {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(1.5rem, 3.4vw, 2rem);
-  margin: 0 0 22px;
-}
-
-.ni-pack-showcase__price span {
-  font-size: 0.55em;
-  font-weight: 600;
-  color: var(--ni-ink-soft);
-}
-
-.ni-pack-showcase__cta {
-  width: 100%;
+  align-items: center;
   justify-content: center;
+  min-height: 320px;
+  margin: 18px 0 10px;
 }
 
-@media (min-width: 860px) {
-  .ni-pack-showcase__cta {
-    width: auto;
-  }
+/* Sample custom domain engraved on the front frame's plaque. */
+.ni-plaque-tag {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 4%;
+  display: block;
+  padding: 3px 6px;
+  background: rgb(100, 69, 51);
+  border-radius: 2px;
+  color: #F6EFDF;
+  font-family: var(--ni-font-display);
+  font-weight: 600;
+  font-size: 0.6rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ---------------- Offer pages ---------------- */
@@ -805,15 +749,6 @@ export const NI_CSS = `
   text-decoration: underline;
   text-decoration-color: var(--ni-red);
   text-underline-offset: 4px;
-}
-
-.ni-offer__body {
-  max-width: 640px;
-  font-size: 1.1rem;
-}
-
-.ni-offer__body p {
-  margin: 0 0 18px;
 }
 
 .ni-offer__price {
@@ -844,60 +779,130 @@ export const NI_CSS = `
   font-size: 0.98rem;
 }
 
-/* ---------------- Pack detail hero (2-column) ---------------- */
+/* ---------------- Unified offer section ---------------- */
 
-.ni-pack-hero {
+.ni-offer-unified {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+  gap: 36px;
+  align-items: start;
 }
 
 @media (min-width: 920px) {
-  .ni-pack-hero {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 56px;
+  .ni-offer-unified {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 44px;
   }
 }
 
-/* Fanned 3-card collage cycling the uploaded assets. */
-.ni-collage {
+.ni-offer-primary__title {
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 6px;
+}
+
+/* Companion: all five funnel offers, stacked. */
+.ni-offer-companion {
+  background: var(--ni-paper-light);
+  border: 2px solid var(--ni-ink);
+  border-radius: 12px;
+  padding: 26px 22px;
+  box-shadow: var(--ni-shadow);
+}
+
+.ni-offer-companion__title {
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+
+.ni-offer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ni-offer-row {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-  margin-top: 34px;
-}
-
-.ni-mini__frame {
-  position: relative;
-  display: block;
+  flex-direction: column;
+  gap: 5px;
   background: #fff;
-  border: 1.5px solid var(--ni-line);
-  overflow: hidden;
+  border: 2px solid var(--ni-ink);
+  border-radius: 10px;
+  padding: 16px 18px;
+  color: var(--ni-ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Sample custom domain engraved on the front frame's plaque. */
-.ni-plaque-tag {
+a.ni-offer-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 rgba(38, 32, 26, 0.16);
+}
+
+.ni-offer-row--active {
+  border: 3px solid var(--ni-ink);
+  background: #FBF3D6;
+}
+
+.ni-offer-row__badge {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 4%;
-  display: block;
-  padding: 3px 6px;
-  background: rgb(100, 69, 51);
-  border-radius: 2px;
-  color: #F6EFDF;
+  top: -13px;
+  right: 14px;
+  background: var(--ni-ink);
+  color: var(--ni-paper-light);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  transform: rotate(2deg);
+}
+
+.ni-offer-row__name {
   font-family: var(--ni-font-display);
+  font-weight: 700;
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.ni-offer-row__domain {
+  align-self: flex-start;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ni-red);
+  border: 1.5px solid var(--ni-red);
+  border-radius: 999px;
+  padding: 2px 10px;
+  background: rgba(228, 87, 46, 0.06);
+}
+
+.ni-offer-row__price {
+  font-size: 0.92rem;
   font-weight: 600;
-  font-size: 0.6rem;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--ni-ink-soft);
+}
+
+.ni-offer-row__hint {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ni-ink-soft);
+}
+
+.ni-offer-row__go {
+  font-weight: 700;
+  color: var(--ni-red);
+  font-size: 0.92rem;
 }
 
 /* ---------------- Pricing & customization card ---------------- */
@@ -905,93 +910,94 @@ export const NI_CSS = `
 .ni-price-card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   background: #fff;
   border: 2px solid var(--ni-ink);
   border-radius: 12px;
-  padding: 30px 28px;
+  padding: 28px 26px;
   box-shadow: var(--ni-shadow);
 }
 
-.ni-price-card__retail {
-  margin: 0;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ni-ink-soft);
+/* Standard vs. branded selector. */
+.ni-mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: var(--ni-paper);
+  border: 2px solid var(--ni-ink);
+  border-radius: 12px;
+  padding: 6px;
 }
 
-.ni-price-card__base {
+.ni-mode-toggle button {
+  font-family: var(--ni-font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ni-ink-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 8px;
+  line-height: 1.2;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ni-mode-toggle button.is-selected {
+  background: var(--ni-ink);
+  color: var(--ni-paper-light);
+}
+
+/* Itemized pricing breakdown. */
+.ni-breakdown {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 2px solid var(--ni-line);
+}
+
+.ni-breakdown__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ni-line);
+}
+
+.ni-breakdown__row dt {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.ni-breakdown__row dd {
   margin: 0;
   font-family: var(--ni-font-display);
   font-weight: 900;
-  font-size: 2.6rem;
-  line-height: 1;
+  font-size: 1.15rem;
+  white-space: nowrap;
 }
 
-.ni-price-card__base span {
-  font-family: var(--ni-font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
+.ni-breakdown__note {
+  grid-column: 1 / -1;
+  font-size: 0.84rem;
   color: var(--ni-ink-soft);
-}
-
-.ni-url-toggle {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.98rem;
-  font-weight: 600;
-  cursor: pointer;
   margin-top: 4px;
 }
 
-.ni-url-toggle input {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--ni-red);
-  margin: 2px 0 0;
-  flex-shrink: 0;
+.ni-breakdown__row--total {
+  border-bottom: 0;
+  padding-top: 14px;
 }
 
-.ni-url-input {
-  font-family: var(--ni-font-body);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--ni-ink);
-  background: var(--ni-paper);
-  border: 2px solid var(--ni-ink);
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-
-.ni-url-input:focus-visible {
-  outline: 3px solid var(--ni-blue);
-  outline-offset: 2px;
-}
-
-.ni-price-card__total {
-  margin: 4px 0 0;
-  font-size: 1.02rem;
-  font-weight: 600;
-  color: var(--ni-ink-soft);
-}
-
-.ni-price-card__total strong {
+.ni-breakdown__row--total dt {
   font-family: var(--ni-font-display);
   font-weight: 900;
-  font-size: 1.7rem;
-  color: var(--ni-ink);
-  margin-left: 6px;
+  font-size: 1.02rem;
 }
 
-.ni-price-card__fee {
-  display: block;
-  font-size: 0.84rem;
+.ni-breakdown__row--total dd {
+  font-size: 1.5rem;
   color: var(--ni-red);
-  font-weight: 700;
-  margin-top: 2px;
 }
 
 .ni-price-card__cta {
@@ -1021,109 +1027,6 @@ export const NI_CSS = `
   content: '✓';
   flex-shrink: 0;
   font-weight: 800;
-  color: var(--ni-red);
-}
-
-/* ---------------- Compare all 5 offers ---------------- */
-
-.ni-section--others {
-  background: var(--ni-paper-deep);
-  border-top: 2px solid var(--ni-ink);
-  max-width: none;
-}
-
-.ni-section--others > * {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ni-others__title {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
-  letter-spacing: -0.02em;
-  margin: 0 0 26px;
-}
-
-.ni-compare {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 18px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ni-compare-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  height: 100%;
-  background: var(--ni-paper-light);
-  border: 2px solid var(--ni-ink);
-  border-radius: 10px;
-  padding: 20px 18px;
-  color: var(--ni-ink);
-  text-decoration: none;
-  box-shadow: var(--ni-shadow);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-a.ni-compare-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 8px 8px 0 rgba(38, 32, 26, 0.18);
-}
-
-.ni-compare-card--active {
-  border: 3px solid var(--ni-red);
-  background: #FBF3D6;
-}
-
-.ni-compare-card__flag {
-  position: absolute;
-  top: -13px;
-  right: 12px;
-  background: var(--ni-red);
-  color: var(--ni-paper-light);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 999px;
-  border: 2px solid var(--ni-ink);
-  transform: rotate(2deg);
-}
-
-.ni-compare-card__label {
-  font-family: var(--ni-font-display);
-  font-weight: 700;
-  font-size: 1.12rem;
-  line-height: 1.2;
-}
-
-.ni-compare-card__domain {
-  align-self: flex-start;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--ni-red);
-  border: 1.5px solid var(--ni-red);
-  border-radius: 999px;
-  padding: 3px 10px;
-  background: rgba(228, 87, 46, 0.06);
-}
-
-.ni-compare-card__price {
-  margin-top: auto;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ni-ink-soft);
-}
-
-.ni-compare-card__go {
-  font-weight: 700;
   color: var(--ni-red);
 }
 
@@ -1315,7 +1218,7 @@ a.ni-compare-card:hover {
   .ni-root .ni-nav button,
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
-  .ni-root .ni-compare-card,
+  .ni-root .ni-offer-row,
   .ni-root .ni-mini,
   .ni-root .ni-pill {
     transition: none;

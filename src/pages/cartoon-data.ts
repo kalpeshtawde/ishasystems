@@ -65,6 +65,8 @@ export interface PackPricing {
   basePrice: number;
   /** USD fee for engraving the buyer's custom domain on every cartoon. */
   urlFee: number;
+  /** Per-cartoon URL fee (urlFee / size), shown in the itemized breakdown. */
+  urlFeePerCartoon: number;
   /** basePrice + urlFee. */
   totalWithUrl: number;
   /** Funnel vanity-URL badge shown on the offer card. */
@@ -76,10 +78,10 @@ export const RETAIL_PER_CARTOON = 100;
 
 /** Per-pack pricing — the interactive total calculator reads from here. */
 export const PACK_PRICING: Record<number, PackPricing> = {
-  10: { size: 10, basePrice: 10, urlFee: 100, totalWithUrl: 110, vanityDomain: 'nearinsanitypics.com' },
-  20: { size: 20, basePrice: 20, urlFee: 400, totalWithUrl: 420, vanityDomain: 'nearinsanitytoons.com' },
-  30: { size: 30, basePrice: 30, urlFee: 900, totalWithUrl: 930, vanityDomain: 'nearinsanitycomics.com' },
-  50: { size: 50, basePrice: 50, urlFee: 2500, totalWithUrl: 2550, vanityDomain: 'nearinsanitygallery.com' },
+  10: { size: 10, basePrice: 10, urlFee: 100, urlFeePerCartoon: 10, totalWithUrl: 110, vanityDomain: 'nearinsanitypics.com' },
+  20: { size: 20, basePrice: 20, urlFee: 400, urlFeePerCartoon: 20, totalWithUrl: 420, vanityDomain: 'nearinsanitynow.com' },
+  30: { size: 30, basePrice: 30, urlFee: 900, urlFeePerCartoon: 30, totalWithUrl: 930, vanityDomain: 'nearinsanitymagic.com' },
+  50: { size: 50, basePrice: 50, urlFee: 2500, urlFeePerCartoon: 50, totalWithUrl: 2550, vanityDomain: 'nearinsanity4u.com' },
 };
 
 /** Membership — Bob's proposed monthly price (details pending). */
@@ -88,7 +90,7 @@ export const MEMBERSHIP_PRICE = 25;
 export interface Offer {
   key: string; // 'packs/10' | 'packs/20' | 'packs/30' | 'packs/50' | 'membership'
   label: string; // page heading
-  compareLabel: string; // label used in the "Compare All 5" grid
+  offerName: string; // marketing name used in the offer list / panels
   href: string;
   size?: number; // pack size for pack offers
   blurb: string;
@@ -103,7 +105,7 @@ export const OFFERS: Offer[] = [
   {
     key: 'packs/10',
     label: '10-Cartoon Pack',
-    compareLabel: 'Starter Pack (10 Cartoons)',
+    offerName: '10-Cartoon Starter Pack',
     href: '/cartoon-preview/packs/10',
     size: 10,
     blurb: 'The proposed starting pack — a starter set of Bob’s best cartoons.',
@@ -114,7 +116,7 @@ export const OFFERS: Offer[] = [
   {
     key: 'packs/20',
     label: '20-Cartoon Pack',
-    compareLabel: '20-Cartoon Pack',
+    offerName: '20-Cartoon Growth Pack',
     href: '/cartoon-preview/packs/20',
     size: 20,
     blurb: 'A deeper run through the favourites.',
@@ -125,7 +127,7 @@ export const OFFERS: Offer[] = [
   {
     key: 'packs/30',
     label: '30-Cartoon Pack',
-    compareLabel: '30-Cartoon Pack',
+    offerName: '30-Cartoon Pro Pack',
     href: '/cartoon-preview/packs/30',
     size: 30,
     blurb: 'A solid wall of absurdity.',
@@ -136,7 +138,7 @@ export const OFFERS: Offer[] = [
   {
     key: 'packs/50',
     label: '50-Cartoon Pack',
-    compareLabel: '50-Cartoon Pack',
+    offerName: '50-Cartoon Agency Pack',
     href: '/cartoon-preview/packs/50',
     size: 50,
     blurb: 'The near-complete shared catalog.',
@@ -147,10 +149,10 @@ export const OFFERS: Offer[] = [
   {
     key: 'membership',
     label: 'Membership',
-    compareLabel: 'Membership',
+    offerName: 'All-Access Membership',
     href: '/cartoon-preview/membership',
     blurb: 'Ongoing access to the catalog — $25/month proposed.',
-    vanityDomain: 'nearinsanityclub.com',
+    vanityDomain: 'nearinsanity.com',
     monthlyPrice: MEMBERSHIP_PRICE,
   },
 ];
