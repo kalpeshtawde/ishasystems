@@ -219,6 +219,19 @@ export const NI_CSS = `
   padding-top: clamp(72px, 10vw, 140px);
 }
 
+/* Match the offer card container (1120px) so headings align with the card. */
+.ni-section--band .ni-page-head__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.ni-page-head__pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .ni-section--band {
   background: var(--ni-paper-light);
   border-top: 2px solid var(--ni-ink);
@@ -648,67 +661,6 @@ export const NI_CSS = `
   text-underline-offset: 4px;
 }
 
-/* ---------------- Fanned collage (shared) ---------------- */
-
-.ni-mini {
-  position: absolute;
-  display: block;
-  width: 58%;
-  max-width: 240px;
-  background: var(--ni-paper-light);
-  border: 2px solid var(--ni-ink);
-  border-radius: 6px;
-  padding: 8px;
-  box-shadow: var(--ni-shadow);
-  transition: transform 0.18s ease;
-}
-
-.ni-mini__frame {
-  position: relative;
-  display: block;
-  background: #fff;
-  border: 1.5px solid var(--ni-line);
-  overflow: hidden;
-}
-
-.ni-mini__frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.ni-mini--1 {
-  transform: rotate(-5deg) translate(-14%, 4%);
-  z-index: 1;
-}
-
-.ni-mini--2 {
-  transform: rotate(0deg) translate(0, -6%);
-  z-index: 2;
-}
-
-.ni-mini--3 {
-  transform: rotate(5deg) translate(14%, 6%);
-  z-index: 1;
-}
-
-.ni-mini:hover {
-  transform: rotate(0deg) translate(0, -2%);
-  z-index: 3;
-}
-
-/* Fanned 3-card collage cycling the uploaded assets. */
-.ni-collage {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 320px;
-  margin: 18px 0 10px;
-}
-
 /* Sample custom domain engraved on the front frame's plaque. */
 .ni-plaque-tag {
   position: absolute;
@@ -716,14 +668,14 @@ export const NI_CSS = `
   right: 10%;
   bottom: 4%;
   display: block;
-  padding: 3px 6px;
+  padding: 3px 7px;
   background: rgb(100, 69, 51);
   border-radius: 2px;
   color: #F6EFDF;
   font-family: var(--ni-font-display);
   font-weight: 600;
-  font-size: 0.6rem;
-  line-height: 1.1;
+  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+  line-height: 1.15;
   letter-spacing: 0.02em;
   text-align: center;
   white-space: nowrap;
@@ -846,27 +798,20 @@ export const NI_CSS = `
   color: var(--ni-red);
 }
 
-/* ---------------- Main offer card (zero nested boxes) ---------------- */
+/* ---------------- Main offer card (single column, big art) ---------------- */
 
 .ni-offer-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
   border-radius: 14px;
-  padding: clamp(28px, 5vw, 48px);
+  padding: clamp(26px, 4vw, 40px);
   box-shadow: var(--ni-shadow);
 }
 
-@media (min-width: 920px) {
-  .ni-offer-card {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 48px;
-  }
-}
-
-.ni-offer-card__left {
+.ni-offer-card__top {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -896,14 +841,74 @@ export const NI_CSS = `
   margin: 0;
   color: var(--ni-ink-soft);
   font-size: 1.02rem;
-  max-width: 46ch;
+  max-width: 52ch;
 }
 
-.ni-offer-card__right {
+/* Large 2×2 artwork showcase — the primary selling point. */
+.ni-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 100%;
+  margin: 6px 0 2px;
+}
+
+.ni-showcard {
+  display: block;
+  background: var(--ni-paper-light);
+  border: 2px solid var(--ni-ink);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: var(--ni-shadow);
+  transition: transform 0.18s ease;
+}
+
+.ni-showcard__frame {
+  position: relative;
+  display: block;
+  background: #fff;
+  border: 1.5px solid var(--ni-line);
+  overflow: hidden;
+}
+
+.ni-showcard__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.ni-showcard--1 { transform: rotate(-1.5deg); }
+.ni-showcard--2 { transform: rotate(1deg); }
+.ni-showcard--3 { transform: rotate(0.8deg); }
+.ni-showcard--4 { transform: rotate(-0.8deg); }
+
+.ni-showcard:hover {
+  transform: rotate(0deg);
+  z-index: 2;
+}
+
+/* Bottom row: pricing & CTA alongside license checkmarks. */
+.ni-offer-card__bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  border-top: 2px solid var(--ni-line);
+  padding-top: 24px;
+}
+
+@media (min-width: 900px) {
+  .ni-offer-card__bottom {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+.ni-offer-card__pricing {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  justify-content: center;
+  gap: 14px;
 }
 
 /* With Your Website URL vs. Unbranded Pack selector. */
@@ -964,13 +969,11 @@ export const NI_CSS = `
 
 .ni-license {
   list-style: none;
-  margin: 6px 0 0;
-  padding: 12px 0 0;
-  border-top: 2px solid var(--ni-line);
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 100%;
+  gap: 10px;
 }
 
 .ni-license li {
@@ -1196,7 +1199,7 @@ export const NI_CSS = `
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
   .ni-root .ni-offer-rail__item,
-  .ni-root .ni-mini,
+  .ni-root .ni-showcard,
   .ni-root .ni-pill {
     transition: none;
   }

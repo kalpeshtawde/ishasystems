@@ -304,28 +304,25 @@ export function GalleryPage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Simplified offer section: tier switcher + clean 2-column card       */
+/* Simplified offer section: tier rail + clean card                    */
 /* ------------------------------------------------------------------ */
 
-/** Fanned 3-card collage cycling the four uploaded cartoon assets. */
-function CollageFan({ cycleStart, frontUrl }: { cycleStart: number; frontUrl: string }) {
+/** Large 2×2 showcase of all four uploaded cartoon assets. */
+function ArtShowcase() {
   const [resolved, setResolved] = useState<Record<string, Resolution>>({});
-  const collage = [0, 1, 2].map(
-    (k) => COLLAGE_ASSETS[(cycleStart + k) % COLLAGE_ASSETS.length],
-  );
   const handleImgError = (cartoon: Cartoon) => {
     setResolved((prev) => advanceResolution(prev, cartoon.id));
   };
   return (
-    <div className="ni-collage" aria-hidden="true">
-      {collage.map((cartoon, i) => (
+    <div className="ni-showcase" aria-hidden="true">
+      {COLLAGE_ASSETS.map((cartoon, i) => (
         <a
           key={cartoon.id}
-          className={`ni-mini ni-mini--${i + 1}${i === 1 ? ' ni-mini--front' : ''}`}
+          className={`ni-showcard ni-showcard--${i + 1}`}
           href="/cartoon-preview/gallery"
           tabIndex={-1}
         >
-          <span className="ni-mini__frame">
+          <span className="ni-showcard__frame">
             {isMissing(cartoon, resolved) ? (
               <ArtworkPlaceholder cartoon={cartoon} />
             ) : (
@@ -335,7 +332,7 @@ function CollageFan({ cycleStart, frontUrl }: { cycleStart: number; frontUrl: st
                 onError={() => handleImgError(cartoon)}
               />
             )}
-            {i === 1 && <span className="ni-plaque-tag">{frontUrl}</span>}
+            {i === 0 && <span className="ni-plaque-tag">yourbusiness.com</span>}
           </span>
         </a>
       ))}
@@ -393,7 +390,7 @@ function OfferCard({ activeKey }: { activeKey: string }) {
   if (offer.size == null) {
     return (
       <div className="ni-offer-card">
-        <div className="ni-offer-card__left">
+        <div className="ni-offer-card__top">
           <span className="ni-funnel-badge">{offer.vanityDomain}</span>
           <h2 className="ni-offer-card__title">{offer.offerName}</h2>
           <p className="ni-offer-card__desc">
@@ -404,73 +401,79 @@ function OfferCard({ activeKey }: { activeKey: string }) {
             Lifetime pricing and specific benefits are left open for now.
           </p>
         </div>
-        <div className="ni-offer-card__right">
-          <p className="ni-price-display">
-            ${offer.monthlyPrice}<span>/month</span>
-          </p>
-          <p className="ni-price-sub">Bob&rsquo;s proposed price for All-Access Membership.</p>
-          <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
-            Get Membership — ${offer.monthlyPrice}/mo <span aria-hidden="true">→</span>
-          </a>
+        <div className="ni-offer-card__bottom">
+          <div className="ni-offer-card__pricing">
+            <p className="ni-price-display">
+              ${offer.monthlyPrice}<span>/month</span>
+            </p>
+            <p className="ni-price-sub">Bob&rsquo;s proposed price for All-Access Membership.</p>
+            <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
+              Get Membership — ${offer.monthlyPrice}/mo <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     );
   }
 
   const pricing = PACK_PRICING[offer.size];
-  const cycleStart = OFFERS.findIndex((o) => o.size === offer.size); // 0..3
   const basePerCartoon = pricing.basePrice / pricing.size;
   const total = branded ? pricing.totalWithUrl : pricing.basePrice;
 
   return (
     <div className="ni-offer-card">
-      <div className="ni-offer-card__left">
+      {/* Top row: heading + large 2×2 artwork showcase */}
+      <div className="ni-offer-card__top">
         <span className="ni-funnel-badge">{offer.vanityDomain}</span>
         <h2 className="ni-offer-card__title">{offer.offerName}</h2>
         <p className="ni-offer-card__desc">{offer.blurb}</p>
-        <CollageFan cycleStart={cycleStart} frontUrl="yourbusiness.com" />
+        <ArtShowcase />
+      </div>
+
+      {/* Bottom row: pricing & CTA alongside license checkmarks */}
+      <div className="ni-offer-card__bottom">
+        <div className="ni-offer-card__pricing">
+          <div className="ni-mode-toggle" role="radiogroup" aria-label="Pack version">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={branded}
+              className={branded ? 'is-selected' : ''}
+              onClick={() => setBranded(true)}
+            >
+              With Your Website URL
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={!branded}
+              className={!branded ? 'is-selected' : ''}
+              onClick={() => setBranded(false)}
+            >
+              Unbranded Pack
+            </button>
+          </div>
+
+          <p className="ni-price-display">${total.toLocaleString()}</p>
+          <p className="ni-price-sub">
+            {branded
+              ? `Includes $${pricing.basePrice} for ${pricing.size} cartoons + $${pricing.urlFee.toLocaleString()} URL branding ($${pricing.urlFeePerCartoon}/cartoon)`
+              : `$${basePerCartoon} per cartoon · Standard shared catalog without custom URL`}
+          </p>
+
+          <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
+            {branded
+              ? `Get Branded Pack — $${pricing.totalWithUrl.toLocaleString()}`
+              : `Get Unbranded Pack — $${pricing.basePrice}`}{' '}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
         <ul className="ni-license">
           <li>Commercial rights for ads, social &amp; print</li>
           <li>Instant high-res download</li>
           <li>Pick your cartoons or use curated set</li>
         </ul>
-      </div>
-
-      <div className="ni-offer-card__right">
-        <div className="ni-mode-toggle" role="radiogroup" aria-label="Pack version">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={branded}
-            className={branded ? 'is-selected' : ''}
-            onClick={() => setBranded(true)}
-          >
-            With Your Website URL
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={!branded}
-            className={!branded ? 'is-selected' : ''}
-            onClick={() => setBranded(false)}
-          >
-            Unbranded Pack
-          </button>
-        </div>
-
-        <p className="ni-price-display">${total.toLocaleString()}</p>
-        <p className="ni-price-sub">
-          {branded
-            ? `Includes $${pricing.basePrice} for ${pricing.size} cartoons + $${pricing.urlFee.toLocaleString()} URL branding ($${pricing.urlFeePerCartoon}/cartoon)`
-            : `$${basePerCartoon} per cartoon · Standard shared catalog without custom URL`}
-        </p>
-
-        <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
-          {branded
-            ? `Get Branded Pack — $${pricing.totalWithUrl.toLocaleString()}`
-            : `Get Unbranded Pack — $${pricing.basePrice}`}{' '}
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
     </div>
   );
@@ -516,11 +519,16 @@ export function PackOfferPage({ size }: { size: number }) {
   return (
     <>
       <section className="ni-section ni-section--band ni-page-head">
-        <span className="ni-kicker">Cartoon pack</span>
-        <h1 className="ni-offer__title">{size}-Cartoon Pack</h1>
-        <a className="ni-offer__gallery-link" href="/cartoon-preview/gallery">
-          Browse the shared gallery →
-        </a>
+        <div className="ni-page-head__inner">
+          <div className="ni-page-head__pills">
+            <span className="ni-kicker">Cartoon pack</span>
+            <span className="ni-funnel-badge">{offer.vanityDomain}</span>
+          </div>
+          <h1 className="ni-offer__title">{size}-Cartoon Pack</h1>
+          <a className="ni-offer__gallery-link" href="/cartoon-preview/gallery">
+            Browse the shared gallery →
+          </a>
+        </div>
       </section>
       <OfferSection activeKey={offer.key} />
     </>
@@ -538,11 +546,16 @@ export function OfferPage({ route }: { route: string }) {
   return (
     <>
       <section className="ni-section ni-section--band ni-page-head">
-        <span className="ni-kicker">Membership</span>
-        <h1 className="ni-offer__title">Membership</h1>
-        <a className="ni-offer__gallery-link" href="/cartoon-preview/gallery">
-          Browse the shared gallery →
-        </a>
+        <div className="ni-page-head__inner">
+          <div className="ni-page-head__pills">
+            <span className="ni-kicker">Membership</span>
+            <span className="ni-funnel-badge">{offer.vanityDomain}</span>
+          </div>
+          <h1 className="ni-offer__title">Membership</h1>
+          <a className="ni-offer__gallery-link" href="/cartoon-preview/gallery">
+            Browse the shared gallery →
+          </a>
+        </div>
       </section>
       <OfferSection activeKey="membership" />
     </>
