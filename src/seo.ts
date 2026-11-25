@@ -161,6 +161,18 @@ function setHeadTag(selector: string, attr: 'content' | 'href', value: string) {
   el.setAttribute(attr, value);
 }
 
+/** Points the site icon at a specific SVG (used to swap in the Near Insanity favicon). */
+function setFavicon(href: string) {
+  let link = document.head.querySelector<HTMLLinkElement>('link[rel="icon"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'icon';
+    document.head.appendChild(link);
+  }
+  link.type = 'image/svg+xml';
+  link.href = href;
+}
+
 /**
  * Replaces (or creates) a hreflang alternate <link>. We key it by hreflang so
  * each language/x-default gets exactly one entry.
@@ -273,6 +285,10 @@ export function applySeo(tab: string, lang: Lang) {
   // Core tags
   document.title = seo.title;
   setHeadTag('meta[name="description"]', 'content', seo.description);
+  // Restore crawlability after demo-only routes (e.g. near-insanity-preview)
+  // set noindex, and restore the main site favicon.
+  setHeadTag('meta[name="robots"]', 'content', 'index, follow');
+  setFavicon('/favicon.svg');
   setHeadTag('link[rel="canonical"]', 'href', url);
 
   // Open Graph
@@ -304,4 +320,39 @@ export function applySeo(tab: string, lang: Lang) {
 
   // Structured data
   injectJsonLd(lang);
+}
+
+/**
+ * SEO for the standalone "Near Insanity" concept preview route
+ * (hash: #near-insanity-preview, or the path /near-insanity-preview with SPA
+ * fallback; the legacy hash #cartoon-preview is treated as an alias).
+ *
+ * This is a client-facing prototype, so it must never be indexed: we set
+ * noindex, remove the crawlable signals applySeo manages for the main site
+ * (canonical, hreflang, OG/Twitter, JSON-LD), swap in demo-only metadata, and
+ * point the favicon at the Near Insanity winged toaster.
+ * applySeo() restores everything for the regular pages when leaving this route.
+ */
+export function applyNearInsanityPreviewSeo() {
+  document.documentElement.lang = 'en';
+  document.title =
+    'Near Insanity — Digital Cartoons by Bob Johnson | Concept Preview';
+  setHeadTag(
+    'meta[name="description"]',
+    'content',
+    'Concept preview of Near Insanity, Bob Johnson’s digital cartoon storefront — from strange everyday moments to rock-and-roll chaos.',
+  );
+  setHeadTag('meta[name="robots"]', 'content', 'noindex, nofollow');
+  setFavicon('/near-insanity-preview/favicon.svg');
+
+  // Strip main-site crawl signals so nothing leaks into (or out of) the demo.
+  [
+    'link[rel="canonical"]',
+    'link[rel="alternate"]',
+    'meta[property^="og:"]',
+    'meta[name^="twitter:"]',
+    'script#seo-jsonld-professional-service',
+  ].forEach((selector) => {
+    document.head.querySelectorAll(selector).forEach((el) => el.remove());
+  });
 }

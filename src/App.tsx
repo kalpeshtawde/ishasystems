@@ -8,24 +8,42 @@ import { Pricing } from './pages/Pricing';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { Unsubscribe } from './pages/Unsubscribe';
+import { CartoonPreview } from './pages/CartoonPreview';
 import { useLanguage } from './i18n';
-import { applySeo } from './seo';
+import { applySeo, applyNearInsanityPreviewSeo } from './seo';
+
+/** Route key for the standalone Near Insanity concept preview. */
+const PREVIEW_TAB = 'near-insanity-preview';
+
+/** Legacy hash (#cartoon-preview) still renders the preview as an alias. */
+const isPreviewTab = (tab: string) =>
+  tab === PREVIEW_TAB || tab === 'cartoon-preview';
 
 function App() {
   // Active UI language (en / es) drives localized <head> metadata.
   const { lang } = useLanguage();
 
-  // Local state manager to drive sub-page routing without heavy multi-router bundles
-  const [currentTab, setCurrentTab] = useState<string>('home');
-
-  // Sync URL hash with current tab
-  useEffect(() => {
+  // Local state manager to drive sub-page routing without heavy multi-router bundles.
+  // Initialized lazily from the URL so deep links work on first paint. The Near
+  // Insanity preview is a hash route by convention (#near-insanity-preview), but
+  // it also answers to the clean path /near-insanity-preview in environments
+  // with SPA fallback (e.g. the nginx try_files rule) so it can be opened
+  // directly either way.
+  const [currentTab, setCurrentTab] = useState<string>(() => {
     const hash = window.location.hash.replace('#', '') || 'home';
-    setCurrentTab(hash);
-  }, []);
+    const previewPath =
+      window.location.pathname === '/near-insanity-preview' ||
+      window.location.pathname === '/cartoon-preview';
+    return hash === 'home' && previewPath ? PREVIEW_TAB : hash;
+  });
 
   // Keep document head metadata in sync with the active tab and language
   useEffect(() => {
+    if (isPreviewTab(currentTab)) {
+      // Demo-only route: noindex + its own title/description/favicon (see seo.ts).
+      applyNearInsanityPreviewSeo();
+      return;
+    }
     applySeo(currentTab, lang);
   }, [currentTab, lang]);
 
@@ -65,6 +83,13 @@ function App() {
         return <Home setCurrentTab={handleTabChange} />;
     }
   };
+
+  // Standalone concept preview for Bob Johnson's cartoon storefront.
+  // Rendered outside the ISHA chrome (no top bar, navbar, or footer) with its
+  // own layout, typography, and scoped styles.
+  if (isPreviewTab(currentTab)) {
+    return <CartoonPreview />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#F1F6F9]">

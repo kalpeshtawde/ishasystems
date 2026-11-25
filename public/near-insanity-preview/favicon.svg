@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Near Insanity winged toaster">
+  <!-- Simplified winged toaster silhouette (three-quarter view), inspired by
+       Bob Johnson's "Too Much to Dream" cartoon. Dark ink silhouette with a
+       single burnt-orange toast accent. -->
+  <!-- wings -->
+  <path d="M12 34 C 3 30, 0 20, 6 10 C 10 14, 12 23, 14 30 Z" fill="#26201A"/>
+  <path d="M54 30 C 60 27, 63 20, 60 13 C 57 17, 55 23, 54 27 Z" fill="#26201A"/>
+  <!-- body silhouette (top + front + right faces) -->
+  <path d="M14 32 L 26 22 H 58 V 52 L 48 62 Q 48 62 42 62 H 20 Q 14 62 14 56 Z" fill="#26201A"/>
+  <!-- burnt-orange toast -->
+  <rect x="27" y="6" width="15" height="16" rx="3" transform="rotate(5 34.5 14)" fill="#E4572E"/>
+</svg>
