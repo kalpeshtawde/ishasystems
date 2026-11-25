@@ -694,6 +694,7 @@ export const NI_CSS = `
 }
 
 .ni-mini__frame {
+  position: relative;
   display: block;
   background: #fff;
   border: 1.5px solid var(--ni-line);
@@ -843,7 +844,187 @@ export const NI_CSS = `
   font-size: 0.98rem;
 }
 
-/* ---------------- Explore other offers ---------------- */
+/* ---------------- Pack detail hero (2-column) ---------------- */
+
+.ni-pack-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 920px) {
+  .ni-pack-hero {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+  }
+}
+
+/* Fanned 3-card collage cycling the uploaded assets. */
+.ni-collage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  margin-top: 34px;
+}
+
+.ni-mini__frame {
+  position: relative;
+  display: block;
+  background: #fff;
+  border: 1.5px solid var(--ni-line);
+  overflow: hidden;
+}
+
+/* Sample custom domain engraved on the front frame's plaque. */
+.ni-plaque-tag {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 4%;
+  display: block;
+  padding: 3px 6px;
+  background: rgb(100, 69, 51);
+  border-radius: 2px;
+  color: #F6EFDF;
+  font-family: var(--ni-font-display);
+  font-weight: 600;
+  font-size: 0.6rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------------- Pricing & customization card ---------------- */
+
+.ni-price-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fff;
+  border: 2px solid var(--ni-ink);
+  border-radius: 12px;
+  padding: 30px 28px;
+  box-shadow: var(--ni-shadow);
+}
+
+.ni-price-card__retail {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ni-ink-soft);
+}
+
+.ni-price-card__base {
+  margin: 0;
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.ni-price-card__base span {
+  font-family: var(--ni-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ni-ink-soft);
+}
+
+.ni-url-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.ni-url-toggle input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--ni-red);
+  margin: 2px 0 0;
+  flex-shrink: 0;
+}
+
+.ni-url-input {
+  font-family: var(--ni-font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ni-ink);
+  background: var(--ni-paper);
+  border: 2px solid var(--ni-ink);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.ni-url-input:focus-visible {
+  outline: 3px solid var(--ni-blue);
+  outline-offset: 2px;
+}
+
+.ni-price-card__total {
+  margin: 4px 0 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ni-ink-soft);
+}
+
+.ni-price-card__total strong {
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: 1.7rem;
+  color: var(--ni-ink);
+  margin-left: 6px;
+}
+
+.ni-price-card__fee {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--ni-red);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.ni-price-card__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.ni-license {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 14px 0 0;
+  border-top: 2px solid var(--ni-line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ni-license li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.ni-license li::before {
+  content: '✓';
+  flex-shrink: 0;
+  font-weight: 800;
+  color: var(--ni-red);
+}
+
+/* ---------------- Compare all 5 offers ---------------- */
 
 .ni-section--others {
   background: var(--ni-paper-deep);
@@ -865,50 +1046,83 @@ export const NI_CSS = `
   margin: 0 0 26px;
 }
 
-.ni-others {
+.ni-compare {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.ni-other-link {
+.ni-compare-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   height: 100%;
   background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
-  border-radius: 8px;
-  padding: 20px 22px;
+  border-radius: 10px;
+  padding: 20px 18px;
   color: var(--ni-ink);
   text-decoration: none;
   box-shadow: var(--ni-shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.ni-other-link:hover {
+a.ni-compare-card:hover {
   transform: translateY(-3px);
   box-shadow: 8px 8px 0 rgba(38, 32, 26, 0.18);
 }
 
-.ni-other-link__label {
+.ni-compare-card--active {
+  border: 3px solid var(--ni-red);
+  background: #FBF3D6;
+}
+
+.ni-compare-card__flag {
+  position: absolute;
+  top: -13px;
+  right: 12px;
+  background: var(--ni-red);
+  color: var(--ni-paper-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--ni-ink);
+  transform: rotate(2deg);
+}
+
+.ni-compare-card__label {
   font-family: var(--ni-font-display);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   line-height: 1.2;
 }
 
-.ni-other-link__blurb {
-  margin: 0;
+.ni-compare-card__domain {
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ni-red);
+  border: 1.5px solid var(--ni-red);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: rgba(228, 87, 46, 0.06);
+}
+
+.ni-compare-card__price {
+  margin-top: auto;
   font-size: 0.9rem;
+  font-weight: 600;
   color: var(--ni-ink-soft);
 }
 
-.ni-other-link__go {
-  margin-top: auto;
+.ni-compare-card__go {
   font-weight: 700;
   color: var(--ni-red);
 }
@@ -1101,7 +1315,7 @@ export const NI_CSS = `
   .ni-root .ni-nav button,
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
-  .ni-root .ni-other-link,
+  .ni-root .ni-compare-card,
   .ni-root .ni-mini,
   .ni-root .ni-pill {
     transition: none;

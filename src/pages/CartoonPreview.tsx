@@ -151,11 +151,8 @@ function Header({ route }: { route: string }) {
           <button type="button" onClick={() => goToSection('ni-personalize')}>
             Live Preview
           </button>
-          <button
-            type="button"
-            onClick={() => window.location.assign('/cartoon-preview/packs/10')}
-          >
-            10-Cartoon Pack
+          <button type="button" onClick={() => goToSection('ni-compare')}>
+            Packs
           </button>
           <button
             type="button"
