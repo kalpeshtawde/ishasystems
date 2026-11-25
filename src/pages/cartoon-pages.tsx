@@ -344,32 +344,42 @@ function CollageFan({ cycleStart, frontUrl }: { cycleStart: number; frontUrl: st
 }
 
 function tierPillLabel(o: Offer) {
-  return o.size != null ? `${o.size} Cartoons` : `Membership · $${o.monthlyPrice}/mo`;
+  return o.size != null ? `${o.size} Cartoons` : 'Membership';
+}
+
+function tierPriceLine(o: Offer) {
+  return o.size != null
+    ? `$${o.basePrice} / $${o.totalWithUrl?.toLocaleString()}`
+    : `$${o.monthlyPrice}/mo`;
 }
 
 function stripLabel(o: Offer) {
   return o.size != null ? `${o.size}-Pack` : `$${o.monthlyPrice}/mo Membership`;
 }
 
-/** Compact single-row pill bar to switch between all five offers. */
-function TierSwitcher({ activeKey }: { activeKey: string }) {
+/** Compact vertical rail of all five offers beside the main card. */
+function OfferRail({ activeKey }: { activeKey: string }) {
   return (
-    <nav className="ni-tier-switcher" aria-label="All offers">
+    <aside className="ni-offer-rail" aria-label="All offers">
       {OFFERS.map((o) => {
         const active = o.key === activeKey;
         return (
           <a
             key={o.key}
-            className={`ni-tier-pill${active ? ' is-active' : ''}`}
+            className={`ni-offer-rail__item${active ? ' is-active' : ''}`}
             href={o.href}
             aria-current={active ? 'page' : undefined}
           >
-            <span className="ni-tier-pill__label">{tierPillLabel(o)}</span>
-            <span className="ni-tier-pill__domain">{o.vanityDomain}</span>
+            <span className="ni-offer-rail__line1">
+              <span className="ni-offer-rail__title">{tierPillLabel(o)}</span>
+              <span className="ni-offer-rail__price">{tierPriceLine(o)}</span>
+            </span>
+            <span className="ni-offer-rail__domain">{o.vanityDomain}</span>
+            {!active && <span className="ni-offer-rail__arrow" aria-hidden="true">→</span>}
           </a>
         );
       })}
-    </nav>
+    </aside>
   );
 }
 
@@ -484,12 +494,14 @@ function OtherOffersStrip({ activeKey }: { activeKey: string }) {
   );
 }
 
-/** Offer section: tier switcher, clean offer card, cross-reference strip. */
+/** Offer section: main card + vertical tier rail + cross-reference strip. */
 export function OfferSection({ activeKey, id }: { activeKey: string; id?: string }) {
   return (
     <section className="ni-section ni-section--packs" id={id}>
-      <TierSwitcher activeKey={activeKey} />
-      <OfferCard activeKey={activeKey} />
+      <div className="ni-offer-layout">
+        <OfferCard activeKey={activeKey} />
+        <OfferRail activeKey={activeKey} />
+      </div>
       <OtherOffersStrip activeKey={activeKey} />
     </section>
   );

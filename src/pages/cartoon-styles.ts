@@ -761,51 +761,89 @@ export const NI_CSS = `
   font-size: 0.98rem;
 }
 
-/* ---------------- Tier switcher ---------------- */
+/* ---------------- Offer layout (card + vertical tier rail) ---------------- */
 
-.ni-tier-switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 30px;
+.ni-offer-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
-.ni-tier-pill {
+@media (min-width: 900px) {
+  .ni-offer-layout {
+    grid-template-columns: 72fr 28fr;
+    align-items: stretch;
+  }
+}
+
+/* Vertical rail: all five offers stacked from the card's top edge. */
+.ni-offer-rail {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  background: var(--ni-paper-light);
-  border: 2px solid var(--ni-ink);
-  border-radius: 999px;
-  padding: 9px 18px;
+  gap: 10px;
+}
+
+.ni-offer-rail__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-radius: 14px;
+  border: 1px solid var(--ni-ink);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.6);
   color: var(--ni-ink);
   text-decoration: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.ni-tier-pill:hover {
+.ni-offer-rail__item:not(.is-active) {
+  padding-right: 34px;
+}
+
+.ni-offer-rail__item:not(.is-active):hover {
   background: var(--ni-yellow);
+  transform: translateX(-2px);
 }
 
-.ni-tier-pill.is-active {
-  background: var(--ni-ink);
-  color: var(--ni-paper-light);
+.ni-offer-rail__item.is-active {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #fff;
 }
 
-.ni-tier-pill__label {
+.ni-offer-rail__line1 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
   font-weight: 700;
   font-size: 0.95rem;
-  line-height: 1.15;
+}
+
+.ni-offer-rail__price {
+  font-weight: 600;
+  font-size: 0.78rem;
+  opacity: 0.82;
   white-space: nowrap;
 }
 
-.ni-tier-pill__domain {
-  font-size: 0.72rem;
+.ni-offer-rail__domain {
+  font-size: 0.74rem;
   font-weight: 600;
   opacity: 0.78;
-  white-space: nowrap;
+}
+
+.ni-offer-rail__arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ni-red);
 }
 
 /* ---------------- Main offer card (zero nested boxes) ---------------- */
@@ -814,8 +852,6 @@ export const NI_CSS = `
   display: grid;
   grid-template-columns: 1fr;
   gap: 34px;
-  max-width: 1080px;
-  margin: 0 auto;
   background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
   border-radius: 14px;
@@ -955,7 +991,7 @@ export const NI_CSS = `
 /* ---------------- Other offers strip ---------------- */
 
 .ni-other-strip {
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 26px auto 0;
   text-align: center;
   font-size: 0.88rem;
@@ -1159,7 +1195,7 @@ export const NI_CSS = `
   .ni-root .ni-nav button,
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
-  .ni-root .ni-tier-pill,
+  .ni-root .ni-offer-rail__item,
   .ni-root .ni-mini,
   .ni-root .ni-pill {
     transition: none;
