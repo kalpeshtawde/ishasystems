@@ -8,7 +8,7 @@ export const Pricing: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate costs
-  const ishaCost = Math.ceil(29.99 * 12 * years);
+  const ishaCost = Math.ceil(19.99 * 12 * years);
   const squarespaceCost = 392 * years;
   const agencyCost = 5400 + (2400 * (years - 1));
   const savings = agencyCost - ishaCost;

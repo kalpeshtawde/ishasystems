@@ -49,18 +49,18 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
   en: {
     home: {
       title:
-        'Affordable Small Business Web Design (US & Canada) | $0 to Start, $29.99/mo | ISHA Systems LLC',
+        'Affordable Small Business Web Design (US & Canada) | $0 to Start, $19.99/mo | ISHA Systems LLC',
       description:
-        'Managed website subscription for small businesses across the US & Canada. No upfront cost web development — free domain, business email, hosting & SSL. Live in 7 days, just $29.99/month, with full code ownership after 12 months.',
+        'Managed website subscription for small businesses across the US & Canada. No upfront cost web development — free domain, business email, hosting & SSL. Live in 7 days, just $19.99/month, with full code ownership after 12 months.',
       imageAlt:
-        'ISHA Systems LLC — affordable managed website subscription for small businesses, $0 setup and $29.99/mo.',
+        'ISHA Systems LLC — affordable managed website subscription for small businesses, $0 setup and $19.99/mo.',
     },
     pricing: {
       title:
-        'Website Pricing — $0 Setup, $29.99/mo, Everything Included | ISHA Systems LLC',
+        'Website Pricing — $0 Setup, $19.99/mo, Everything Included | ISHA Systems LLC',
       description:
-        'Transparent managed website subscription pricing for US & Canada small businesses: $0 setup fee, $29.99/month for a 10-page site with free domain, business email, hosting & SSL. Code ownership after 12 months. No hidden fees.',
-      imageAlt: 'ISHA Systems LLC pricing — $0 setup fee and $29.99 per month, everything included.',
+        'Transparent managed website subscription pricing for US & Canada small businesses: $0 setup fee, $19.99/month for a 10-page site with free domain, business email, hosting & SSL. Code ownership after 12 months. No hidden fees.',
+      imageAlt: 'ISHA Systems LLC pricing — $0 setup fee and $19.99 per month, everything included.',
     },
     portfolio: {
       title: 'Our Work — Small Business Websites Built by ISHA Systems LLC',
@@ -71,7 +71,7 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
     contact: {
       title: 'Get Your Small Business Website — $0 to Start | ISHA Systems LLC',
       description:
-        "Start your small business website for $0 — no upfront cost web development for the US & Canada. Free domain, business email, and hosting included for $29.99/month. Tell us about your business and we'll reply within 24 hours.",
+        "Start your small business website for $0 — no upfront cost web development for the US & Canada. Free domain, business email, and hosting included for $19.99/month. Tell us about your business and we'll reply within 24 hours.",
       imageAlt: 'Contact ISHA Systems LLC to start a $0 small business website subscription.',
     },
     privacy: {
@@ -94,18 +94,18 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
   es: {
     home: {
       title:
-        'Diseño Web Asequible para Pequeñas Empresas (EE. UU. y Canadá) | $0 para Empezar, $29.99/mes | ISHA Systems LLC',
+        'Diseño Web Asequible para Pequeñas Empresas (EE. UU. y Canadá) | $0 para Empezar, $19.99/mes | ISHA Systems LLC',
       description:
-        'Suscripción de sitio web administrado para pequeñas empresas en EE. UU. y Canadá. Desarrollo web sin costo inicial — dominio, correo empresarial, hosting y SSL gratis. En línea en 7 días, solo $29.99/mes, con propiedad total del código después de 12 meses.',
+        'Suscripción de sitio web administrado para pequeñas empresas en EE. UU. y Canadá. Desarrollo web sin costo inicial — dominio, correo empresarial, hosting y SSL gratis. En línea en 7 días, solo $19.99/mes, con propiedad total del código después de 12 meses.',
       imageAlt:
-        'ISHA Systems LLC — suscripción de sitio web administrado y asequible para pequeñas empresas, $0 de configuración y $29.99/mes.',
+        'ISHA Systems LLC — suscripción de sitio web administrado y asequible para pequeñas empresas, $0 de configuración y $19.99/mes.',
     },
     pricing: {
       title:
-        'Precios de Sitios Web — $0 de Configuración, $29.99/mes, Todo Incluido | ISHA Systems LLC',
+        'Precios de Sitios Web — $0 de Configuración, $19.99/mes, Todo Incluido | ISHA Systems LLC',
       description:
-        'Precios transparentes de suscripción de sitio web administrado para pequeñas empresas de EE. UU. y Canadá: $0 de configuración, $29.99/mes por un sitio de 10 páginas con dominio, correo empresarial, hosting y SSL gratis. Propiedad del código tras 12 meses. Sin costos ocultos.',
-      imageAlt: 'Precios de ISHA Systems LLC — $0 de configuración y $29.99 al mes, todo incluido.',
+        'Precios transparentes de suscripción de sitio web administrado para pequeñas empresas de EE. UU. y Canadá: $0 de configuración, $19.99/mes por un sitio de 10 páginas con dominio, correo empresarial, hosting y SSL gratis. Propiedad del código tras 12 meses. Sin costos ocultos.',
+      imageAlt: 'Precios de ISHA Systems LLC — $0 de configuración y $19.99 al mes, todo incluido.',
     },
     portfolio: {
       title: 'Nuestro Trabajo — Sitios Web para Pequeñas Empresas por ISHA Systems LLC',
@@ -116,7 +116,7 @@ const SEO_BY_LANG: Record<Lang, Record<string, PageSeo>> = {
     contact: {
       title: 'Obtenga el Sitio Web de su Pequeña Empresa — $0 para Empezar | ISHA Systems LLC',
       description:
-        'Comience el sitio web de su pequeña empresa por $0 — desarrollo web sin costo inicial para EE. UU. y Canadá. Dominio, correo empresarial y hosting incluidos por $29.99/mes. Cuéntenos sobre su negocio y le responderemos en 24 horas.',
+        'Comience el sitio web de su pequeña empresa por $0 — desarrollo web sin costo inicial para EE. UU. y Canadá. Dominio, correo empresarial y hosting incluidos por $19.99/mes. Cuéntenos sobre su negocio y le responderemos en 24 horas.',
       imageAlt: 'Contacte a ISHA Systems LLC para comenzar una suscripción de sitio web por $0.',
     },
     privacy: {
@@ -180,7 +180,7 @@ function setAlternate(hreflang: string, href: string) {
 
 /**
  * Builds the ProfessionalService JSON-LD graph for the active language.
- * Explicitly encodes pricing ($0 setup + $29.99/mo), area served (US + CA),
+ * Explicitly encodes pricing ($0 setup + $19.99/mo), area served (US + CA),
  * and the subscription offer so answer engines can quote accurate facts.
  */
 function buildJsonLd(lang: Lang) {
@@ -217,7 +217,7 @@ function buildJsonLd(lang: Lang) {
       description: isEs
         ? 'Sitio web de 10 páginas con dominio, correo empresarial, hosting y SSL gratis. $0 de configuración. Propiedad del código después de 12 meses.'
         : '10-page website with free domain, business email, hosting, and SSL. $0 setup fee. Code ownership after 12 months.',
-      price: '29.99',
+      price: '19.99',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       eligibleRegion: [
@@ -234,7 +234,7 @@ function buildJsonLd(lang: Lang) {
         {
           '@type': 'UnitPriceSpecification',
           name: isEs ? 'Suscripción mensual' : 'Monthly subscription',
-          price: '29.99',
+          price: '19.99',
           priceCurrency: 'USD',
           billingDuration: 'P1M',
           billingIncrement: '1',

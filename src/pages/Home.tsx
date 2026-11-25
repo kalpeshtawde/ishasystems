@@ -140,7 +140,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
                     {t.home.heroCard2Title}
                   </div>
                   <div style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '38px', fontWeight: 700, color: '#0ea5e9', lineHeight: 1 }}>
-                    $29.99
+                    $19.99
                   </div>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#888888', marginTop: '6px' }}>
                     {t.home.heroPricePerMo}

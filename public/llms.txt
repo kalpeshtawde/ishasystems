@@ -1,13 +1,13 @@
 # Isha Systems LLC
 
-> Fully-managed website subscription for small businesses in the United States and Canada. We design, build, host, and maintain your website for $0 upfront and $29.99/month. After 12 months, the website code is transferred to you — fully owned, forever.
+> Fully-managed website subscription for small businesses in the United States and Canada. We design, build, host, and maintain your website for $0 upfront and $19.99/month. After 12 months, the website code is transferred to you — fully owned, forever.
 
 Isha Systems LLC is a subscription-based web design and hosting service. We handle everything — design, development, domain, business email, hosting, SSL, SEO, and ongoing maintenance — so small business owners don't have to. Sites typically go live within 7 days.
 
 ## Core Offering
 
 - **Setup fee:** $0 — no upfront cost web development.
-- **Monthly subscription:** $29.99/month, cancel anytime.
+- **Monthly subscription:** $19.99/month, cancel anytime.
 - **Code ownership:** subscribe for 12 months and the full website code is transferred to you to own forever.
 - **Turnaround:** live website delivered in about 7 days.
 - **Markets served:** United States and Canada.
