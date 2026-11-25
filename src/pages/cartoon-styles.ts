@@ -704,6 +704,7 @@ export const NI_CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 320px;
   margin: 18px 0 10px;
 }
