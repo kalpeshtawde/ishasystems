@@ -751,25 +751,6 @@ export const NI_CSS = `
   text-underline-offset: 4px;
 }
 
-.ni-offer__price {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  line-height: 1;
-  margin: 0 0 6px;
-}
-
-.ni-offer__price span {
-  font-size: 0.45em;
-  color: var(--ni-ink-soft);
-}
-
-.ni-offer__proposed {
-  font-weight: 600;
-  color: var(--ni-ink-soft);
-  margin: 0 0 22px;
-}
-
 .ni-offer__pending {
   border: 2px dashed var(--ni-line);
   border-radius: 10px;
@@ -779,146 +760,116 @@ export const NI_CSS = `
   font-size: 0.98rem;
 }
 
-/* ---------------- Unified offer section ---------------- */
+/* ---------------- Tier switcher ---------------- */
 
-.ni-offer-unified {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  align-items: start;
+.ni-tier-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-@media (min-width: 920px) {
-  .ni-offer-unified {
-    grid-template-columns: 1.35fr 1fr;
-    gap: 44px;
-  }
-}
-
-.ni-offer-primary__title {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  margin: 0 0 6px;
-}
-
-/* Companion: all five funnel offers, stacked. */
-.ni-offer-companion {
+.ni-tier-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
   background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
-  border-radius: 12px;
-  padding: 26px 22px;
+  border-radius: 999px;
+  padding: 9px 18px;
+  color: var(--ni-ink);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ni-tier-pill:hover {
+  background: var(--ni-yellow);
+}
+
+.ni-tier-pill.is-active {
+  background: var(--ni-ink);
+  color: var(--ni-paper-light);
+}
+
+.ni-tier-pill__label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.ni-tier-pill__domain {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+/* ---------------- Main offer card (zero nested boxes) ---------------- */
+
+.ni-offer-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--ni-paper-light);
+  border: 2px solid var(--ni-ink);
+  border-radius: 14px;
+  padding: clamp(28px, 5vw, 48px);
   box-shadow: var(--ni-shadow);
 }
 
-.ni-offer-companion__title {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
-  letter-spacing: -0.01em;
-  margin: 0 0 18px;
+@media (min-width: 920px) {
+  .ni-offer-card {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
 }
 
-.ni-offer-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.ni-offer-card__left {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
 }
 
-.ni-offer-row {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: #fff;
-  border: 2px solid var(--ni-ink);
-  border-radius: 10px;
-  padding: 16px 18px;
-  color: var(--ni-ink);
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-a.ni-offer-row:hover {
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0 rgba(38, 32, 26, 0.16);
-}
-
-.ni-offer-row--active {
-  border: 3px solid var(--ni-ink);
-  background: #FBF3D6;
-}
-
-.ni-offer-row__badge {
-  position: absolute;
-  top: -13px;
-  right: 14px;
-  background: var(--ni-ink);
-  color: var(--ni-paper-light);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 999px;
-  transform: rotate(2deg);
-}
-
-.ni-offer-row__name {
-  font-family: var(--ni-font-display);
-  font-weight: 700;
-  font-size: 1.08rem;
-  line-height: 1.2;
-}
-
-.ni-offer-row__domain {
-  align-self: flex-start;
-  font-size: 0.76rem;
+.ni-funnel-badge {
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--ni-red);
   border: 1.5px solid var(--ni-red);
   border-radius: 999px;
-  padding: 2px 10px;
+  padding: 4px 12px;
   background: rgba(228, 87, 46, 0.06);
 }
 
-.ni-offer-row__price {
-  font-size: 0.92rem;
-  font-weight: 600;
+.ni-offer-card__title {
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4.4vw, 2.8rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.ni-offer-card__desc {
+  margin: 0;
   color: var(--ni-ink-soft);
+  font-size: 1.02rem;
+  max-width: 46ch;
 }
 
-.ni-offer-row__hint {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ni-ink-soft);
-}
-
-.ni-offer-row__go {
-  font-weight: 700;
-  color: var(--ni-red);
-  font-size: 0.92rem;
-}
-
-/* ---------------- Pricing & customization card ---------------- */
-
-.ni-price-card {
+.ni-offer-card__right {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: #fff;
-  border: 2px solid var(--ni-ink);
-  border-radius: 12px;
-  padding: 28px 26px;
-  box-shadow: var(--ni-shadow);
+  justify-content: center;
 }
 
-/* Standard vs. branded selector. */
+/* With Your Website URL vs. Unbranded Pack selector. */
 .ni-mode-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -931,7 +882,7 @@ a.ni-offer-row:hover {
 
 .ni-mode-toggle button {
   font-family: var(--ni-font-body);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--ni-ink-soft);
   background: transparent;
@@ -947,72 +898,42 @@ a.ni-offer-row:hover {
   color: var(--ni-paper-light);
 }
 
-/* Itemized pricing breakdown. */
-.ni-breakdown {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 2px solid var(--ni-line);
+.ni-price-display {
+  margin: 4px 0 0;
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
 }
 
-.ni-breakdown__row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 14px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--ni-line);
-}
-
-.ni-breakdown__row dt {
+.ni-price-display span {
+  font-size: 0.45em;
   font-weight: 600;
-  font-size: 0.98rem;
-}
-
-.ni-breakdown__row dd {
-  margin: 0;
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: 1.15rem;
-  white-space: nowrap;
-}
-
-.ni-breakdown__note {
-  grid-column: 1 / -1;
-  font-size: 0.84rem;
   color: var(--ni-ink-soft);
-  margin-top: 4px;
 }
 
-.ni-breakdown__row--total {
-  border-bottom: 0;
-  padding-top: 14px;
+.ni-price-sub {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ni-ink-soft);
 }
 
-.ni-breakdown__row--total dt {
-  font-family: var(--ni-font-display);
-  font-weight: 900;
-  font-size: 1.02rem;
-}
-
-.ni-breakdown__row--total dd {
-  font-size: 1.5rem;
-  color: var(--ni-red);
-}
-
-.ni-price-card__cta {
+.ni-offer-card__cta {
   width: 100%;
   justify-content: center;
+  margin-top: 4px;
 }
 
 .ni-license {
   list-style: none;
-  margin: 4px 0 0;
-  padding: 14px 0 0;
+  margin: 6px 0 0;
+  padding: 12px 0 0;
   border-top: 2px solid var(--ni-line);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .ni-license li {
@@ -1028,6 +949,25 @@ a.ni-offer-row:hover {
   flex-shrink: 0;
   font-weight: 800;
   color: var(--ni-red);
+}
+
+/* ---------------- Other offers strip ---------------- */
+
+.ni-other-strip {
+  max-width: 1080px;
+  margin: 26px auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ni-ink-soft);
+}
+
+.ni-other-strip a {
+  color: var(--ni-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--ni-red);
+  text-underline-offset: 3px;
 }
 
 /* ---------------- Personalize ---------------- */
@@ -1218,7 +1158,7 @@ a.ni-offer-row:hover {
   .ni-root .ni-nav button,
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
-  .ni-root .ni-offer-row,
+  .ni-root .ni-tier-pill,
   .ni-root .ni-mini,
   .ni-root .ni-pill {
     transition: none;

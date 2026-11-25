@@ -5,11 +5,11 @@ import {
   COLLAGE_ASSETS,
   OFFERS,
   PACK_PRICING,
-  RETAIL_PER_CARTOON,
   advanceResolution,
   isMissing,
   srcFor,
   type Cartoon,
+  type Offer,
   type Resolution,
 } from './cartoon-data';
 
@@ -304,7 +304,7 @@ export function GalleryPage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Unified offer section: active offer + all five offers side-by-side  */
+/* Simplified offer section: tier switcher + clean 2-column card       */
 /* ------------------------------------------------------------------ */
 
 /** Fanned 3-card collage cycling the four uploaded cartoon assets. */
@@ -343,174 +343,154 @@ function CollageFan({ cycleStart, frontUrl }: { cycleStart: number; frontUrl: st
   );
 }
 
-/**
- * Transparent itemized pricing with the Standard vs. branded toggle. The CTA
- * label follows the selected version; every rate comes from PACK_PRICING.
- */
-function PackPricingPanel({ size }: { size: number }) {
-  const pricing = PACK_PRICING[size] ?? PACK_PRICING[10];
-  const offer = OFFERS.find((o) => o.size === size) ?? OFFERS[0];
-  const [branded, setBranded] = useState(false);
+function tierPillLabel(o: Offer) {
+  return o.size != null ? `${o.size} Cartoons` : `Membership · $${o.monthlyPrice}/mo`;
+}
 
-  const retailValue = pricing.size * RETAIL_PER_CARTOON;
-  const basePerCartoon = pricing.basePrice / pricing.size;
-  const total = branded ? pricing.totalWithUrl : pricing.basePrice;
+function stripLabel(o: Offer) {
+  return o.size != null ? `${o.size}-Pack` : `$${o.monthlyPrice}/mo Membership`;
+}
 
+/** Compact single-row pill bar to switch between all five offers. */
+function TierSwitcher({ activeKey }: { activeKey: string }) {
   return (
-    <div className="ni-price-card">
-      <div className="ni-mode-toggle" role="radiogroup" aria-label="Pack version">
-        <button
-          type="button"
-          role="radio"
-          aria-checked={!branded}
-          className={!branded ? 'is-selected' : ''}
-          onClick={() => setBranded(false)}
-        >
-          Standard Pack — ${pricing.basePrice}
-        </button>
-        <button
-          type="button"
-          role="radio"
-          aria-checked={branded}
-          className={branded ? 'is-selected' : ''}
-          onClick={() => setBranded(true)}
-        >
-          With Your Website URL — ${pricing.totalWithUrl}
-        </button>
-      </div>
-
-      <dl className="ni-breakdown">
-        <div className="ni-breakdown__row">
-          <dt>Base Pack ({pricing.size} unbranded cartoons)</dt>
-          <dd>${pricing.basePrice}</dd>
-          <span className="ni-breakdown__note">
-            ${basePerCartoon}/cartoon · ${retailValue.toLocaleString()} retail value
-          </span>
-        </div>
-        <div className="ni-breakdown__row">
-          <dt>Custom Website Branding Add-On</dt>
-          <dd>+${pricing.urlFee.toLocaleString()}</dd>
-          <span className="ni-breakdown__note">
-            ${pricing.urlFeePerCartoon} per cartoon × {pricing.size} cartoons — your URL
-            engraved on every plaque
-          </span>
-        </div>
-        <div className="ni-breakdown__row ni-breakdown__row--total">
-          <dt>
-            {branded ? 'Total with Custom URL Branding' : 'Total — Standard Pack'}
-          </dt>
-          <dd>${total.toLocaleString()}</dd>
-          <span className="ni-breakdown__note">one-time</span>
-        </div>
-      </dl>
-
-      <a className="ni-btn ni-btn--primary ni-price-card__cta" href={offer.href}>
-        {branded
-          ? `Get Branded Pack — $${pricing.totalWithUrl.toLocaleString()}`
-          : `Get Unbranded Pack — $${pricing.basePrice}`}{' '}
-        <span aria-hidden="true">→</span>
-      </a>
-
-      <ul className="ni-license">
-        <li>Social media, paid ads &amp; email</li>
-        <li>High-res print &amp; web files</li>
-        <li>Choose your own cartoons or Bob&rsquo;s curated picks</li>
-      </ul>
-    </div>
+    <nav className="ni-tier-switcher" aria-label="All offers">
+      {OFFERS.map((o) => {
+        const active = o.key === activeKey;
+        return (
+          <a
+            key={o.key}
+            className={`ni-tier-pill${active ? ' is-active' : ''}`}
+            href={o.href}
+            aria-current={active ? 'page' : undefined}
+          >
+            <span className="ni-tier-pill__label">{tierPillLabel(o)}</span>
+            <span className="ni-tier-pill__domain">{o.vanityDomain}</span>
+          </a>
+        );
+      })}
+    </nav>
   );
 }
 
-/** Left/primary panel: the featured active offer (collage + pricing). */
-function ActiveOfferPanel({ activeKey }: { activeKey: string }) {
+/** The single clean 2-column offer card (zero nested boxes). */
+function OfferCard({ activeKey }: { activeKey: string }) {
   const offer = OFFERS.find((o) => o.key === activeKey) ?? OFFERS[0];
+  // "With Your Website URL" is the default, highlighted version.
+  const [branded, setBranded] = useState(true);
 
-  if (offer.size != null) {
-    const cycleStart = OFFERS.findIndex((o) => o.size === offer.size); // 0..3
+  // Membership card.
+  if (offer.size == null) {
     return (
-      <div className="ni-offer-primary">
-        <h2 className="ni-offer-primary__title">{offer.offerName}</h2>
-        <CollageFan cycleStart={cycleStart} frontUrl="yourbusiness.com" />
-        <PackPricingPanel size={offer.size} />
+      <div className="ni-offer-card">
+        <div className="ni-offer-card__left">
+          <span className="ni-funnel-badge">{offer.vanityDomain}</span>
+          <h2 className="ni-offer-card__title">{offer.offerName}</h2>
+          <p className="ni-offer-card__desc">
+            {offer.blurb} Details are pending — benefits, billing frequency,
+            and sign-up arrive in a later phase.
+          </p>
+          <p className="ni-offer__pending">
+            Lifetime pricing and specific benefits are left open for now.
+          </p>
+        </div>
+        <div className="ni-offer-card__right">
+          <p className="ni-price-display">
+            ${offer.monthlyPrice}<span>/month</span>
+          </p>
+          <p className="ni-price-sub">Bob&rsquo;s proposed price for All-Access Membership.</p>
+          <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
+            Get Membership — ${offer.monthlyPrice}/mo <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     );
   }
 
-  // Membership primary panel.
+  const pricing = PACK_PRICING[offer.size];
+  const cycleStart = OFFERS.findIndex((o) => o.size === offer.size); // 0..3
+  const basePerCartoon = pricing.basePrice / pricing.size;
+  const total = branded ? pricing.totalWithUrl : pricing.basePrice;
+
   return (
-    <div className="ni-offer-primary">
-      <h2 className="ni-offer-primary__title">All-Access Membership</h2>
-      <div className="ni-price-card">
-        <p className="ni-offer__price">
-          $25<span>/month</span>
+    <div className="ni-offer-card">
+      <div className="ni-offer-card__left">
+        <span className="ni-funnel-badge">{offer.vanityDomain}</span>
+        <h2 className="ni-offer-card__title">{offer.offerName}</h2>
+        <p className="ni-offer-card__desc">{offer.blurb}</p>
+        <CollageFan cycleStart={cycleStart} frontUrl="yourbusiness.com" />
+        <ul className="ni-license">
+          <li>Commercial rights for ads, social &amp; print</li>
+          <li>Instant high-res download</li>
+          <li>Pick your cartoons or use curated set</li>
+        </ul>
+      </div>
+
+      <div className="ni-offer-card__right">
+        <div className="ni-mode-toggle" role="radiogroup" aria-label="Pack version">
+          <button
+            type="button"
+            role="radio"
+            aria-checked={branded}
+            className={branded ? 'is-selected' : ''}
+            onClick={() => setBranded(true)}
+          >
+            With Your Website URL
+          </button>
+          <button
+            type="button"
+            role="radio"
+            aria-checked={!branded}
+            className={!branded ? 'is-selected' : ''}
+            onClick={() => setBranded(false)}
+          >
+            Unbranded Pack
+          </button>
+        </div>
+
+        <p className="ni-price-display">${total.toLocaleString()}</p>
+        <p className="ni-price-sub">
+          {branded
+            ? `Includes $${pricing.basePrice} for ${pricing.size} cartoons + $${pricing.urlFee.toLocaleString()} URL branding ($${pricing.urlFeePerCartoon}/cartoon)`
+            : `$${basePerCartoon} per cartoon · Standard shared catalog without custom URL`}
         </p>
-        <p className="ni-offer__proposed">Bob&rsquo;s proposed price for membership.</p>
-        <p>
-          Membership details are pending. Benefits, billing frequency, and
-          sign-up arrive in a later phase, once Bob confirms them.
-        </p>
-        <p className="ni-offer__pending">
-          Lifetime pricing and specific benefits are left open for now.
-        </p>
+
+        <a className="ni-btn ni-btn--primary ni-offer-card__cta" href={offer.href}>
+          {branded
+            ? `Get Branded Pack — $${pricing.totalWithUrl.toLocaleString()}`
+            : `Get Unbranded Pack — $${pricing.basePrice}`}{' '}
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   );
 }
 
-/** Right/companion panel: all five funnel offers, active tier highlighted. */
-function AllOffersPanel({ activeKey }: { activeKey: string }) {
+/** Understated strip referencing the other four funnel offers. */
+function OtherOffersStrip({ activeKey }: { activeKey: string }) {
+  const others = OFFERS.filter((o) => o.key !== activeKey);
   return (
-    <aside className="ni-offer-companion">
-      <h3 className="ni-offer-companion__title">Also Available — All Funnel Offers</h3>
-      <ul className="ni-offer-list">
-        {OFFERS.map((o) => {
-          const active = o.key === activeKey;
-          const priceLine = o.monthlyPrice
-            ? `$${o.monthlyPrice}/mo`
-            : `$${o.basePrice} base / $${o.totalWithUrl?.toLocaleString()} branded`;
-          const body = (
-            <>
-              {active && <span className="ni-offer-row__badge">Active offer</span>}
-              <span className="ni-offer-row__name">{o.offerName}</span>
-              {o.vanityDomain && (
-                <span className="ni-offer-row__domain">{o.vanityDomain}</span>
-              )}
-              <span className="ni-offer-row__price">{priceLine}</span>
-              {o.key === 'membership' && (
-                <span className="ni-offer-row__hint">or Lifetime / Unlimited upgrade</span>
-              )}
-              {!active && <span className="ni-offer-row__go">View offer →</span>}
-            </>
-          );
-          return (
-            <li key={o.key}>
-              {active ? (
-                <div className="ni-offer-row ni-offer-row--active">{body}</div>
-              ) : (
-                <a className="ni-offer-row" href={o.href}>
-                  {body}
-                </a>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </aside>
+    <p className="ni-other-strip">
+      Other offers:{' '}
+      {others.map((o, i) => (
+        <span key={o.key}>
+          {i > 0 && <span aria-hidden="true"> · </span>}
+          <a href={o.href}>
+            {stripLabel(o)} ({o.vanityDomain})
+          </a>
+        </span>
+      ))}
+    </p>
   );
 }
 
-/**
- * Unified offer container: the featured active offer sits beside a compact
- * list of all five funnel offers — no separate bottom section.
- */
+/** Offer section: tier switcher, clean offer card, cross-reference strip. */
 export function OfferSection({ activeKey, id }: { activeKey: string; id?: string }) {
   return (
     <section className="ni-section ni-section--packs" id={id}>
-      <div className="ni-offer-unified">
-        <div className="ni-offer-unified__primary">
-          <ActiveOfferPanel activeKey={activeKey} />
-        </div>
-        <AllOffersPanel activeKey={activeKey} />
-      </div>
+      <TierSwitcher activeKey={activeKey} />
+      <OfferCard activeKey={activeKey} />
+      <OtherOffersStrip activeKey={activeKey} />
     </section>
   );
 }
