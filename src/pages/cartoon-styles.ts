@@ -1010,7 +1010,7 @@ export const NI_CSS = `
   text-underline-offset: 3px;
 }
 
-/* ---------------- Personalize ---------------- */
+/* ---------------- Engraved samples ---------------- */
 
 .ni-section--personalize {
   background: var(--ni-paper-light);
@@ -1025,134 +1025,61 @@ export const NI_CSS = `
   margin-right: auto;
 }
 
-.ni-personalize {
+/* 2×2 grid of engraved Thanksgiving frames. */
+.ni-engrave {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 36px;
-  align-items: start;
+  gap: 26px;
 }
 
-@media (min-width: 920px) {
-  .ni-personalize {
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 56px;
+@media (min-width: 720px) {
+  .ni-engrave {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
 }
 
-.ni-personalize__field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ni-personalize__label {
-  font-weight: 700;
-  font-size: 1.02rem;
-}
-
-.ni-personalize__input {
-  font-family: var(--ni-font-body);
-  font-size: 1.18rem;
-  font-weight: 600;
-  color: var(--ni-ink);
-  background: var(--ni-paper);
-  border: 2px solid var(--ni-ink);
-  border-radius: 12px;
-  padding: 14px 18px;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.ni-personalize__input:focus-visible {
-  outline: 3px solid var(--ni-blue);
-  outline-offset: 2px;
-  box-shadow: 4px 4px 0 rgba(38, 32, 26, 0.25);
-}
-
-.ni-personalize__hint {
+.ni-engrave-card {
   margin: 0;
-  font-size: 0.9rem;
-  color: var(--ni-ink-soft);
-}
-
-/* Quick-fill sample address pills. */
-.ni-personalize__samples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.ni-pill {
-  background: transparent;
-  border: 1.5px solid var(--ni-ink);
-  border-radius: 999px;
-  padding: 7px 14px;
-  font-family: var(--ni-font-body);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ni-ink);
-  transition: background-color 0.15s ease, transform 0.15s ease;
-}
-
-.ni-pill:hover {
-  background: var(--ni-yellow);
-  transform: translateY(-1px);
-}
-
-.ni-personalize__frame {
-  border: 2px solid var(--ni-ink);
-  border-radius: 6px;
   background: var(--ni-paper-light);
+  border: 2px solid var(--ni-ink);
+  border-radius: 10px;
   padding: 12px;
   box-shadow: var(--ni-shadow);
-  transform: rotate(1deg);
+  transform: rotate(-0.6deg);
+  transition: transform 0.18s ease;
 }
 
-.ni-personalize__imgwrap {
-  position: relative;
-  overflow: hidden;
+.ni-engrave-card:nth-child(even) {
+  transform: rotate(0.6deg);
+}
+
+.ni-engrave-card:hover {
+  transform: rotate(0deg);
+}
+
+.ni-engrave-card__frame {
+  display: block;
   background: #fff;
   border: 1.5px solid var(--ni-line);
+  overflow: hidden;
 }
 
-.ni-personalize__img {
+.ni-engrave-card__frame img {
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
-/* The plaque lettering band: centered over the engraved "nearinsanity.com"
-   (measured on the cropped artwork). Background is the sampled plaque wood
-   so the typed text cleanly replaces the original engraving. */
-.ni-personalize__plaque {
-  position: absolute;
-  left: 42.5%;
-  right: 27.5%;
-  top: 91.6%;
-  height: 3.6%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: rgb(100, 69, 51);
-  border-radius: 2px;
-}
-
-.ni-personalize__plaque-text {
-  display: inline-block;
-  white-space: nowrap;
+.ni-engrave-card__caption {
+  display: block;
+  text-align: center;
+  padding: 10px 4px 2px;
   font-family: var(--ni-font-display);
-  font-weight: 600;
-  letter-spacing: 0.015em;
-  line-height: 1;
-  color: #221309;
-  /* Slight engraved effect */
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.ni-personalize__caption {
-  margin: 10px 2px 2px;
-  font-size: 0.86rem;
-  color: var(--ni-ink-soft);
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--ni-red);
 }
 
 /* ---------------- Footer ---------------- */
@@ -1200,7 +1127,7 @@ export const NI_CSS = `
   .ni-root .ni-navbtn,
   .ni-root .ni-offer-rail__item,
   .ni-root .ni-showcard,
-  .ni-root .ni-pill {
+  .ni-root .ni-engrave-card {
     transition: none;
   }
   .ni-root .ni-card:hover,

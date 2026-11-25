@@ -563,104 +563,38 @@ export function OfferPage({ route }: { route: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Personalization preview (homepage)                                  */
+/* Engraved samples showcase (homepage)                                */
 /* ------------------------------------------------------------------ */
 
-export function PersonalizeSection() {
-  const [websiteUrl, setWebsiteUrl] = useState('nearinsanity.com');
-  const frameRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
+/** Four engraved Thanksgiving frames — the same cartoon, four domains. */
+const ENGRAVE_SAMPLES = [
+  { src: `${ART_BASE}/engrave/engrave-acmecoffee.png`, domain: 'acmecoffee.com' },
+  { src: `${ART_BASE}/engrave/engrave-brightdental.png`, domain: 'brightdental.co' },
+  { src: `${ART_BASE}/engrave/engrave-oakstreetlaw.png`, domain: 'oakstreetlaw.com' },
+  { src: `${ART_BASE}/engrave/engrave-nearinsanity.png`, domain: 'nearinsanity.com' },
+];
 
-  // Sample addresses so visitors can test the auto-shrinking plaque type
-  // with a single click instead of typing.
-  const SAMPLES = ['acmecoffee.com', 'brightdental.co', 'oakstreetlaw.com'];
-
-  // Keep the personalized address legible on the plaque: size the overlay
-  // text to fill the lettering band, shrinking when the address is long so
-  // it always fits the plaque (single line, like engraved lettering).
-  useEffect(() => {
-    const fit = () => {
-      const frame = frameRef.current;
-      const text = textRef.current;
-      if (!frame || !text) return;
-      const box = text.parentElement as HTMLElement | null;
-      if (!box) return;
-      const boxW = box.clientWidth;
-      const boxH = box.clientHeight;
-      if (!boxW || !boxH) return;
-      let fs = boxH * 0.82;
-      text.style.fontSize = `${fs}px`;
-      while (text.scrollWidth > boxW && fs > boxH * 0.28) {
-        fs *= 0.96;
-        text.style.fontSize = `${fs}px`;
-      }
-    };
-    fit();
-    const ro = new ResizeObserver(fit);
-    if (frameRef.current) ro.observe(frameRef.current);
-    window.addEventListener('resize', fit);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', fit);
-    };
-  }, [websiteUrl]);
-
+export function EngraveSection() {
   return (
     <section className="ni-section ni-section--personalize" id="ni-personalize">
       <SectionHeading
-        kicker="Personalize"
+        kicker="Engraved samples"
         title="Put your website on the artwork."
-        blurb="Bob’s framed Thanksgiving cartoon ships with a wooden plaque — add your own website address and see it engraved in place. Try it with a longer address; the lettering shrinks to fit."
+        blurb="Your address engraved on the wooden plaque, right on the frame — the same cartoon, four different domains."
       />
-      <div className="ni-personalize">
-        <div className="ni-personalize__field">
-          <label className="ni-personalize__label" htmlFor="ni-website-url">
-            Your website address
-          </label>
-          <input
-            id="ni-website-url"
-            className="ni-personalize__input"
-            type="text"
-            value={websiteUrl}
-            onChange={(e) => setWebsiteUrl(e.target.value)}
-            placeholder="yourwebsite.com"
-            maxLength={80}
-            autoComplete="off"
-            spellCheck={false}
-          />
-          <div className="ni-personalize__samples" role="group" aria-label="Sample website addresses">
-            {SAMPLES.map((sample) => (
-              <button
-                key={sample}
-                type="button"
-                className="ni-pill"
-                onClick={() => setWebsiteUrl(sample)}
-              >
-                {sample}
-              </button>
-            ))}
-          </div>
-          <p className="ni-personalize__hint">
-            The plaque updates as you type — local demo only.
-          </p>
-        </div>
-        <div className="ni-personalize__frame" ref={frameRef}>
-          <div className="ni-personalize__imgwrap">
-            <img
-              src={`${ART_BASE}/thanksgiving-frame.png`}
-              alt="Bob Johnson’s framed Thanksgiving cartoon with a wooden plaque at the bottom"
-              className="ni-personalize__img"
-            />
-            <div className="ni-personalize__plaque" aria-hidden="true">
-              <span className="ni-personalize__plaque-text" ref={textRef}>
-                {websiteUrl.trim() || 'yourwebsite.com'}
-              </span>
-            </div>
-          </div>
-          <p className="ni-personalize__caption">
-            Framed Thanksgiving cartoon — plaque preview with your address.
-          </p>
-        </div>
+      <div className="ni-engrave">
+        {ENGRAVE_SAMPLES.map((sample) => (
+          <figure key={sample.domain} className="ni-engrave-card">
+            <span className="ni-engrave-card__frame">
+              <img
+                src={sample.src}
+                alt={`Framed Thanksgiving cartoon with ${sample.domain} engraved on the plaque`}
+                loading="lazy"
+              />
+            </span>
+            <figcaption className="ni-engrave-card__caption">{sample.domain}</figcaption>
+          </figure>
+        ))}
       </div>
     </section>
   );
@@ -762,18 +696,18 @@ export function HomePage() {
             <span className="ni-step__num">03</span>
             <span className="ni-step__title">Add your website address</span>
             <p className="ni-step__text">
-              Optional: put your address on the artwork, engraved on the
-              plaque. Try it below.
+              Optional: your address engraved on the wooden plaque. See four
+              examples below.
             </p>
             <a className="ni-step__link" href="#ni-personalize" onClick={(e) => { e.preventDefault(); scrollToSection('ni-personalize'); }}>
-              Try the preview →
+              See engraved samples →
             </a>
           </div>
         </div>
       </section>
 
-      {/* Personalization demo */}
-      <PersonalizeSection />
+      {/* Engraved samples showcase */}
+      <EngraveSection />
 
       {/* Unified offer: featured 10-pack + all five funnel offers */}
       <OfferSection activeKey="packs/10" id="ni-offers" />
