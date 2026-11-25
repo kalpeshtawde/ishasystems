@@ -630,13 +630,6 @@ export function HomePage() {
             <a className="ni-btn ni-btn--primary" href="/cartoon-preview/gallery">
               Browse Cartoons <span aria-hidden="true">→</span>
             </a>
-            <button
-              type="button"
-              className="ni-btn ni-btn--outline"
-              onClick={() => scrollToSection('ni-personalize')}
-            >
-              Try Your URL Live <span aria-hidden="true">↓</span>
-            </button>
           </div>
         </div>
         <div className="ni-hero__art-col">
