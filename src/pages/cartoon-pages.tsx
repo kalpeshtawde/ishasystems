@@ -3,7 +3,6 @@ import {
   ART_BASE,
   CARTOONS,
   OFFERS,
-  PACKS,
   advanceResolution,
   isMissing,
   srcFor,
@@ -14,6 +13,13 @@ import {
 /* ------------------------------------------------------------------ */
 /* Shared bits                                                         */
 /* ------------------------------------------------------------------ */
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
 
 function SectionHeading({
   kicker,
@@ -379,6 +385,10 @@ export function PersonalizeSection() {
   const frameRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
+  // Sample addresses so visitors can test the auto-shrinking plaque type
+  // with a single click instead of typing.
+  const SAMPLES = ['acmecoffee.com', 'brightdental.co', 'oakstreetlaw.com'];
+
   // Keep the personalized address legible on the plaque: size the overlay
   // text to fill the lettering band, shrinking when the address is long so
   // it always fits the plaque (single line, like engraved lettering).
@@ -432,6 +442,18 @@ export function PersonalizeSection() {
             autoComplete="off"
             spellCheck={false}
           />
+          <div className="ni-personalize__samples" role="group" aria-label="Sample website addresses">
+            {SAMPLES.map((sample) => (
+              <button
+                key={sample}
+                type="button"
+                className="ni-pill"
+                onClick={() => setWebsiteUrl(sample)}
+              >
+                {sample}
+              </button>
+            ))}
+          </div>
           <p className="ni-personalize__hint">
             The plaque updates as you type — local demo only.
           </p>
@@ -475,7 +497,7 @@ export function HomePage() {
       {/* Hero */}
       <section className="ni-hero">
         <div className="ni-hero__copy">
-          <span className="ni-kicker">Digital cartoons · working title</span>
+          <span className="ni-kicker">Syndicated cartoons for marketing</span>
           <h1 className="ni-hero__title">
             Cartoons for an <em>absurd</em> world.
           </h1>
@@ -488,6 +510,13 @@ export function HomePage() {
             <a className="ni-btn ni-btn--primary" href="/cartoon-preview/gallery">
               Browse Cartoons <span aria-hidden="true">→</span>
             </a>
+            <button
+              type="button"
+              className="ni-btn ni-btn--outline"
+              onClick={() => scrollToSection('ni-personalize')}
+            >
+              Try Your URL Live <span aria-hidden="true">↓</span>
+            </button>
           </div>
         </div>
         <div className="ni-hero__art-col">
@@ -506,13 +535,16 @@ export function HomePage() {
             <span className="ni-card__caption">
               <span className="ni-card__title">{featured.title}</span>
               <span className="ni-card__tag">{featured.tag} — open the gallery</span>
+              <span className="ni-card__callout">
+                yourbusiness.com — engraved on every cartoon
+              </span>
             </span>
           </a>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="ni-section ni-section--intro">
+      <section className="ni-section ni-section--intro" id="how-it-works">
         <SectionHeading
           kicker="How it works"
           title="Your marketing, with a cartoon twist."
@@ -547,7 +579,7 @@ export function HomePage() {
               Optional: put your address on the artwork, engraved on the
               plaque. Try it below.
             </p>
-            <a className="ni-step__link" href="#ni-personalize">
+            <a className="ni-step__link" href="#ni-personalize" onClick={(e) => { e.preventDefault(); scrollToSection('ni-personalize'); }}>
               Try the preview →
             </a>
           </div>
@@ -558,24 +590,52 @@ export function HomePage() {
       <PersonalizeSection />
 
       {/* Featured offer */}
-      <section className="ni-section ni-section--packs">
+      <section className="ni-section ni-section--packs" id="ni-10pack">
         <SectionHeading
           kicker="Starting offer"
           title="The 10-Cartoon Pack."
           blurb="The proposed way to start — a starter set of Bob’s best cartoons for your marketing."
         />
-        <div className="ni-feature-offer">
-          <a className="ni-pack-card ni-pack-card--featured" href="/cartoon-preview/packs/10">
-            <span className="ni-pack-card__badge">Starting offer</span>
-            <span className="ni-pack-card__size">10</span>
-            <span className="ni-pack-card__unit">Cartoons</span>
-            <span className="ni-pack-card__desc">
-              {PACKS[0].desc} Add your website address to the artwork as an
-              optional customization.
-            </span>
-            <span className="ni-pack-card__price">Price — to be confirmed</span>
-            <span className="ni-pack-card__cta">View the pack →</span>
-          </a>
+        <div className="ni-pack-showcase">
+          {/* Fanned preview of sample cartoons from the pack */}
+          <div className="ni-pack-showcase__art" aria-hidden="true">
+            {CARTOONS.slice(0, 3).map((cartoon, i) => (
+              <a
+                key={cartoon.id}
+                className={`ni-mini ni-mini--${i + 1}`}
+                href="/cartoon-preview/gallery"
+                tabIndex={-1}
+              >
+                <span className="ni-mini__frame">
+                  {isMissing(cartoon, resolved) ? (
+                    <ArtworkPlaceholder cartoon={cartoon} />
+                  ) : (
+                    <img
+                      src={srcFor(cartoon, resolved)}
+                      alt=""
+                      onError={() => handleImgError(cartoon)}
+                    />
+                  )}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div className="ni-pack-showcase__info">
+            <h3 className="ni-pack-showcase__title">10-Cartoon Starter Pack</h3>
+            <ul className="ni-check">
+              <li>Social media &amp; paid ads</li>
+              <li>Email newsletters &amp; blogs</li>
+              <li>Print flyers &amp; packaging</li>
+              <li>Custom domain engraved on all 10</li>
+            </ul>
+            <p className="ni-pack-showcase__price">
+              $149 <span>one-time</span> · $14.90 <span>per cartoon</span>
+            </p>
+            <a className="ni-btn ni-btn--primary ni-pack-showcase__cta" href="/cartoon-preview/packs/10">
+              Get the 10-Cartoon Pack <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </section>
     </>

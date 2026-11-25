@@ -27,6 +27,7 @@ export const NI_CSS = `
   font-family: var(--ni-font-body);
   font-size: 17px;
   line-height: 1.6;
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -89,13 +90,13 @@ export const NI_CSS = `
 /* Custom logo: winged toaster + stacked comic wordmark. */
 .ni-logo {
   display: block;
-  height: 54px;
+  height: 68px;
   width: auto;
 }
 
 @media (max-width: 640px) {
   .ni-logo {
-    height: 46px;
+    height: 56px;
   }
 }
 
@@ -106,24 +107,27 @@ export const NI_CSS = `
 }
 
 .ni-logo__near {
-  font-size: 44px;
+  font-size: 48px;
   letter-spacing: 0.02em;
 }
 
 .ni-logo__insanity {
-  font-size: 36px;
+  font-size: 40px;
   letter-spacing: 0.02em;
 }
 
 .ni-nav {
   display: flex;
+  align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
-.ni-nav a {
+.ni-nav a,
+.ni-nav button {
   background: none;
   border: 0;
-  padding: 8px 14px;
+  padding: 9px 14px;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--ni-ink);
@@ -132,13 +136,23 @@ export const NI_CSS = `
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.ni-nav a:hover {
+.ni-nav a:hover,
+.ni-nav button:hover {
   background: var(--ni-yellow);
 }
 
-.ni-nav a.is-active {
+/* Compact dark pill CTA (Try Live Preview) on the far right. */
+.ni-nav button.ni-nav-cta {
   background: var(--ni-ink);
   color: var(--ni-paper-light);
+  border: 2px solid var(--ni-ink);
+  padding: 8px 18px;
+  font-weight: 700;
+}
+
+.ni-nav button.ni-nav-cta:hover {
+  background: var(--ni-red);
+  border-color: var(--ni-red);
 }
 
 /* ---------------- Shared bits ---------------- */
@@ -147,9 +161,9 @@ export const NI_CSS = `
   display: inline-block;
   background: var(--ni-yellow);
   color: var(--ni-ink);
-  font-size: 0.78rem;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 999px;
@@ -359,6 +373,19 @@ export const NI_CSS = `
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ni-ink-soft);
+}
+
+/* Hero callout: live example domain engraved on every cartoon. */
+.ni-card__callout {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ni-red);
+  border: 1.5px solid var(--ni-red);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: rgba(228, 87, 46, 0.06);
 }
 
 /* Hero artwork: a tilted, framed piece. */
@@ -623,88 +650,139 @@ export const NI_CSS = `
 
 /* ---------------- Featured offer (homepage) ---------------- */
 
-.ni-feature-offer {
-  max-width: 560px;
-}
-
-.ni-pack-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.ni-pack-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
   background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
-  border-radius: 8px;
-  padding: 30px 26px 26px;
+  border-radius: 12px;
+  padding: clamp(28px, 5vw, 48px);
   box-shadow: var(--ni-shadow);
-  color: var(--ni-ink);
-  text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.ni-pack-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 9px 9px 0 rgba(38, 32, 26, 0.18);
+@media (min-width: 860px) {
+  .ni-pack-showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
 }
 
-.ni-pack-card--featured {
-  background: #FBF3D6;
-  border: 3px solid var(--ni-red);
+/* Fanned mini-collage of sample cartoons from the pack. */
+.ni-pack-showcase__art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
 }
 
-.ni-pack-card__badge {
+.ni-mini {
   position: absolute;
-  top: -16px;
-  right: 16px;
-  background: var(--ni-red);
-  color: var(--ni-paper-light);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 999px;
+  display: block;
+  width: 58%;
+  max-width: 240px;
+  background: var(--ni-paper-light);
   border: 2px solid var(--ni-ink);
-  transform: rotate(2deg);
-  box-shadow: 3px 3px 0 rgba(38, 32, 26, 0.3);
+  border-radius: 6px;
+  padding: 8px;
+  box-shadow: var(--ni-shadow);
+  transition: transform 0.18s ease;
 }
 
-.ni-pack-card__size {
+.ni-mini__frame {
+  display: block;
+  background: #fff;
+  border: 1.5px solid var(--ni-line);
+  overflow: hidden;
+}
+
+.ni-mini__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.ni-mini--1 {
+  transform: rotate(-5deg) translate(-14%, 4%);
+  z-index: 1;
+}
+
+.ni-mini--2 {
+  transform: rotate(0deg) translate(0, -6%);
+  z-index: 2;
+}
+
+.ni-mini--3 {
+  transform: rotate(5deg) translate(14%, 6%);
+  z-index: 1;
+}
+
+.ni-mini:hover {
+  transform: rotate(0deg) translate(0, -2%);
+  z-index: 3;
+}
+
+/* Offer info column. */
+.ni-pack-showcase__title {
   font-family: var(--ni-font-display);
   font-weight: 900;
-  font-size: 3.1rem;
-  line-height: 1;
-  margin-top: 6px;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 18px;
 }
 
-.ni-pack-card__unit {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ni-ink-soft);
-  margin-top: 6px;
+.ni-check {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.ni-pack-card__desc {
-  margin: 16px 0 8px;
-  color: var(--ni-ink-soft);
-  font-size: 0.98rem;
+.ni-check li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.02rem;
+  font-weight: 600;
 }
 
-.ni-pack-card__price {
-  font-size: 0.86rem;
+.ni-check li::before {
+  content: '✓';
+  flex-shrink: 0;
+  font-weight: 800;
+  color: var(--ni-red);
+}
+
+.ni-pack-showcase__price {
+  font-family: var(--ni-font-display);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  margin: 0 0 22px;
+}
+
+.ni-pack-showcase__price span {
+  font-size: 0.55em;
   font-weight: 600;
   color: var(--ni-ink-soft);
-  margin-bottom: 18px;
 }
 
-.ni-pack-card__cta {
-  margin-top: auto;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: var(--ni-red);
-  text-underline-offset: 4px;
+.ni-pack-showcase__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .ni-pack-showcase__cta {
+    width: auto;
+  }
 }
 
 /* ---------------- Offer pages ---------------- */
@@ -899,6 +977,30 @@ export const NI_CSS = `
   color: var(--ni-ink-soft);
 }
 
+/* Quick-fill sample address pills. */
+.ni-personalize__samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ni-pill {
+  background: transparent;
+  border: 1.5px solid var(--ni-ink);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: var(--ni-font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ni-ink);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.ni-pill:hover {
+  background: var(--ni-yellow);
+  transform: translateY(-1px);
+}
+
 .ni-personalize__frame {
   border: 2px solid var(--ni-ink);
   border-radius: 6px;
@@ -990,27 +1092,18 @@ export const NI_CSS = `
   color: var(--ni-ink-soft);
 }
 
-.ni-footer__concept {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ni-ink-soft);
-  border: 1.5px solid var(--ni-ink-soft);
-  border-radius: 999px;
-  padding: 5px 12px;
-}
-
 /* ---------------- Reduced motion ---------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .ni-root .ni-card,
   .ni-root .ni-btn,
   .ni-root .ni-nav a,
+  .ni-root .ni-nav button,
   .ni-root .ni-iconbtn,
   .ni-root .ni-navbtn,
-  .ni-root .ni-pack-card,
-  .ni-root .ni-other-link {
+  .ni-root .ni-other-link,
+  .ni-root .ni-mini,
+  .ni-root .ni-pill {
     transition: none;
   }
   .ni-root .ni-card:hover,

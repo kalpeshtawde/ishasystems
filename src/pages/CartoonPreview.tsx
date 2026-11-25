@@ -118,31 +118,52 @@ function NiLogo({ className = '' }: { className?: string }) {
   );
 }
 
-/** Shared sticky header: logo home link + the three section links. */
+/** Smooth-scroll to a section id, respecting reduced motion. */
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
+
+/** Shared sticky header: logo home link + page-flow nav + live-preview CTA. */
 function Header({ route }: { route: string }) {
-  const isActive = (href: string) => {
-    const key = href.replace(/^\/cartoon-preview\/?/, 'cartoon-preview');
-    if (key === 'cartoon-preview') return route === 'cartoon-preview';
-    // The "Packs" link points at the starting pack but covers all pack pages.
-    if (key === 'cartoon-preview/packs/10') return route.startsWith('cartoon-preview/packs/');
-    return route === key || route.startsWith(`${key}/`);
+  // Section links live on the homepage; from any other page, navigate home
+  // first (with a ?scroll= target) and then glide to the section.
+  const goToSection = (id: string) => {
+    if (route === 'cartoon-preview') {
+      scrollToSection(id);
+    } else {
+      window.location.assign(`/cartoon-preview?scroll=${id}`);
+    }
   };
+
   return (
     <header className="ni-header">
       <div className="ni-header__inner">
         <a className="ni-wordmark" href="/cartoon-preview" aria-label={`${BRAND} — homepage`}>
           <NiLogo className="ni-logo" />
         </a>
-        <nav className="ni-nav" aria-label="Sections">
-          <a className={isActive('/cartoon-preview/gallery') ? 'is-active' : ''} href="/cartoon-preview/gallery">
-            Cartoons
-          </a>
-          <a className={isActive('/cartoon-preview/packs/10') ? 'is-active' : ''} href="/cartoon-preview/packs/10">
-            Packs
-          </a>
-          <a className={isActive('/cartoon-preview/membership') ? 'is-active' : ''} href="/cartoon-preview/membership">
-            Membership
-          </a>
+        <nav className="ni-nav" aria-label="Page">
+          <button type="button" onClick={() => goToSection('how-it-works')}>
+            How It Works
+          </button>
+          <button type="button" onClick={() => goToSection('ni-personalize')}>
+            Live Preview
+          </button>
+          <button
+            type="button"
+            onClick={() => window.location.assign('/cartoon-preview/packs/10')}
+          >
+            10-Cartoon Pack
+          </button>
+          <button
+            type="button"
+            className="ni-nav-cta"
+            onClick={() => goToSection('ni-personalize')}
+          >
+            Try Live Preview
+          </button>
         </nav>
       </div>
     </header>
@@ -157,9 +178,8 @@ function Footer() {
           Near <em>Insanity</em>
         </span>
         <span className="ni-footer__meta">
-          © 2026 Bob Johnson · working title · digital cartoons
+          © 2026 Bob Johnson · Near Insanity Digital Cartoons
         </span>
-        <span className="ni-footer__concept">Concept preview</span>
       </div>
     </footer>
   );
@@ -201,6 +221,16 @@ export function CartoonPreview({ route }: { route: string }) {
     return () => {
       document.body.style.backgroundColor = prevBackground;
     };
+  }, []);
+
+  // Support ?scroll=section targets (used by the header nav when arriving at
+  // the homepage from another demo page) — glide to the section once the
+  // layout and fonts have settled.
+  useEffect(() => {
+    const target = new URLSearchParams(window.location.search).get('scroll');
+    if (!target) return;
+    const t = window.setTimeout(() => scrollToSection(target), 150);
+    return () => window.clearTimeout(t);
   }, []);
 
   return (
