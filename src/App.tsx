@@ -12,12 +12,34 @@ import { CartoonPreview } from './pages/CartoonPreview';
 import { useLanguage } from './i18n';
 import { applySeo, applyNearInsanityPreviewSeo } from './seo';
 
-/** Route key for the standalone Near Insanity concept preview. */
-const PREVIEW_TAB = 'near-insanity-preview';
+/** Route root for the standalone Near Insanity concept preview. */
+const PREVIEW_ROOT = 'cartoon-preview';
 
-/** Legacy hash (#cartoon-preview) still renders the preview as an alias. */
+/**
+ * Maps the current URL to an app route key. The demo routes are rooted at
+ * /cartoon-preview and work in both forms:
+ *   clean path  — /cartoon-preview, /cartoon-preview/gallery, /cartoon-preview/packs/10 …
+ *   hash form   — #cartoon-preview, #cartoon-preview/gallery, …
+ * The legacy /near-insanity-preview (and its hash) maps to the demo root.
+ */
+function parseRouteFromUrl(): string {
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'near-insanity-preview') return PREVIEW_ROOT; // legacy alias
+  if (hash.startsWith(PREVIEW_ROOT)) return hash;
+
+  const path = window.location.pathname;
+  if (path === '/near-insanity-preview') return PREVIEW_ROOT; // legacy alias
+  if (path === `/${PREVIEW_ROOT}`) return PREVIEW_ROOT;
+  if (path.startsWith(`/${PREVIEW_ROOT}/`)) return path.slice(1); // '/cartoon-preview/gallery' → 'cartoon-preview/gallery'
+
+  return hash || 'home';
+}
+
+/** True for any of the standalone demo pages (and the legacy alias). */
 const isPreviewTab = (tab: string) =>
-  tab === PREVIEW_TAB || tab === 'cartoon-preview';
+  tab === PREVIEW_ROOT ||
+  tab.startsWith(`${PREVIEW_ROOT}/`) ||
+  tab === 'near-insanity-preview';
 
 /**
  * Tawk.to live chat — homepage only.
@@ -81,19 +103,11 @@ function App() {
   // Active UI language (en / es) drives localized <head> metadata.
   const { lang } = useLanguage();
 
-  // Local state manager to drive sub-page routing without heavy multi-router bundles.
-  // Initialized lazily from the URL so deep links work on first paint. The Near
-  // Insanity preview is a hash route by convention (#near-insanity-preview), but
-  // it also answers to the clean path /near-insanity-preview in environments
-  // with SPA fallback (e.g. the nginx try_files rule) so it can be opened
-  // directly either way.
-  const [currentTab, setCurrentTab] = useState<string>(() => {
-    const hash = window.location.hash.replace('#', '') || 'home';
-    const previewPath =
-      window.location.pathname === '/near-insanity-preview' ||
-      window.location.pathname === '/cartoon-preview';
-    return hash === 'home' && previewPath ? PREVIEW_TAB : hash;
-  });
+  // Local state manager to drive sub-page routing without heavy multi-router
+  // bundles. Initialized lazily from the URL so deep links work on first
+  // paint; the Near Insanity demo answers to both clean paths
+  // (/cartoon-preview/gallery) and hash forms (#cartoon-preview/gallery).
+  const [currentTab, setCurrentTab] = useState<string>(() => parseRouteFromUrl());
 
   // Keep document head metadata in sync with the active tab and language
   useEffect(() => {
@@ -120,11 +134,20 @@ function App() {
   // Listen for hash changes (back/forward browser navigation)
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') || 'home';
-      setCurrentTab(hash);
+      setCurrentTab(parseRouteFromUrl());
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Listen for history traversal on clean-path routes (back/forward on the
+  // /cartoon-preview/* pages, which navigate with full URLs).
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentTab(parseRouteFromUrl());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const renderContent = () => {
@@ -152,7 +175,7 @@ function App() {
   // Rendered outside the ISHA chrome (no top bar, navbar, or footer) with its
   // own layout, typography, and scoped styles.
   if (isPreviewTab(currentTab)) {
-    return <CartoonPreview />;
+    return <CartoonPreview route={currentTab} />;
   }
 
   return (
