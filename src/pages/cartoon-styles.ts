@@ -1075,10 +1075,10 @@ export const NI_CSS = `
 .ni-engrave-card__caption {
   display: block;
   text-align: center;
-  padding: 10px 4px 2px;
+  padding: 12px 4px 4px;
   font-family: var(--ni-font-display);
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 1.25rem;
   color: var(--ni-red);
 }
 
