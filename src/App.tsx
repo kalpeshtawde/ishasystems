@@ -19,6 +19,64 @@ const PREVIEW_TAB = 'near-insanity-preview';
 const isPreviewTab = (tab: string) =>
   tab === PREVIEW_TAB || tab === 'cartoon-preview';
 
+/**
+ * Tawk.to live chat — homepage only.
+ *
+ * The widget must never appear on the standalone demo routes, so it is no
+ * longer loaded from index.html. This loader injects the embed script only
+ * when the main site's homepage is active, and hides the widget everywhere
+ * else (including the other ISHA pages).
+ */
+const TAWK_EMBED_SRC = 'https://embed.tawk.to/6a22b66a8705f01c35096c0e/1jqbph3uh';
+
+interface TawkApi {
+  show?: () => void;
+  hide?: () => void;
+  onLoad?: () => void;
+  customStyle?: unknown;
+}
+
+let tawkShouldShow = false;
+
+function setTawkVisibility(visible: boolean) {
+  const w = window as unknown as { Tawk_API?: TawkApi };
+  tawkShouldShow = visible;
+
+  // Widget already loaded — just show or hide it.
+  if (w.Tawk_API) {
+    if (visible) w.Tawk_API.show?.();
+    else w.Tawk_API.hide?.();
+    return;
+  }
+
+  // Never load the embed unless we actually need it.
+  if (!visible || document.getElementById('tawk-script')) return;
+
+  // Configure before the embed script creates the widget.
+  w.Tawk_API = w.Tawk_API ?? {};
+  w.Tawk_API.customStyle = {
+    visibility: {
+      desktop: { position: 'br', xOffset: 20, yOffset: 20 },
+      mobile: { position: 'br', xOffset: 15, yOffset: 15 },
+    },
+  };
+  // If the user leaves the homepage while the script is still loading, hide
+  // the widget the moment it initializes instead of letting it pop in.
+  w.Tawk_API.onLoad = () => {
+    const api = (window as unknown as { Tawk_API?: TawkApi }).Tawk_API;
+    if (tawkShouldShow) api?.show?.();
+    else api?.hide?.();
+  };
+
+  const script = document.createElement('script');
+  script.id = 'tawk-script';
+  script.async = true;
+  script.src = TAWK_EMBED_SRC;
+  script.charset = 'UTF-8';
+  script.setAttribute('crossorigin', '*');
+  document.body.appendChild(script);
+}
+
 function App() {
   // Active UI language (en / es) drives localized <head> metadata.
   const { lang } = useLanguage();
@@ -46,6 +104,12 @@ function App() {
     }
     applySeo(currentTab, lang);
   }, [currentTab, lang]);
+
+  // Tawk.to live chat: homepage only — hidden on other pages and never loaded
+  // on the standalone mockup routes.
+  useEffect(() => {
+    setTawkVisibility(currentTab === 'home');
+  }, [currentTab]);
 
   // Update URL hash when tab changes
   const handleTabChange = (tab: string) => {
